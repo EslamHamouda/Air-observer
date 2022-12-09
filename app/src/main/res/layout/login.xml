@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/Login_Image"
-        android:layout_width="415dp"
-        android:layout_height="293dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="378dp"
+        android:layout_height="296dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="17dp"
         android:contentDescription="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/undraw_login_re_4vu2" />
@@ -87,16 +91,14 @@
         android:layout_width="207dp"
         android:layout_height="51dp"
         android:layout_marginStart="102dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="102dp"
-        android:layout_marginBottom="15dp"
         android:backgroundTint="@color/blue"
         android:gravity="center"
         android:text="@string/login"
-        app:layout_constraintBottom_toTopOf="@+id/OrGmail_Text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/Forget_Text"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
@@ -104,14 +106,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="177dp"
-        android:layout_marginBottom="2dp"
         android:layout_weight="1"
         android:text="@string/or_login_with"
         android:textColor="#8F050505"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/Gmail_Image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,42 +122,59 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="125dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginTop="7dp"
         android:gravity="center"
         android:text="@string/haven_t_account"
         android:textColor="#8F050505"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Register_Text"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Gmail_Image" />
 
     <TextView
         android:id="@+id/Register_Text"
         android:layout_width="65dp"
         android:layout_height="24dp"
+        android:layout_marginTop="7dp"
         android:layout_marginEnd="74dp"
-        android:layout_marginBottom="35dp"
         android:text="@string/register"
         android:textColor="#0363F5"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/HaventAccount_Text" />
+        app:layout_constraintStart_toEndOf="@+id/HaventAccount_Text"
+        app:layout_constraintTop_toBottomOf="@+id/Gmail_Image" />
 
     <ImageView
         android:id="@+id/Gmail_Image"
-        android:layout_width="43dp"
-        android:layout_height="44dp"
+        android:layout_width="55dp"
+        android:layout_height="56dp"
         android:layout_marginStart="184dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="184dp"
-        android:layout_marginBottom="7dp"
         android:contentDescription="@string/gmail_icon"
         android:src="@tools:sample/avatars"
-        app:layout_constraintBottom_toTopOf="@+id/HaventAccount_Text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/OrGmail_Text"
         app:srcCompat="@drawable/icons8_google" />
 
+    <TextView
+        android:id="@+id/Forget_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="289dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="3dp"
+        android:text="@string/forgot_password"
+        android:textColor="@color/blue"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/Login_Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </layout>
