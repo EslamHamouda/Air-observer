@@ -12,6 +12,17 @@
     <string name="register_image">Register_Image</string>
     <string name="check_email">Check Email</string>
     <string name="submit">Submit</string>
-    <string name="forgot_password">Forgot Password?</string>
+    <string name="forgot_password">Forgot    Password?</string>
+    <string name="forgot_password1">Forgot Password?</string>
     <string name="don_t_worry_it_happens_please_enter_your_email">Don\'t worry it happens. please enter Your Email</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="check">Check</string>
+    <string name="an_4_digit_code_has_been_send_to_your_email">An 4 digit code has been send to your Email</string>
+    <string name="todo">TODO</string>
+    <string name="otp">OTP</string>
+    <string name="update_password">update password</string>
+    <string name="new_password">New password</string>
+    <string name="confirm">Confirm</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="confirm_new_password">Confirm new password</string>
 </resources>

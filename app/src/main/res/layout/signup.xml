@@ -24,11 +24,11 @@
         tools:ignore="TextContrastCheck" />
 
     <ImageView
-        android:id="@+id/gmail_Image2"
+        android:id="@+id/gmail_Image"
         android:layout_width="55dp"
         android:layout_height="56dp"
         android:layout_marginStart="184dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="184dp"
         android:contentDescription="@string/gmail_icon"
         android:src="@tools:sample/avatars"
@@ -40,11 +40,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="375dp"
-        android:layout_height="225dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="18dp"
+        android:layout_width="400dp"
+        android:layout_height="320dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:contentDescription="@string/register_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,13 +56,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="297dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="300dp"
         android:layout_marginBottom="8dp"
         android:text="@string/sign_up"
         android:textColor="#121111"
         android:textSize="25sp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,11 +75,13 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        app:boxBackgroundColor="#70FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Signup_text">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signup_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/full_name"
@@ -92,13 +94,15 @@
         android:layout_width="359dp"
         android:layout_height="54dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        app:boxBackgroundColor="#46FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signup_email_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
@@ -113,16 +117,20 @@
         android:layout_width="359dp"
         android:layout_height="59dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        app:boxBackgroundColor="#48FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signup_pass_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
+            android:inputType="textCapSentences|textPassword|numberPassword|textCapWords|textCapCharacters|textWebPassword"
             android:textColorHint="#616161"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -132,15 +140,14 @@
         android:layout_width="207dp"
         android:layout_height="51dp"
         android:layout_marginStart="102dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="102dp"
-        android:layout_marginBottom="16dp"
         android:text="@string/register"
         app:backgroundTint="@color/blue"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gmail_Image2" />
+        app:layout_constraintTop_toBottomOf="@+id/gmail_Image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
