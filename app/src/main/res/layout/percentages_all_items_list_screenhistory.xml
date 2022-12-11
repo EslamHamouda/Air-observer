@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
-
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".ui.MainActivity"
+    >
 
     <androidx.cardview.widget.CardView
-        android:layout_width="264dp"
-        android:layout_height="191dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +20,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -34,7 +34,7 @@
                     android:layout_width="40dp"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
-                    android:text="CO"
+                    android:text="@string/CO_text"
                     android:textColor="#0363F5"
                     />
 
@@ -55,10 +55,10 @@
                     android:textColor="#0363F5" />
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="PMS2.5"
+                    android:text="@string/PMS2.5_text"
                     android:textColor="#0363F5" />
 
                 <TextView
@@ -88,7 +88,7 @@
                     android:layout_width="40dp"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
-                    android:text="SO2"
+                    android:text="@string/SO2_text"
                     android:textColor="#0363F5" />
 
                 <TextView
@@ -110,7 +110,7 @@
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
-                    android:text="O3"
+                    android:text="@string/O3_text"
                     android:textColor="#0363F5" />
 
                 <TextView
@@ -141,7 +141,7 @@
                     android:layout_width="40dp"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
-                    android:text="NO2"
+                    android:text="@string/NO2_text"
                     android:textColor="#0363F5" />
 
                 <TextView
@@ -159,6 +159,31 @@
                     android:layout_margin="10dp"
                     android:text="50"
                     android:textColor="#0363F5" />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="@string/PMS10_text"
+                    android:textColor="#0363F5" />
+
+                <TextView
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#8AF311"
+                    tools:layout_editor_absoluteX="176dp"
+                    tools:layout_editor_absoluteY="62dp" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="50"
+                    android:textColor="#0363F5" />
+
 
             </LinearLayout>
 
