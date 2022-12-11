@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="264dp"
+        android:layout_height="191dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="434dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                app:cardCornerRadius="15dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="CO"
+                    android:textColor="#0363F5"
+                    />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:background="#FF5722"
+                    android:layout_marginTop="10dp"
+                    tools:layout_editor_absoluteX="281dp"
+                    tools:layout_editor_absoluteY="228dp" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="50"
+                    android:textColor="#0363F5" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="PMS2.5"
+                    android:textColor="#0363F5" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:background="#F7F11F1F"
+                    android:layout_marginTop="10dp"
+                    tools:layout_editor_absoluteX="202dp"
+                    tools:layout_editor_absoluteY="225dp" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="40"
+                    android:textColor="#0363F5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="SO2"
+                    android:textColor="#0363F5" />
+
+                <TextView
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:background="#FFC107"
+                    android:layout_marginTop="10dp"
+                    tools:layout_editor_absoluteX="176dp"
+                    tools:layout_editor_absoluteY="62dp" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="60"
+                    android:textColor="#0363F5" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="O3"
+                    android:textColor="#0363F5" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:background="#009688"
+                    android:layout_marginTop="10dp"
+                    tools:layout_editor_absoluteX="178dp"
+                    tools:layout_editor_absoluteY="96dp" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="35"
+                    android:textColor="#0363F5" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="NO2"
+                    android:textColor="#0363F5" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:background="#4B5AB3"
+                    android:layout_marginTop="10dp"
+                    tools:layout_editor_absoluteX="176dp"
+                    tools:layout_editor_absoluteY="62dp" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="50"
+                    android:textColor="#0363F5" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

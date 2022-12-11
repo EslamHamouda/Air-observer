@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Air Observer</string>
+    <string name="Button_start">START</string>
+    <string name="Button_start_observe">Start Observe Air</string>
+    <string name="CO_text">CO</string>
+    <string name="SO2_text">SO2</string>
+    <string name="O3_text">O3</string>
+    <string name="PMS10_text">PMS 10</string>
+    <string name="PMS2.5_text">PMS 2.5</string>
+    <string name="NO2_text">NO2</string>
+    <string name="normal_percentage">Normal Percentage</string>
+    <string name="recent_percentage">Recent Percentage</string>
+    <string name="predict_illnesses">Predict Illnesses for this percentages:</string>
 </resources>
