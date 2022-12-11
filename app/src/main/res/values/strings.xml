@@ -11,4 +11,5 @@
     <string name="normal_percentage">Normal Percentage</string>
     <string name="recent_percentage">Recent Percentage</string>
     <string name="predict_illnesses">Predict Illnesses for this percentages:</string>
+    <string name="name_of_account">Hello Name Of Account</string>
 </resources>
