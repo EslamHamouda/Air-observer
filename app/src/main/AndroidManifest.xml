@@ -13,6 +13,20 @@
         android:theme="@style/Theme.AirObserver"
         tools:targetApi="31">
         <activity
+            android:name=".profile.Profile"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".onBoarding.OnBoardingActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>

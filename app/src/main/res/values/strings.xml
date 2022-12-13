@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">Air Observer</string>
+    <string name="app_name">testOnboarding</string>
+
+    <string name="head_title_AirQuality">Air Quality</string>
+    <string name="description_AirQuality">Air observing is important because air pollution
+        is one of the most serious threats environment and human health.</string>
+
+    <string name="head_title_SelectArea">Select an Area</string>
+    <string name="description_SelectArea">we can select an area and employ an integrated drone
+        with sensors operating with artificial intelligence to detect air quality.</string>
+
+    <string name="head_title_Predicting">Predicting Diseases</string>
+    <string name="description_Predicting">Through the data of the sensors that has been measured
+        we be predicted the possible diseases that will occur in this region.</string>
+
+
 </resources>
