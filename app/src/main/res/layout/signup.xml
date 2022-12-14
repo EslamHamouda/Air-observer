@@ -130,7 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:inputType="textCapSentences|textPassword|numberPassword|textCapWords|textCapCharacters|textWebPassword"
+            android:inputType="textPassword|textCapWords|textCapCharacters"
             android:textColorHint="#616161"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
