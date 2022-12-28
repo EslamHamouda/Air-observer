@@ -1,14 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+<com.google.android.material.button.MaterialButton
+    android:id="@+id/StartObserveButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="326dp"
+    android:layout_marginBottom="60dp"
+    android:backgroundTint="#0363F5"
+    android:text="@string/Button_start_observe"
+    android:textColor="@android:color/white"
+    app:cornerRadius="500dp"
+    app:layout_constraintBottom_toTopOf="@+id/cardView"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:ignore="MissingConstraints" />
 
-</FrameLayout>
+<androidx.cardview.widget.CardView
+    android:id="@+id/cardView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="106dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="15dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/StartObserveButton"
+    tools:ignore="MissingConstraints">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            app:cardCornerRadius="15dp">
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="@string/CO_text"
+                android:textColor="#0363F5" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="5dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:background="#FF5722"
+                tools:layout_editor_absoluteX="281dp"
+                tools:layout_editor_absoluteY="228dp" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="50"
+                android:textColor="#0363F5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="@string/PMS2.5_text"
+                android:textColor="#0363F5" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="5dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:background="#F7CC1919"
+                tools:layout_editor_absoluteX="202dp"
+                tools:layout_editor_absoluteY="225dp" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="40"
+                android:textColor="#0363F5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="@string/SO2_text"
+                android:textColor="#0363F5" />
+
+            <TextView
+                android:layout_width="5dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:background="#FFC107"
+                tools:layout_editor_absoluteX="176dp"
+                tools:layout_editor_absoluteY="62dp" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="60"
+                android:textColor="#0363F5" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="@string/O3_text"
+                android:textColor="#0363F5" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="5dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:background="#009688"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="96dp" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="35"
+                android:textColor="#0363F5" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="@string/NO2_text"
+                android:textColor="#0363F5" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="5dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:background="#3F51B5"
+                tools:layout_editor_absoluteX="176dp"
+                tools:layout_editor_absoluteY="62dp" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="50"
+                android:textColor="#0363F5" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="@string/PMS10_text"
+                android:textColor="#0363F5" />
+
+            <TextView
+                android:layout_width="5dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:background="#8AF311"
+                tools:layout_editor_absoluteX="176dp"
+                tools:layout_editor_absoluteY="62dp" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="50"
+                android:textColor="#0363F5" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
