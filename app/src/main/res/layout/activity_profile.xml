@@ -8,18 +8,18 @@
     android:layout_gravity="center"
     android:background="@color/background"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/dimen_16dp">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="158dp"
-        android:text="Profile"
+        android:layout_marginStart="@dimen/dimen_158dp"
+        android:layout_marginTop="@dimen/dimen_25dp"
+        android:layout_marginEnd="@dimen/dimen_158dp"
+        android:text="@string/string_profile"
         android:textColor="@color/active"
-        android:textSize="24dp"
+        android:textSize="@dimen/dimen_24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,56 +27,55 @@
 
     <RelativeLayout
         android:id="@+id/re_layout_id"
-        android:layout_width="153dp"
-        android:layout_height="153dp"
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="97dp"
+        android:layout_width="@dimen/dimen_153dp"
+        android:layout_height="@dimen/dimen_153dp"
+        android:layout_marginStart="@dimen/dimen_98dp"
+        android:layout_marginTop="@dimen/dimen_40dp"
+        android:layout_marginEnd="@dimen/dimen_97dp"
         android:background="@drawable/cirle"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_profile"
         tools:ignore="MissingConstraints">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageVew"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="@dimen/dimen_140dp"
+            android:layout_height="@dimen/dimen_140dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/itsme"
-            app:civ_border_color="#00000000"
-            app:civ_border_width="2dp"
+            app:civ_border_color="@color/color_transparent"
+            app:civ_border_width="@dimen/dimen_2dp"
             tools:ignore="MissingConstraints" />
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/t2"
+        android:id="@+id/tv_yourSelf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="276dp"
-        android:text="Share a Little bit about Yourself"
+        android:gravity="center"
+        android:text="@string/string_aboutYourself"
         android:textColor="@color/active"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="@dimen/dimen_18sp"
+        app:layout_constraintBottom_toTopOf="@+id/ti_email"
+        app:layout_constraintEnd_toEndOf="@+id/re_layout_id"
+        app:layout_constraintStart_toStartOf="@+id/re_layout_id"
+        app:layout_constraintTop_toBottomOf="@+id/re_layout_id" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailText_id"
+        android:id="@+id/ti_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="16dp"
-        app:endIconMode="clear_text"
-        app:boxStrokeColor="@color/main"
-        android:hint="Email"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_200dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:hint="@string/string_email"
         android:textColorHint="@color/active"
+        app:boxStrokeColor="@color/main"
+        app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@+id/full_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +87,6 @@
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress" />
 
@@ -99,11 +97,11 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="313dp"
-        android:hint="Full Name"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_30dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:layout_marginBottom="@dimen/dimen_313dp"
+        android:hint="@string/full_name"
         android:textColorHint="@color/active"
         app:boxStrokeColor="@color/main"
         app:endIconMode="clear_text"
@@ -111,28 +109,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailText_id"
+        app:layout_constraintTop_toBottomOf="@+id/ti_email"
         app:layout_constraintVertical_bias="1.0"
         app:startIconDrawable="@drawable/ic_baseline_person_outline_24"
         tools:ignore="MissingConstraints">
 
-        <EditText
-            android:id="@+id/et_mobile"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:imeOptions="actionNext"
-            android:inputType="textPersonName" />
-
+            android:inputType="textPersonName"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/logout_id"
+        android:id="@+id/btn_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="Update"
+        android:layout_marginTop="@dimen/dimen_52"
         android:backgroundTint="@color/main"
+        android:text="@string/string_update"
         app:icon="@drawable/ic_baseline_update_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -140,14 +137,15 @@
         app:layout_constraintTop_toBottomOf="@+id/full_name" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="LogOut"
+        android:layout_marginTop="@dimen/dimen_52"
         android:backgroundTint="@color/main"
+        android:text="@string/string_logout"
         app:icon="@drawable/ic_baseline_logout_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logout_id" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_update" />
 </androidx.constraintlayout.widget.ConstraintLayout>

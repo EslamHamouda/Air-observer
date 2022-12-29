@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.airobserver.R;
 import com.example.airobserver.profile.Profile;
 
 public class OnBoardingActivity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class OnBoardingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.on_boarding);
+        setContentView(R.layout.on_boarding_layout);
 
         saveState = new SaveState(this,"onBoarding");
         if(saveState.getState()==1)

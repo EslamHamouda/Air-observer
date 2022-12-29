@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">testOnboarding</string>
-
+    <string name="app_name">a</string>
     <string name="head_title_AirQuality">Air Quality</string>
     <string name="description_AirQuality">Air observing is important because air pollution
         is one of the most serious threats environment and human health.</string>
@@ -12,6 +11,11 @@
     <string name="head_title_Predicting">Predicting Diseases</string>
     <string name="description_Predicting">Through the data of the sensors that has been measured
         we be predicted the possible diseases that will occur in this region.</string>
-
+    <string name="string_profile">Profile</string>
+    <string name="string_aboutYourself">Share a Little bit about Yourself</string>
+    <string name="string_email">Email</string>
+    <string name="full_name">Full Name</string>
+    <string name="string_update">Update</string>
+    <string name="string_logout">LogOut</string>
 
 </resources>

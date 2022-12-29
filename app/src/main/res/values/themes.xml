@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.TestOnboarding" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.AirObserver" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!--<item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>-->
         <!-- Primary brand color. -->

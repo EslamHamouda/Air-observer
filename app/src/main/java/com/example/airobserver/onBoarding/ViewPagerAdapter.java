@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.airobserver.R;
+
 public class ViewPagerAdapter extends PagerAdapter {
 
     Context context;
@@ -53,7 +55,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
          LayoutInflater layoutInflater= (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-         View v = layoutInflater.inflate(R.layout.slider_layout,container,false);
+         View v = layoutInflater.inflate(R.layout.slider_for_onboarding,container,false);
 
          ImageView titleImg = v.findViewById(R.id.titleImage);
          TextView heading = v.findViewById(R.id.titleText);
