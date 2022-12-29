@@ -12,4 +12,7 @@
     <string name="recent_percentage">Recent Percentage</string>
     <string name="predict_illnesses">Predict Illnesses for this percentages:</string>
     <string name="name_of_account">Hello Name Of Account</string>
+    <string name="first_Illness">-1</string>
+    <string name="second_Illness">-2</string>
+    <string name="third_Illness">-3</string>
 </resources>

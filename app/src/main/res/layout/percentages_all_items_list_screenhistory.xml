@@ -3,191 +3,244 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.MainActivity"
     >
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Const"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/dimen_margin_50dp"
+        android:elevation="@dimen/dimen_10dp"
+        android:paddingLeft="@dimen/dimen_5dp"
+        android:paddingBottom="@dimen/dimen_5dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="434dp">
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="342dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/CO_text"
+            android:textColor="@color/text_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.022"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.029" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:orientation="horizontal"
-                app:cardCornerRadius="15dp">
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="5dp"
+            android:layout_height="30dp"
+            android:background="@color/co_orange"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.254"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.117" />
 
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:text="@string/CO_text"
-                    android:textColor="#0363F5"
-                    />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="5dp"
-                    android:layout_height="30dp"
-                    android:background="#FF5722"
-                    android:layout_marginTop="10dp"
-                    tools:layout_editor_absoluteX="281dp"
-                    tools:layout_editor_absoluteY="228dp" />
-
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:text="50"
-                    android:textColor="#0363F5" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="@string/PMS2.5_text"
-                    android:textColor="#0363F5" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="5dp"
-                    android:layout_height="30dp"
-                    android:background="#F7F11F1F"
-                    android:layout_marginTop="10dp"
-                    tools:layout_editor_absoluteX="202dp"
-                    tools:layout_editor_absoluteY="225dp" />
-
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:text="40"
-                    android:textColor="#0363F5" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:text="@string/SO2_text"
-                    android:textColor="#0363F5" />
-
-                <TextView
-                    android:layout_width="5dp"
-                    android:layout_height="30dp"
-                    android:background="#FFC107"
-                    android:layout_marginTop="10dp"
-                    tools:layout_editor_absoluteX="176dp"
-                    tools:layout_editor_absoluteY="62dp" />
-
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:text="60"
-                    android:textColor="#0363F5" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:text="@string/O3_text"
-                    android:textColor="#0363F5" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="5dp"
-                    android:layout_height="30dp"
-                    android:background="#009688"
-                    android:layout_marginTop="10dp"
-                    tools:layout_editor_absoluteX="178dp"
-                    tools:layout_editor_absoluteY="96dp" />
-
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:text="35"
-                    android:textColor="#0363F5" />
-            </LinearLayout>
+        <TextView
+            android:id="@+id/co_percentage"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="50"
+            android:textColor="@color/text_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.36"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.019" />
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/PMS2.5_text"
+            android:textColor="@color/text_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.644"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.039" />
 
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:text="@string/NO2_text"
-                    android:textColor="#0363F5" />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="5dp"
+            android:layout_height="30dp"
+            android:background="@color/pms_2_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.785"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.111" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="5dp"
-                    android:layout_height="30dp"
-                    android:background="#4B5AB3"
-                    android:layout_marginTop="10dp"
-                    tools:layout_editor_absoluteX="176dp"
-                    tools:layout_editor_absoluteY="62dp" />
+        <TextView
+            android:id="@+id/pms2.5_percentage"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="40"
+            android:textColor="@color/text_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.016" />
 
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:text="50"
-                    android:textColor="#0363F5" />
-
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:text="@string/PMS10_text"
-                    android:textColor="#0363F5" />
-
-                <TextView
-                    android:layout_width="5dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:background="#8AF311"
-                    tools:layout_editor_absoluteX="176dp"
-                    tools:layout_editor_absoluteY="62dp" />
-
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:text="50"
-                    android:textColor="#0363F5" />
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:text="@string/SO2_text"
+            android:textColor="@color/text_blue"
+            app:layout_constraintEnd_toEndOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="@+id/textView7"
+            tools:layout_editor_absoluteY="53dp" />
 
 
-            </LinearLayout>
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="5dp"
+            android:layout_height="30dp"
+            android:background="@color/so2_yellow_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.205" />
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/so2_percentage"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="60"
+            android:textColor="@color/text_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/co_percentage"
+            app:layout_constraintStart_toStartOf="@+id/co_percentage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:text="@string/O3_text"
+            android:textColor="@color/text_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView8"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.475" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="5dp"
+            android:layout_height="30dp"
+            android:background="@color/o3_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView5"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/o3_percentage"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="35"
+            android:textColor="@color/text_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/pms2.5_percentage"
+            app:layout_constraintStart_toStartOf="@+id/pms2.5_percentage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.563" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/NO2_text"
+            android:textColor="@color/text_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView10"
+            app:layout_constraintStart_toStartOf="@+id/textView10"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="5dp"
+            android:layout_height="30dp"
+            android:background="@color/no2_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView11"
+            app:layout_constraintStart_toStartOf="@+id/textView11"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <TextView
+            android:id="@+id/no2_percentage"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:text="50"
+            android:textColor="@color/text_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/so2_percentage"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/so2_percentage"
+            app:layout_constraintTop_toBottomOf="@+id/so2_percentage"
+            app:layout_constraintVertical_bias="0.428" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="@string/PMS10_text"
+            android:textColor="@color/text_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView13"
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="5dp"
+            android:layout_height="30dp"
+            android:background="@color/pms10_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/pms10_percentage"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="50"
+            android:textColor="@color/text_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/o3_percentage"
+            app:layout_constraintStart_toStartOf="@+id/o3_percentage"
+            app:layout_constraintTop_toBottomOf="@+id/o3_percentage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="text_blue">#0363F5</color>
+    <color name="co_orange">#FF5722</color>
+    <color name="so2_yellow_color">#FFC107</color>
+    <color name="no2_color">#3F51B5</color>
+    <color name="pms_2_color">#F7CC1919</color>
+    <color name="o3_color">#009688</color>
+    <color name="pms10_color">#8AF311</color>
 </resources>
