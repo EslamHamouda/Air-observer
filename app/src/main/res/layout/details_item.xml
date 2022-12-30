@@ -13,9 +13,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Const"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="@dimen/dimen_240dp"
         android:layout_margin="@dimen/dimen_margin_50dp"
-        android:elevation="10dp"
+        android:elevation="@dimen/dimen_10dp"
         android:paddingLeft="@dimen/dimen_5dp"
         android:paddingBottom="@dimen/dimen_5dp"
         tools:ignore="MissingConstraints"
