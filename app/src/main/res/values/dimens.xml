@@ -19,4 +19,5 @@
     <dimen name="dimen_500dp">500dp</dimen>
     <dimen name="dimen_20sp">20sp</dimen>
     <dimen name="dimen_50sp">50sp</dimen>
+    <dimen name="dimen_30dp">30dp</dimen>
 </resources>
