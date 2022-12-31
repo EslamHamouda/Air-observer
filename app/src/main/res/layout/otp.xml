@@ -16,10 +16,12 @@
 
     <TextView
         android:id="@+id/Enterotp_text"
+        style="@style/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/enter_otp"
-        style="@style/text"
+        app:layout_constraintEnd_toEndOf="@+id/getotp_image"
         app:layout_constraintStart_toStartOf="@+id/getotp_image"
         app:layout_constraintTop_toBottomOf="@+id/getotp_image" />
 
@@ -27,9 +29,11 @@
         android:id="@+id/digit_text"
         android:layout_width="276dp"
         android:layout_height="59dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:text="@string/an_4_digit_code_has_been_send_to_your_email"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/Enterotp_text"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="@+id/Enterotp_text"
         app:layout_constraintTop_toBottomOf="@+id/Enterotp_text" />
 
@@ -37,7 +41,7 @@
         android:id="@+id/Number_of_digit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="center"
@@ -46,13 +50,17 @@
         android:minHeight="48dp"
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="@+id/digit_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/digit_text"
         app:layout_constraintTop_toBottomOf="@+id/digit_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/CheckOTP_text"
         style="@style/btn_style"
+        android:layout_marginTop="32dp"
         android:text="@string/check"
         app:layout_constraintEnd_toEndOf="@+id/Number_of_digit_text"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/Number_of_digit_text"
         app:layout_constraintTop_toBottomOf="@+id/Number_of_digit_text" />
 
