@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/getotp_image"
-        android:layout_width="400dp"
-        android:layout_height="320dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
+        style="@style/main_image"
         android:contentDescription="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,35 +18,26 @@
         android:id="@+id/Enterotp_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="284dp"
         android:text="@string/enter_otp"
-        android:textColor="#101010"
-        android:textSize="25sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        style="@style/text"
+        app:layout_constraintStart_toStartOf="@+id/getotp_image"
         app:layout_constraintTop_toBottomOf="@+id/getotp_image" />
 
     <TextView
         android:id="@+id/digit_text"
         android:layout_width="276dp"
         android:layout_height="59dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/an_4_digit_code_has_been_send_to_your_email"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Enterotp_text"
         app:layout_constraintTop_toBottomOf="@+id/Enterotp_text" />
 
     <EditText
         android:id="@+id/Number_of_digit_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="101dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="center"
@@ -58,24 +45,15 @@
         android:inputType="number"
         android:minHeight="48dp"
         android:textColorHint="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/digit_text"
         app:layout_constraintTop_toBottomOf="@+id/digit_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/CheckOTP_text"
-        android:layout_width="207dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="104dp"
-        android:gravity="center"
+        style="@style/btn_style"
         android:text="@string/check"
-        android:textSize="14sp"
-        app:backgroundTint="@color/blue"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Number_of_digit_text"
+        app:layout_constraintStart_toStartOf="@+id/Number_of_digit_text"
         app:layout_constraintTop_toBottomOf="@+id/Number_of_digit_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
