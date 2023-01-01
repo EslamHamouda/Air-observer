@@ -10,7 +10,6 @@ import com.example.airobserver.R
 
 class ProfileFragment : Fragment() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

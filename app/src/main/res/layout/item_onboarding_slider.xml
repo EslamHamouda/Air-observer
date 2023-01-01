@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/iv_slider"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="@dimen/dimen_300dp"
+        android:layout_margin="@dimen/dimen_25dp"
+        android:src="@drawable/undraw_environment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/text_style_blue_20sp_bold"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_slider"
+        tools:text="head title" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        style="@style/text_style_gray_15sp"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:text="@string/description_AirQuality"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>

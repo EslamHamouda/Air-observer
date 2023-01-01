@@ -4,25 +4,25 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.airobserver.databinding.OnboardingSliderBinding
+import com.example.airobserver.databinding.ItemOnboardingSliderBinding
 
 class ViewPagerAdapter(
-    val context: Context,
-    val images:List<Int>,
-    val headings:List<Int>,
-    val description:List<Int>
+    private val context: Context,
+    private val images:List<Int>,
+    private val headings:List<Int>,
+    private val description:List<Int>
 ) : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: OnboardingSliderBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemOnboardingSliderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(imageItem:Int, headingItem:Int,descriptionItem:Int) {
-            binding.titleImage.setImageResource(imageItem)
-            binding.titleText.setText(headingItem)
-            binding.titleDescription.setText(descriptionItem)
+            binding.ivSlider.setImageResource(imageItem)
+            binding.tvTitle.setText(headingItem)
+            binding.tvDescription.setText(descriptionItem)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = OnboardingSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemOnboardingSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

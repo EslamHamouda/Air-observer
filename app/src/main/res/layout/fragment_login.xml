@@ -1,183 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-tools:context=".ui.auth.LoginFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     >
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/Login_Image"
-        android:layout_width="400dp"
-        android:layout_height="320dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:contentDescription="@string/login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/undraw_login" />
+        <ImageView
+            android:id="@+id/im_log"
+            style="@style/main_image"
+            android:contentDescription="@string/login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/undraw_login" />
 
-    <TextView
-        android:id="@+id/Login_Text"
-        android:layout_width="77dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="312dp"
-        android:text="@string/login"
-        android:textColor="#0E0E0E"
-        android:textSize="25sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login_Image" />
+        <TextView
+            android:id="@+id/tv_log"
+            android:layout_width="77dp"
+            android:layout_height="35dp"
+            android:text="@string/login"
+            style="@style/text"
+            app:layout_constraintEnd_toEndOf="@+id/im_log"
+            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintStart_toStartOf="@+id/im_log"
+            app:layout_constraintTop_toBottomOf="@+id/im_log" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="359dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        app:boxBackgroundColor="#34FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login_Text">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_email"
+            style="@style/til"
+            app:layout_constraintEnd_toEndOf="@+id/im_log"
+            app:layout_constraintStart_toStartOf="@+id/tv_log"
+            app:layout_constraintTop_toBottomOf="@+id/tv_log">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Email__Input"
-            android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/in_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColorHint="#616161"
+                tools:ignore="TextContrastCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_pas"
+            style="@style/til"
+            app:layout_constraintEnd_toEndOf="@+id/im_log"
+            app:layout_constraintStart_toStartOf="@+id/til_email"
+            app:layout_constraintTop_toBottomOf="@+id/til_email"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/in_pas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="numberPassword|textCapWords|textCapCharacters"
+                tools:ignore="TextContrastCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_log"
+            style="@style/btn_style"
+            android:text="@string/login"
+            app:layout_constraintEnd_toEndOf="@+id/tv_forgotpas"
+            app:layout_constraintStart_toStartOf="@+id/til_pas"
+            app:layout_constraintTop_toBottomOf="@+id/tv_forgotpas"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <TextView
+            android:id="@+id/tv_orlog"
+            android:layout_width="117dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="56dp"
+            android:layout_weight="1"
+            android:text="@string/or_login_with"
+            android:textColor="#8F050505"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/btn_log"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/til_pas"
+            app:layout_constraintTop_toBottomOf="@+id/btn_log" />
+
+        <TextView
+            android:id="@+id/tv_haventacc"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:textColorHint="#616161"
-            tools:ignore="TextContrastCheck" />
+            android:layout_marginTop="7dp"
+            android:gravity="center"
+            android:text="@string/haven_t_account"
+            android:textColor="#8F050505"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/im_gmail"
+            app:layout_constraintStart_toStartOf="@+id/tv_orlog"
+            app:layout_constraintTop_toBottomOf="@+id/im_gmail" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/tv_reg"
+            android:layout_width="65dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="60dp"
+            android:text="@string/register"
+            android:textColor="#0363F5"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_forgotpas"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_haventacc"
+            app:layout_constraintTop_toBottomOf="@+id/im_gmail" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="359dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="27dp"
-        app:boxBackgroundColor="#51FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/Login_Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:passwordToggleEnabled="true">
+        <ImageView
+            android:id="@+id/im_gmail"
+            android:layout_width="55dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="7dp"
+            android:contentDescription="@string/gmail_icon"
+            app:layout_constraintEnd_toEndOf="@+id/btn_log"
+            app:layout_constraintStart_toStartOf="@+id/btn_log"
+            app:layout_constraintTop_toBottomOf="@+id/tv_orlog"
+            app:srcCompat="@drawable/icons_google" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Password_Input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:inputType="numberPassword|textCapWords|textCapCharacters|textWebPassword"
-            tools:ignore="TextContrastCheck" />
+        <TextView
+            android:id="@+id/tv_forgotpas"
+            android:layout_width="151dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="289dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:text="@string/forgot_password1"
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_log"
+            app:layout_constraintEnd_toEndOf="@+id/til_pas"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/til_pas"
+            app:layout_constraintTop_toBottomOf="@+id/til_pas"
+            app:layout_constraintVertical_bias="0.0" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/Login_Button"
-        android:layout_width="207dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="102dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="102dp"
-        android:backgroundTint="@color/blue"
-        android:gravity="center"
-        android:text="@string/login"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Forget_Text"
-        tools:ignore="DuplicateSpeakableTextCheck" />
-
-    <TextView
-        android:id="@+id/OrGmail_Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="177dp"
-        android:layout_weight="1"
-        android:text="@string/or_login_with"
-        android:textColor="#8F050505"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login_Button" />
-
-    <TextView
-        android:id="@+id/HaventAccount_Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="7dp"
-        android:gravity="center"
-        android:text="@string/haven_t_account"
-        android:textColor="#8F050505"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/Register_Text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Gmail_Image" />
-
-    <TextView
-        android:id="@+id/Register_Text"
-        android:layout_width="65dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="74dp"
-        android:text="@string/register"
-        android:textColor="#0363F5"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/HaventAccount_Text"
-        app:layout_constraintTop_toBottomOf="@+id/Gmail_Image" />
-
-    <ImageView
-        android:id="@+id/Gmail_Image"
-        android:layout_width="55dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="184dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="184dp"
-        android:contentDescription="@string/gmail_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/OrGmail_Text"
-        app:srcCompat="@drawable/icons_google" />
-
-    <TextView
-        android:id="@+id/Forget_Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="289dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="3dp"
-        android:text="@string/forgot_password1"
-        android:textColor="@color/blue"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/Login_Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
-        app:layout_constraintVertical_bias="0.0" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

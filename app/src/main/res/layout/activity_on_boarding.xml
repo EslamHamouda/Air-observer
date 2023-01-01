@@ -1,92 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="#F0F4F3"
-tools:context=".ui.OnBoardingActivity">
-
-<Button
-    android:id="@+id/skipButton_id"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="35dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginBottom="12dp"
-    android:background="#00000000"
-    android:text="Skip"
-    android:textColor="#0363f5"
-    android:textSize="10dp"
-    app:backgroundTint="#F0F4F3"
-    app:layout_constraintBottom_toTopOf="@+id/slideViewPager_id"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.633" />
-
-<Button
-    android:id="@+id/nextButton_id"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginBottom="100dp"
-    android:background="#00000000"
-    android:text="Next"
-    android:textColor="#0363f5"
-    android:textSize="12dp"
-    app:backgroundTint="#F0F4F3"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
-
-<Button
-    android:id="@+id/previousButton_id"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginBottom="100dp"
-    android:background="#00000000"
-    android:text="Previous"
-    android:textColor="#0363f5"
-    android:textSize="12dp"
-    app:backgroundTint="#F0F4F3"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
-
-<androidx.viewpager2.widget.ViewPager2
-    android:id="@+id/slideViewPager_id"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="65dp"
-    android:layout_marginBottom="180dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    android:background="#F0F4F3"
+    tools:context=".ui.OnBoardingActivity">
 
-<LinearLayout
-    android:id="@+id/indicator_layout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginBottom="120dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="@+id/slideViewPager_id" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_skip"
+        style="@style/button_style_transparent_text_blue"
+        android:text="@string/skip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<com.google.android.material.button.MaterialButton
-    android:id="@+id/getStartButton_id"
-    android:layout_width="309dp"
-    android:layout_height="60dp"
-    android:layout_marginStart="161dp"
-    android:layout_marginEnd="162dp"
-    android:layout_marginBottom="32dp"
-    app:cornerRadius="30dp"
-    android:text="Get Started"
-    android:textColor="#FFFFFF"
-    android:textSize="13dp"
-    app:backgroundTint="#0363f5"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_next"
+        style="@style/button_style_transparent_text_blue"
+        android:text="@string/next"
+        app:layout_constraintBottom_toTopOf="@+id/btn_get_started"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_previous"
+        style="@style/button_style_transparent_text_blue"
+        android:text="@string/previous"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btn_get_started"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0dp"
+        app:layout_constraintBottom_toTopOf="@+id/indicator_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_skip" />
+
+    <LinearLayout
+        android:id="@+id/indicator_layout"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_previous"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/view_pager2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_get_started"
+        style="@style/button_style_blue"
+        android:layout_marginHorizontal="@dimen/dimen_32dp"
+        android:layout_marginBottom="@dimen/dimen_8dp"
+        android:text="@string/get_started"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>
