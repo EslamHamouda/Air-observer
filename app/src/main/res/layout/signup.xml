@@ -12,9 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_12"
-        android:layout_weight="1"
         android:text="@string/or_login_with"
-        android:textColor="#616161"
+        android:textColor="@color/brown"
         android:textSize="@dimen/text_size18"
         app:layout_constraintEnd_toEndOf="@+id/til_pasup"
         app:layout_constraintHorizontal_bias="0.487"
@@ -58,7 +57,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_fullname"
         style="@style/til"
-        app:boxBackgroundColor="#70FFFFFF"
+        app:boxBackgroundColor="@color/transparency"
         app:layout_constraintEnd_toEndOf="@+id/im_signup"
         app:layout_constraintStart_toStartOf="@+id/tv_signup"
         app:layout_constraintTop_toBottomOf="@+id/tv_signup">
