@@ -19,8 +19,8 @@
 
     <TextView
         android:id="@+id/tv_log"
-        android:layout_width="77dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/dimen_77"
+        android:layout_height="@dimen/dimen_35"
         android:text="@string/login"
         style="@style/text"
         app:layout_constraintEnd_toEndOf="@+id/im_log"
@@ -41,8 +41,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:textColorHint="#616161"
-            tools:ignore="TextContrastCheck" />
+            android:textColorHint="@color/transparency"
+             />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:inputType="numberPassword|textCapWords|textCapCharacters"
-            tools:ignore="TextContrastCheck" />
+            android:textColorHint="@color/transparency" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,14 +75,13 @@
 
     <TextView
         android:id="@+id/tv_orlog"
-        android:layout_width="117dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="56dp"
-        android:layout_weight="1"
+        android:layout_width="@dimen/dimen_117"
+        android:layout_height="@dimen/dimen_24"
+        android:layout_marginTop="@dimen/dimen_4"
+        android:layout_marginEnd="@dimen/dimen_56"
         android:text="@string/or_login_with"
         android:textColor="#8F050505"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size18"
         app:layout_constraintEnd_toEndOf="@+id/btn_log"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/til_pas"
@@ -92,24 +91,24 @@
         android:id="@+id/tv_haventacc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="@dimen/dimen_7"
         android:gravity="center"
         android:text="@string/haven_t_account"
         android:textColor="#8F050505"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size18"
         app:layout_constraintEnd_toEndOf="@+id/im_gmail"
         app:layout_constraintStart_toStartOf="@+id/tv_orlog"
         app:layout_constraintTop_toBottomOf="@+id/im_gmail" />
 
     <TextView
         android:id="@+id/tv_reg"
-        android:layout_width="65dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="60dp"
+        android:layout_width="@dimen/dimen_65"
+        android:layout_height="@dimen/dimen_24"
+        android:layout_marginTop="@dimen/dimen_7"
+        android:layout_marginEnd="@dimen/dimen_60"
         android:text="@string/register"
         android:textColor="#0363F5"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size18"
         app:layout_constraintEnd_toEndOf="@+id/tv_forgotpas"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_haventacc"
@@ -117,9 +116,9 @@
 
     <ImageView
         android:id="@+id/im_gmail"
-        android:layout_width="55dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="7dp"
+        android:layout_width="@dimen/dimen_55"
+        android:layout_height="@dimen/dimen_56"
+        android:layout_marginTop="@dimen/dimen_7"
         android:contentDescription="@string/gmail_icon"
         android:src="@tools:sample/avatars"
         app:layout_constraintEnd_toEndOf="@+id/btn_log"
@@ -129,14 +128,14 @@
 
     <TextView
         android:id="@+id/tv_forgotpas"
-        android:layout_width="151dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="289dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="@dimen/dimen_151"
+        android:layout_height="@dimen/dimen_26"
+        android:layout_marginStart="@dimen/dimen_289"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_marginBottom="@dimen/dimen_3"
         android:text="@string/forgot_password1"
         android:textColor="@color/blue"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size18"
         app:layout_constraintBottom_toTopOf="@+id/btn_log"
         app:layout_constraintEnd_toEndOf="@+id/til_pas"
         app:layout_constraintHorizontal_bias="1.0"

@@ -11,11 +11,11 @@
         android:id="@+id/tv_orlogup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/dimen_12"
         android:layout_weight="1"
         android:text="@string/or_login_with"
         android:textColor="#616161"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size18"
         app:layout_constraintEnd_toEndOf="@+id/til_pasup"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="@+id/til_pasup"
@@ -24,9 +24,9 @@
 
     <ImageView
         android:id="@+id/im_gmailup"
-        android:layout_width="55dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/dimen_55"
+        android:layout_height="@dimen/dimen_56"
+        android:layout_marginTop="@dimen/dimen_8"
         android:contentDescription="@string/gmail_icon"
         android:src="@tools:sample/avatars"
         app:layout_constraintEnd_toEndOf="@+id/tv_orlogup"
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/full_name"
-            android:textColorHint="#616161"
+            android:textColorHint="@color/transparency"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
-            android:textColorHint="#616161"
+            android:textColorHint="@color/transparency"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TextContrastCheck" />
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:inputType="textPassword|textCapWords|textCapCharacters"
-            android:textColorHint="#616161"
+            android:textColorHint="@color/transparency"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 

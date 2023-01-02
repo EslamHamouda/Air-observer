@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dynamic">0dp</dimen>
+    <dimen name="dimen_3">3dp</dimen>
+    <dimen name="dimen_4">4dp</dimen>
+    <dimen name="dimen_5">5dp</dimen>
+    <dimen name="dimen_7">7dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_12">12dp</dimen>
+    <dimen name="dimen_15">15dp</dimen>
+    <dimen name="dimen_20">20dp</dimen>
+    <dimen name="dimen_24">24dp</dimen>
+    <dimen name="dimen_26">26dp</dimen>
+    <dimen name="dimen_32">32dp</dimen>
+    <dimen name="dimen_35">35dp</dimen>
+    <dimen name="dimen_40">40dp</dimen>
+    <dimen name="dimen_48">48dp</dimen>
+    <dimen name="dimen_55">55dp</dimen>
+    <dimen name="dimen_56">56dp</dimen>
+    <dimen name="dimen_59">59dp</dimen>
+    <dimen name="dimen_60">60dp</dimen>
+    <dimen name="dimen_65">65dp</dimen>
+    <dimen name="dimen_66">66dp</dimen>
+    <dimen name="dimen_67">67dp</dimen>
+    <dimen name="dimen_77">77dp</dimen>
+    <dimen name="dimen_117">117dp</dimen>
+    <dimen name="dimen_122">122dp</dimen>
+    <dimen name="dimen_133">133dp</dimen>
+    <dimen name="dimen_151">151dp</dimen>
+    <dimen name="dimen_276">276dp</dimen>
+    <dimen name="dimen_289">289dp</dimen>
+
+
+    <dimen name="text_size18">18sp</dimen>
+    <dimen name="text_size20">20sp</dimen>
+
+</resources>
