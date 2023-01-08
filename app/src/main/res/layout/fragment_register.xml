@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
-            android:text="@string/or_login_with"
+            android:text="@string/or_create_new_account"
             android:textColor="#616161"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/til_pasup"

@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/tv_title"
-        style="@style/text_style_blue_20sp_bold"
+        style="@style/text_style_blue_20sp_bold_center"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_marginTop="@dimen/dimen_32dp"
         android:layout_marginHorizontal="@dimen/dimen_16dp"
@@ -28,7 +28,7 @@
 
     <TextView
         android:id="@+id/tv_description"
-        style="@style/text_style_gray_15sp"
+        style="@style/text_style_gray_15sp_center"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_marginTop="@dimen/dimen_8dp"
         android:text="@string/description_AirQuality"

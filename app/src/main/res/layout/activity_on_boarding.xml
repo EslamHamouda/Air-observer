@@ -51,8 +51,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_get_started"
-        style="@style/button_style_blue"
-        android:layout_marginHorizontal="@dimen/dimen_32dp"
+        style="@style/button_style_blue_margin_horizontal_32dp"
         android:layout_marginBottom="@dimen/dimen_8dp"
         android:text="@string/get_started"
         android:visibility="invisible"

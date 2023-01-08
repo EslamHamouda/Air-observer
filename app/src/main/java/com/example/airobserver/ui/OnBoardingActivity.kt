@@ -49,14 +49,14 @@ class OnBoardingActivity : AppCompatActivity() {
 
         binding.btnSkip.setOnClickListener {
             saveState!!.state = 1
-            val i = Intent(applicationContext, ProfileFragment::class.java)
+            val i = Intent(applicationContext, AuthActivity::class.java)
             startActivity(i)
             finish()
         }
 
         binding.btnGetStarted.setOnClickListener {
             saveState!!.state = 1
-            val i = Intent(applicationContext, ProfileFragment::class.java)
+            val i = Intent(applicationContext, AuthActivity::class.java)
             startActivity(i)
             finish()
         }
@@ -142,7 +142,7 @@ class OnBoardingActivity : AppCompatActivity() {
     private fun isFirstRun(){
         saveState = SaveState(this, "onBoarding")
         if (saveState!!.state == 1) {
-            val i = Intent(this, ProfileFragment::class.java)
+            val i = Intent(this, AuthActivity::class.java)
             startActivity(i)
             finish()
         }
