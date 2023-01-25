@@ -14,7 +14,7 @@
     <string name="check_email">Check Email</string>
     <string name="submit">Submit</string>
     <string name="forgot_password">Forgot Password?</string>
-    <string name="don_t_worry_it_happens_please_enter_your_email">Don\'t worry it happens. please enter Your Email</string>
+    <string name="don_t_worry_it_happens_please_enter_your_email">Don\'t worry it happens.\n Please enter your email to continue…</string>
     <string name="enter_otp">Enter OTP</string>
     <string name="check">Check</string>
     <string name="an_4_digit_code_has_been_send_to_your_email">An 4 digit code has been send to your Email</string>
