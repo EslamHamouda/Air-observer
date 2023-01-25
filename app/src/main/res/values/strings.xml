@@ -4,6 +4,7 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="or_create_new_account">Don\'t have an account? <font color='#0363f5'>Register</font></string>
+    <string name="or_login">Already have an account? <font color='#0363f5'>Login</font></string>
     <string name="haven_t_account">Haven\'t Account ?</string>
     <string name="register">Register</string>
     <string name="gmail_icon">Gmail_icon</string>

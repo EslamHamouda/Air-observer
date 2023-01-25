@@ -18,10 +18,10 @@ import com.example.airobserver.ui.onboarding.ViewPagerAdapter
 class OnBoardingActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityOnBoardingBinding
-    var saveState: SaveState? = null
-    var images = arrayListOf<Int>()
-    var headings = arrayListOf<Int>()
-    var description = arrayListOf<Int>()
+    private var saveState: SaveState? = null
+    private var images = arrayListOf<Int>()
+    private var headings = arrayListOf<Int>()
+    private var description = arrayListOf<Int>()
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
