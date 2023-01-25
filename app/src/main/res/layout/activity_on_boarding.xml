@@ -38,15 +38,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_skip" />
 
-    <LinearLayout
-        android:id="@+id/indicator_layout"
-        android:layout_width="@dimen/dimen_0dp"
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/dots_indicator"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
+        app:dotsColor="@color/inactive"
+        app:dotsCornerRadius="@dimen/dimen_8dp"
+        app:dotsSize="@dimen/dimen_10dp"
+        app:dotsSpacing="@dimen/dimen_4dp"
+        app:dotsWidthFactor="3"
+        app:selectedDotColor="@color/active"
+        app:progressMode="true"
         app:layout_constraintBottom_toTopOf="@+id/btn_previous"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/view_pager2" />
+        app:layout_constraintStart_toStartOf="@+id/view_pager2"
+        />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_get_started"

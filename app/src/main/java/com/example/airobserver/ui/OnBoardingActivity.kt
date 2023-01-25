@@ -18,7 +18,6 @@ import com.example.airobserver.ui.onboarding.ViewPagerAdapter
 class OnBoardingActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityOnBoardingBinding
-    private lateinit var dots: List<TextView>
     var saveState: SaveState? = null
     var images = arrayListOf<Int>()
     var headings = arrayListOf<Int>()
@@ -29,7 +28,6 @@ class OnBoardingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        dots = setUpDots()
         initViewPagerResources()
         isFirstRun()
 
@@ -62,23 +60,8 @@ class OnBoardingActivity : AppCompatActivity() {
         }
 
         binding.viewPager2.adapter = ViewPagerAdapter(this, images, headings, description)
-        setUpIndicator(0)
+        binding.dotsIndicator.attachTo(binding.viewPager2)
         binding.viewPager2.registerOnPageChangeCallback(viewListener)
-    }
-
-
-    @RequiresApi(Build.VERSION_CODES.M)
-    fun setUpIndicator(position: Int) {
-        binding.indicatorLayout.removeAllViews()
-        for (i in dots.indices) {
-            dots[i].text = Html.fromHtml("&#8226;")
-            dots[i].textSize = 35f
-            dots[i]
-                .setTextColor(resources.getColor(R.color.inactive, applicationContext.theme))
-            binding.indicatorLayout.addView(dots[i])
-        }
-        dots[position]
-            .setTextColor(resources.getColor(R.color.active, applicationContext.theme))
     }
 
     private var viewListener: ViewPager2.OnPageChangeCallback =
@@ -89,10 +72,8 @@ class OnBoardingActivity : AppCompatActivity() {
                 positionOffsetPixels: Int
             ) {
             }
-
             @RequiresApi(api = Build.VERSION_CODES.M)
             override fun onPageSelected(position: Int) {
-                setUpIndicator(position)
                 if (position > 0) {
                     binding.btnPrevious.visibility = View.VISIBLE
                 } else {
@@ -108,17 +89,11 @@ class OnBoardingActivity : AppCompatActivity() {
                     binding.btnSkip.visibility = View.VISIBLE
                 }
             }
-
             override fun onPageScrollStateChanged(state: Int) {}
         }
 
-
     private fun getItem(i: Int): Int {
         return binding.viewPager2.currentItem + i
-    }
-
-    private fun setUpDots(): List<TextView> {
-        return List(3) { TextView(this) }
     }
 
     private fun initViewPagerResources() {
