@@ -83,4 +83,6 @@ dependencies {
     // work manager Kotlin + coroutines
     def work_version = "2.7.1"
     implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    implementation 'androidx.security:security-crypto-ktx:1.1.0-alpha04'
 }
