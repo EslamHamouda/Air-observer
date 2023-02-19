@@ -89,6 +89,13 @@ class OnBoardingActivity : AppCompatActivity() {
         return binding.viewPager2.currentItem + i
     }
 
+    private fun isFirstRun(){
+        if (pref.getBoolean(SharedPref.FIRST_RUN,false)){
+            startActivity(Intent(this, AuthActivity::class.java))
+            finish()
+        }
+    }
+
     private fun initViewPagerResources() {
         images = arrayListOf(
             R.drawable.undraw_environment,
@@ -105,12 +112,5 @@ class OnBoardingActivity : AppCompatActivity() {
             R.string.description_SelectArea,
             R.string.description_Predicting
         )
-    }
-
-    private fun isFirstRun(){
-        if (pref.getBoolean(SharedPref.FIRST_RUN,false)){
-            startActivity(Intent(this, AuthActivity::class.java))
-            finish()
-        }
     }
 }
