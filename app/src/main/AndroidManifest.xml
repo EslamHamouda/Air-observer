@@ -15,7 +15,7 @@
         android:theme="@style/Theme.AirObserver"
         tools:targetApi="31">
         <activity
-            android:name=".ui.OnBoardingActivity"
+            android:name=".ui.onboarding.OnBoardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,14 +27,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.AuthActivity"
+            android:name=".ui.auth.AuthActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

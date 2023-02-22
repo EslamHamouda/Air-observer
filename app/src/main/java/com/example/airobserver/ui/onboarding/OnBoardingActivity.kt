@@ -1,4 +1,4 @@
-package com.example.airobserver.ui
+package com.example.airobserver.ui.onboarding
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -11,7 +11,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.airobserver.R
 import com.example.airobserver.databinding.ActivityOnBoardingBinding
 import com.example.airobserver.di.SharedPref
-import com.example.airobserver.ui.onboarding.ViewPagerAdapter
+import com.example.airobserver.ui.auth.AuthActivity
 import com.example.airobserver.utils.putData
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
