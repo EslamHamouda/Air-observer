@@ -17,6 +17,30 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="text_style_black_14sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_14sp</item>
+    </style>
+
+    <style name="text_style_black_15sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_15sp</item>
+    </style>
+
+    <style name="text_style_black_18sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_18sp</item>
+    </style>
+
+    <style name="text_style_black_18sp_bold" parent="text_style_black">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_black_20sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_20sp</item>
+    </style>
+
+    <style name="text_style_black_20sp_bold" parent="text_style_black_20sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="text_style_black_25sp" parent="text_style_black">
         <item name="android:textSize">@dimen/dimen_25sp</item>
     </style>
@@ -37,6 +61,14 @@
         <item name="android:textColor">@color/gray</item>
     </style>
 
+    <style name="text_style_gray_15sp" parent="text_style_gray">
+        <item name="android:textSize">@dimen/dimen_15sp</item>
+    </style>
+
+    <style name="text_style_gray_15sp_center" parent="text_style_gray_15sp">
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="text_style_blue" parent="text_style">
         <item name="android:textColor">@color/blue</item>
     </style>
@@ -49,15 +81,15 @@
         <item name="android:textSize">@dimen/dimen_15sp</item>
     </style>
 
-    <style name="text_style_gray_15sp" parent="text_style_gray">
-        <item name="android:textSize">@dimen/dimen_15sp</item>
-    </style>
-
-    <style name="text_style_gray_15sp_center" parent="text_style_gray_15sp">
-        <item name="android:gravity">center</item>
-    </style>
-
     <style name="text_style_blue_15sp_bold" parent="text_style_blue_15sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_blue_18sp" parent="text_style_blue">
+        <item name="android:textSize">@dimen/dimen_18sp</item>
+    </style>
+
+    <style name="text_style_blue_18sp_bold" parent="text_style_blue_18sp">
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -66,6 +98,14 @@
     </style>
 
     <style name="text_style_blue_20sp_bold" parent="text_style_blue_20sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_blue_25sp" parent="text_style_blue">
+        <item name="android:textSize">@dimen/dimen_25sp</item>
+    </style>
+
+    <style name="text_style_blue_25sp_bold" parent="text_style_blue_25sp">
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -161,4 +201,6 @@
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginStart">5dp</item>
     </style>
+
+    <dimen name="dimen_14sp">14sp</dimen>
 </resources>

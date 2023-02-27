@@ -1,7 +1,6 @@
   function setDial(aqi) {
     let angle = getAQIDialAngle(aqi);
     let [bg, white] = getAQIColor(aqi);
-
     let meter = document.querySelector(".gauge > div[role=meter]");
     let dial = meter.querySelector(".dial");
     meter.setAttribute("aria-valuenow", aqi);
@@ -71,9 +70,4 @@ function getAQIColor(aqi) {
   return calculateColors(color, color, 1);
 }
 
-let range = document.getElementById("set-aqi");
-setDial(range.value);
-
-range.addEventListener("change", evt => {
-  setDial(evt.target.value);
-});
+//setDial(100);

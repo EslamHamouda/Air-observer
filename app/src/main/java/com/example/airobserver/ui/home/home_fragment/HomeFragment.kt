@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.ValueCallback
+import android.widget.Toast
 import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,7 +29,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.aqi.settings.javaScriptEnabled = true;
-        binding.aqi.loadUrl("file:///android_asset/index.html");
+        binding.aqi.loadUrl("file:///android_asset/index.html")
+        //binding.aqi.loadUrl("file:///android_asset/index.js/setDial(300)")
+
+        //binding.aqi.evaluateJavascript("setDial(${100});",null)
     }
 
 }
