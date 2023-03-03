@@ -10,6 +10,7 @@ import android.webkit.ValueCallback
 import android.widget.Toast
 import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentHomeBinding
+import com.example.airobserver.domain.model.gasmodel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,7 +33,15 @@ class HomeFragment : Fragment() {
         binding.aqi.loadUrl("file:///android_asset/index.html")
         //binding.aqi.loadUrl("file:///android_asset/index.js/setDial(300)")
 
-        //binding.aqi.evaluateJavascript("setDial(${100});",null)
+        val list = arrayListOf<gasmodel>()
+        list.add(gasmodel("PMS2.5","Particulate Matter",22,"#FF0000","Good"))
+        list.add(gasmodel("PMS10","Particulate Matter",25,"#8f3f97","Good"))
+        list.add(gasmodel("CO","Carbon monoxide",22,"#7e0023","Good"))
+        list.add(gasmodel("NO2","Nitrogen dioxide",33,"#00e400","Good"))
+        list.add(gasmodel("SO2","PSulfur dioxide",15,"#ffff00","Good"))
+        list.add(gasmodel("PMS2.5","Ozone",10,"#ff7e00","Good"))
+        binding.rvDetailedReadings.adapter=DetailedReadingsAdapter(list)
+
     }
 
 }
