@@ -6,5 +6,8 @@
     tools:context=".ui.home.news_fragment.NewsFragment">
 
 
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_news"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </FrameLayout>
