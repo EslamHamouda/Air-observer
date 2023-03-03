@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Text View-->
+    <style name="text_style" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/dimen_5dp</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="text_style_white" parent="text_style">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="text_style_black" parent="text_style">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="text_style_black_14sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_14sp</item>
+    </style>
+
+    <style name="text_style_black_15sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_15sp</item>
+    </style>
+
+    <style name="text_style_black_18sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_18sp</item>
+    </style>
+
+    <style name="text_style_black_18sp_bold" parent="text_style_black">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_black_20sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_20sp</item>
+    </style>
+
+    <style name="text_style_black_20sp_bold" parent="text_style_black_20sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_black_25sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_25sp</item>
+    </style>
+
+    <style name="text_style_black_25sp_bold" parent="text_style_black_25sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_black_30sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_30sp</item>
+    </style>
+
+    <style name="text_style_black_30sp_bold" parent="text_style_black_30sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_gray" parent="text_style">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="text_style_gray_15sp" parent="text_style_gray">
+        <item name="android:textSize">@dimen/dimen_15sp</item>
+    </style>
+
+    <style name="text_style_gray_15sp_center" parent="text_style_gray_15sp">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="text_style_blue" parent="text_style">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="text_style_white_15sp" parent="text_style_white">
+        <item name="android:textSize">@dimen/dimen_15sp</item>
+    </style>
+
+    <style name="text_style_blue_15sp" parent="text_style_blue">
+        <item name="android:textSize">@dimen/dimen_15sp</item>
+    </style>
+
+    <style name="text_style_blue_15sp_bold" parent="text_style_blue_15sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_blue_18sp" parent="text_style_blue">
+        <item name="android:textSize">@dimen/dimen_18sp</item>
+    </style>
+
+    <style name="text_style_blue_18sp_bold" parent="text_style_blue_18sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_blue_20sp" parent="text_style_blue">
+        <item name="android:textSize">@dimen/dimen_20sp</item>
+    </style>
+
+    <style name="text_style_blue_20sp_bold" parent="text_style_blue_20sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_blue_25sp" parent="text_style_blue">
+        <item name="android:textSize">@dimen/dimen_25sp</item>
+    </style>
+
+    <style name="text_style_blue_25sp_bold" parent="text_style_blue_25sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_blue_20sp_bold_center" parent="text_style_blue_20sp_bold">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--Button Style-->
+    <style name="button_style">
+        <item name="android:layout_width">@dimen/dimen_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/dimen_15dp</item>
+        <item name="android:textSize">@dimen/dimen_16sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="button_style_transparent" parent="button_style">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="button_style_transparent_text_blue" parent="button_style_transparent">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="button_style_blue" parent="button_style">
+        <item name="backgroundTint">@color/blue</item>
+        <item name="cornerRadius">@dimen/dimen_15dp</item>
+    </style>
+
+    <style name="button_style_blue_margin_horizontal_32dp" parent="button_style_blue">
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/dimen_32dp</item>
+    </style>
+
+    <!--EditTextStyle-->
+    <style name="edit_text_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dimen_10dp</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/dimen_32dp</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/blue</item>
+        <item name="hintTextColor">@color/blue</item>
+    </style>
+
+    <style name="edit_text_input_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:drawablePadding">@dimen/dimen_10dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style name="main_image">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">320dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <style name="btn_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">51dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="backgroundTint">@color/blue</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
+
+    <style name="til">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="boxBackgroundColor">@color/white</item>
+    </style>
+
+    <style name="text">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textColor">#0E0E0E</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+    </style>
+
+    <dimen name="dimen_14sp">14sp</dimen>
+</resources>

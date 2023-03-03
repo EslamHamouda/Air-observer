@@ -1,5 +1,44 @@
 <resources>
     <string name="app_name">Air Observer</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="or_create_new_account">Don\'t have an account? <font color='#0363f5'>Register</font></string>
+    <string name="or_login">Already have an account? <font color='#0363f5'>Login</font></string>
+    <string name="haven_t_account">Haven\'t Account ?</string>
+    <string name="register">Register</string>
+    <string name="gmail_icon">Gmail_icon</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="full_name">Full Name</string>
+    <string name="register_image">Register_Image</string>
+    <string name="check_email">Check Email</string>
+    <string name="submit">Submit</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="don_t_worry_it_happens_please_enter_your_email">Don\'t worry it happens.\n Please enter your email to continue…</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="check">Check</string>
+    <string name="an_4_digit_code_has_been_send_to_your_email">An 4 digit code has been send to your Email</string>
+    <string name="todo">TODO</string>
+    <string name="otp">OTP</string>
+    <string name="update_password">update password</string>
+    <string name="new_password">New password</string>
+    <string name="confirm">Confirm</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="confirm_new_password">Confirm new password</string>
+    <string name="head_title_AirQuality">Air Quality</string>
+    <string name="description_AirQuality">Air observing is important because air pollution
+        is one of the most serious threats environment and human health.</string>
+    <string name="head_title_SelectArea">Select an Area</string>
+    <string name="description_SelectArea">we can select an area and employ an integrated drone
+        with sensors operating with artificial intelligence to detect air quality.</string>
+    <string name="head_title_Predicting">Predicting Diseases</string>
+    <string name="description_Predicting">Through the data of the sensors that has been measured
+        we be predicted the possible diseases that will occur in this region.</string>
+    <string name="string_profile">Profile</string>
+    <string name="string_aboutYourself">Share a Little bit about Yourself</string>
+    <string name="string_email">Email</string>
+    <string name="string_update">Update</string>
+    <string name="string_logout">LogOut</string>
     <string name="Button_start">START</string>
     <string name="Button_start_observe">Start Observe Air</string>
     <string name="CO_text">CO</string>
@@ -12,7 +51,18 @@
     <string name="recent_percentage">Recent Percentage</string>
     <string name="predict_illnesses">Predict Illnesses for this percentages:</string>
     <string name="name_of_account">Hello Name Of Account</string>
+    <string name="logout">LogOut</string>
+    <string name="profile_text">Share a Little bit about Yourself</string>
     <string name="first_Illness">-1</string>
     <string name="second_Illness">-2</string>
     <string name="third_Illness">-3</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="get_started">Get Started</string>
+    <string name="continuee">Continue</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="news">News</string>
+    <string name="profile">Profile</string>
 </resources>

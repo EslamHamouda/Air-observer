@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_10dp"
+    android:backgroundTint="@color/gray"
+    app:cardElevation="@dimen/dimen_30dp"
+    app:cardCornerRadius="@dimen/dimen_10dp">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingVertical="@dimen/dimen_8dp"
+    android:paddingEnd="@dimen/dimen_30dp">
+
+    <TextView
+        android:id="@+id/tv_gas"
+        style="@style/text_style_black_18sp_bold"
+        android:layout_marginStart="8dp"
+        android:text="PM2.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_gas_name"
+        style="@style/text_style_black_14sp"
+        android:text="Particulate matter"
+        app:layout_constraintStart_toStartOf="@+id/tv_gas"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gas" />
+
+    <TextView
+        android:id="@+id/tv_gas_percentage"
+        style="@style/text_style_blue_18sp_bold"
+        android:text="44.7"
+        app:layout_constraintStart_toStartOf="@+id/tv_gas_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gas_name" />
+
+    <TextView
+        android:id="@+id/tv_gas_percentage_text"
+        style="@style/text_style_black_14sp"
+        android:text="% of pollutants"
+        app:layout_constraintStart_toStartOf="@+id/tv_gas_percentage"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gas_percentage" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
