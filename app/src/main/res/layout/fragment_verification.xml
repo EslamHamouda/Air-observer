@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.auth.VerificationFragment">
+
+<ImageView
+    android:id="@+id/iv_otp"
+    android:layout_width="@dimen/dimen_0dp"
+    android:layout_height="@dimen/dimen_250dp"
+    android:layout_margin="@dimen/dimen_25dp"
+    android:contentDescription="@string/email"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/undraw_new_message" />
+
+<TextView
+    android:id="@+id/tv_otp"
+    style="@style/text_style_black_30sp_bold"
+    android:layout_width="@dimen/dimen_0dp"
+    android:layout_marginHorizontal="@dimen/dimen_32dp"
+    android:layout_marginTop="@dimen/dimen_16dp"
+    android:text="@string/enter_otp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/iv_otp" />
+
+    <TextView
+        android:id="@+id/tv_otp_text"
+        style="@style/text_style_gray_15sp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:text="@string/an_4_digit_code_has_been_send_to_your_email"
+        app:layout_constraintStart_toStartOf="@+id/tv_otp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_otp" />
+
+
+    <com.chaos.view.PinView
+        android:id="@+id/edt_code"
+        style="@style/PinWidget.PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:cursorVisible="false"
+        android:inputType="number"
+        android:itemBackground="@android:color/transparent"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/dimen_25sp"
+        app:cursorColor="@color/blue"
+        app:hideLineWhenFilled="true"
+        app:itemCount="6"
+        app:itemHeight="@dimen/dimen_60dp"
+        app:itemRadius="@dimen/dimen_5dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_otp"
+        app:layout_constraintStart_toStartOf="@+id/tv_otp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_otp_text"
+        app:lineColor="@color/blue" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_continue"
+        style="@style/button_style_blue_margin_horizontal_32dp"
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:text="@string/continuee"
+        app:layout_constraintEnd_toEndOf="@+id/edt_code"
+        app:layout_constraintStart_toStartOf="@+id/edt_code"
+        app:layout_constraintTop_toBottomOf="@+id/edt_code" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

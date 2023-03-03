@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_10dp"
+    app:cardCornerRadius="@dimen/dimen_10dp"
+    app:cardElevation="@dimen/dimen_30dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/today_aqi_color11"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_5dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_view_corner"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/tv_aqi_today13"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_aqi_today13"
+            app:layout_constraintTop_toBottomOf="@+id/tv_aqi_today13" />
+
+        <TextView
+            android:id="@+id/tv_today11"
+            style="@style/text_style_gray_15sp"
+            android:layout_marginTop="8dp"
+            android:text="Sun"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_today10"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today13"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:text="23"
+            app:layout_constraintBottom_toTopOf="@+id/today_aqi_color11"
+            app:layout_constraintEnd_toEndOf="@+id/tv_today11"
+            app:layout_constraintStart_toEndOf="@+id/tv_aqi_today11"
+            app:layout_constraintStart_toStartOf="@+id/tv_today11"
+            app:layout_constraintTop_toBottomOf="@+id/tv_today11" />
+
+        <View
+            android:id="@+id/today_aqi_color10"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_5dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_view_corner"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/tv_aqi_today11"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_aqi_today11"
+            app:layout_constraintTop_toBottomOf="@+id/tv_aqi_today11" />
+
+        <TextView
+            android:id="@+id/tv_today10"
+            style="@style/text_style_gray_15sp"
+            android:layout_marginTop="8dp"
+            android:text="Sat"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today11"
+            app:layout_constraintEnd_toStartOf="@+id/tv_today11"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_today9"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today11"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:text="27"
+            app:layout_constraintBottom_toTopOf="@+id/today_aqi_color10"
+            app:layout_constraintEnd_toEndOf="@+id/tv_today10"
+            app:layout_constraintStart_toEndOf="@+id/tv_aqi_today9"
+            app:layout_constraintStart_toStartOf="@+id/tv_today10"
+            app:layout_constraintTop_toBottomOf="@+id/tv_today10" />
+
+        <View
+            android:id="@+id/today_aqi_color9"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_5dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_view_corner"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/tv_aqi_today9"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_aqi_today9"
+            app:layout_constraintTop_toBottomOf="@+id/tv_aqi_today9" />
+
+        <TextView
+            android:id="@+id/tv_today9"
+            style="@style/text_style_gray_15sp"
+            android:layout_marginTop="8dp"
+            android:text="Fri"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today9"
+            app:layout_constraintEnd_toStartOf="@+id/tv_today10"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_today8"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today9"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:text="25"
+            app:layout_constraintBottom_toTopOf="@+id/today_aqi_color9"
+            app:layout_constraintEnd_toEndOf="@+id/tv_today9"
+            app:layout_constraintStart_toStartOf="@+id/tv_today9"
+            app:layout_constraintTop_toBottomOf="@+id/tv_today9" />
+
+        <View
+            android:id="@+id/today_aqi_color8"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_5dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/background_view_corner"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_aqi_today8"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_aqi_today8"
+            app:layout_constraintTop_toBottomOf="@+id/tv_aqi_today8" />
+
+        <TextView
+            android:id="@+id/tv_today8"
+            style="@style/text_style_gray_15sp"
+            android:layout_marginTop="8dp"
+            android:text="Thu"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today8"
+            app:layout_constraintEnd_toStartOf="@+id/tv_today9"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_today7"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today8"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:text="20"
+            app:layout_constraintBottom_toTopOf="@+id/today_aqi_color8"
+            app:layout_constraintEnd_toEndOf="@+id/tv_today8"
+            app:layout_constraintStart_toStartOf="@+id/tv_today8"
+            app:layout_constraintTop_toBottomOf="@+id/tv_today8" />
+
+        <View
+            android:id="@+id/today_aqi_color7"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_5dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_view_corner"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/tv_aqi_today7"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_aqi_today7"
+            app:layout_constraintTop_toBottomOf="@+id/tv_aqi_today7" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today7"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:text="26"
+            app:layout_constraintBottom_toTopOf="@+id/today_aqi_color7"
+            app:layout_constraintEnd_toEndOf="@+id/tv_today7"
+            app:layout_constraintStart_toStartOf="@+id/tv_today7"
+            app:layout_constraintTop_toBottomOf="@+id/tv_today7" />
+
+        <TextView
+            android:id="@+id/tv_today7"
+            style="@style/text_style_gray_15sp"
+            android:layout_marginTop="8dp"
+            android:text="Wed"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today7"
+            app:layout_constraintEnd_toStartOf="@+id/tv_today8"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_today6"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <View
+            android:id="@+id/today_aqi_color6"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_5dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_view_corner"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/tv_aqi_today6"
+            app:layout_constraintStart_toStartOf="@+id/tv_aqi_today6"
+            app:layout_constraintTop_toBottomOf="@+id/tv_aqi_today6" />
+
+        <TextView
+            android:id="@+id/tv_today6"
+            style="@style/text_style_gray_15sp"
+            android:layout_marginTop="8dp"
+            android:text="Tue"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today6"
+            app:layout_constraintEnd_toStartOf="@+id/tv_today7"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_today"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today6"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:text="28"
+            app:layout_constraintBottom_toTopOf="@+id/today_aqi_color6"
+            app:layout_constraintEnd_toEndOf="@+id/tv_today6"
+            app:layout_constraintStart_toStartOf="@+id/tv_today6"
+            app:layout_constraintTop_toBottomOf="@+id/tv_today6" />
+
+        <TextView
+            android:id="@+id/tv_gas"
+            style="@style/text_style_black_18sp_bold"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Upcoming days"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_gas_name"
+            style="@style/text_style_gray_15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="20-27 Sep 2023"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_1dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_gas_name" />
+
+        <TextView
+            android:id="@+id/tv_today"
+            style="@style/text_style_gray_15sp"
+            android:layout_marginTop="8dp"
+            android:text="Today"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today"
+            app:layout_constraintEnd_toStartOf="@+id/tv_today6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:text="23"
+            app:layout_constraintBottom_toTopOf="@+id/today_aqi_color"
+            app:layout_constraintEnd_toEndOf="@+id/tv_today"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_today"
+            app:layout_constraintTop_toBottomOf="@+id/tv_today" />
+
+        <View
+            android:id="@+id/today_aqi_color"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_5dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_view_corner"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/tv_aqi_today"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_aqi_today"
+            app:layout_constraintTop_toBottomOf="@+id/tv_aqi_today" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
