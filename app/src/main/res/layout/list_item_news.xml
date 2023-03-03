@@ -24,6 +24,7 @@
                 android:layout_height="129dp"
                 android:layout_marginTop="@dimen/dimen_5dp"
                 android:scaleType="center"
+                android:contentDescription="@string/news"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
