@@ -54,8 +54,6 @@ object NetworkModule {
 
 
 
-    private const val apiKey = "c9402dc3e3d1417f8a8759bb2a909b46"
-    private const val query = "air pollution"
     private const val BASE_URL_NEWS = "https://newsapi.org/v2/"
     @Provides
     @Singleton

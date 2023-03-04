@@ -160,6 +160,17 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <!--DropdownMenu-->
+    <style name="drop_down_menu_style" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dimen_10dp</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/dimen_32dp</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/blue</item>
+        <item name="hintTextColor">@color/blue</item>
+    </style>
+
 
 
 
@@ -201,6 +212,8 @@
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginStart">5dp</item>
     </style>
+
+
 
     <dimen name="dimen_14sp">14sp</dimen>
 </resources>
