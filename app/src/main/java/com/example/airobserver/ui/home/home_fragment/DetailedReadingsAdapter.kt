@@ -20,6 +20,7 @@ class DetailedReadingsAdapter(
             binding.tvGasPercentage.text = item.value.toString()
             val color=ColorStateList.valueOf(Color.parseColor(item.color))
             binding.todayAqiColor.backgroundTintList=color
+            binding.tvGasFeedback.text=item.status
         }
     }
 

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -37,16 +41,30 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_signup" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_fullname"
+        android:id="@+id/til_firstname"
         style="@style/edit_text_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_signup">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_fullname"
+            android:id="@+id/edt_firstname"
             style="@style/edit_text_input_style"
-            android:hint="@string/full_name"
+            android:hint="@string/first_name"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_lastname"
+        style="@style/edit_text_style"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_firstname">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_lastname"
+            style="@style/edit_text_input_style"
+            android:hint="@string/last_name"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,7 +74,7 @@
         android:layout_marginTop="@dimen/dimen_16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_fullname">
+        app:layout_constraintTop_toBottomOf="@+id/til_lastname">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_email"
@@ -68,12 +86,62 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_phone"
+        style="@style/edit_text_style"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_phone"
+            style="@style/edit_text_input_style"
+            android:hint="@string/phone"
+            android:inputType="phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_date"
+        style="@style/edit_text_style"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_phone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_date"
+            style="@style/edit_text_input_style"
+            android:hint="@string/birthdate"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_gender"
+        style="@style/drop_down_menu_style"
+        android:layout_marginTop="16dp"
+        android:hint="@string/gender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_date">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteGender"
+            style="@style/edit_text_input_style"
+            android:drawableEnd="@drawable/ic_mail"
+            android:inputType="none"
+            android:text="@string/gender"
+            tools:text="Gender" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_password"
         style="@style/edit_text_style"
         android:layout_marginTop="@dimen/dimen_16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_email"
+        app:layout_constraintTop_toBottomOf="@+id/til_gender"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -93,3 +161,4 @@
         app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
