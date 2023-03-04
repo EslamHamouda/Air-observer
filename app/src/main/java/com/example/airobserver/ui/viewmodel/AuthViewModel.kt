@@ -27,9 +27,9 @@ class AuthViewModel @Inject constructor(
     val loginResponse: StateFlow<ApiResponseStates<BaseResponse<LoginResponse>>>
         get() = _loginResponse
 
-    fun login(body:Map<String,String>) {
+    fun login(email:String,password:String) {
         viewModelScope.launch {
-            repository.login(body).collectLatest {
+            repository.login(email, password).collectLatest {
                 _loginResponse.value =
                     it
             }

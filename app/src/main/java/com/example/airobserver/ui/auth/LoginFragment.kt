@@ -56,10 +56,7 @@ class LoginFragment : BaseFragment() {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeActivity())
         }
         binding.btnLogin.setOnClickListener{
-            val map= HashMap<String,String>()
-            map["Email"]="adamosama908@outlook.com"
-            map["Password"]="adam"
-            viewModel.login(map)
+            viewModel.login(binding.edtEmail.text.toString(),binding.edtPassword.text.toString())
             getLoginResponse()
         }
     }
@@ -76,10 +73,12 @@ class LoginFragment : BaseFragment() {
                         it,
                         binding.progressBar.progressBar,
                         {
-                            showSnackbar("Error",requireActivity())
+                            it as ApiResponseStates.Success
+                            showSnackbar(it.value?.message.toString(),requireActivity())
                         },
                         { it1 ->
-                           showSnackbar("Welcome",requireActivity())
+                            it as ApiResponseStates.Success
+                           showSnackbar(it.value?.message.toString(),requireActivity())
                         })
                 }
 

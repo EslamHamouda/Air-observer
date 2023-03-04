@@ -13,10 +13,10 @@ import javax.inject.Singleton
 class AuthRepository @Inject constructor(
     private val services: APIServices
 ) {
-    suspend fun login(body:Map<String,String>) =
+    suspend fun login(email:String,password:String) =
         withContext(Dispatchers.IO) {
             startApiCall {
-                services.login(body)
+                services.login(email, password)
             }
         }
 }

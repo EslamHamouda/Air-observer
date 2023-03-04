@@ -9,6 +9,6 @@ import retrofit2.http.*
 interface APIServices {
     @POST("userinfo.php")
     @FormUrlEncoded
-    suspend fun login(@FieldMap body:Map<String,String>): BaseResponse<LoginResponse>
+    suspend fun login(@Field("Email") email:String,@Field("Password") password:String): BaseResponse<LoginResponse>
 
 }
