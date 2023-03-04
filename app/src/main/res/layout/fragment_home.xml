@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
     <WebView
         android:id="@+id/aqi"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="WebViewLayout" />
 
     <TextView
         android:id="@+id/tv_note"
         style="@style/text_style_gray_15sp"
         android:layout_width="@dimen/dimen_0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
         android:gravity="center"
-        android:text="The air quality is generally acceptable for most people, but some individuals who suffer from allergies may experience mild to moderate symptoms when exposed to the air for long periods of time."
+        android:text="@string/the_air_quality_is_generally_acceptable_for_most_people_but_some_individuals_who_suffer_from_allergies_may_experience_mild_to_moderate_symptoms_when_exposed_to_the_air_for_long_periods_of_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aqi" />
@@ -30,9 +36,9 @@
     <TextView
         android:id="@+id/tv_detailed_text"
         style="@style/text_style_black_18sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Detailed Readings"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:text="@string/detailed_readings"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_note" />
 
@@ -51,9 +57,9 @@
         layout="@layout/layout_week_aqi"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_detailed_readings" />
@@ -68,3 +74,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

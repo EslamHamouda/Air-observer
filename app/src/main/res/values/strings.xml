@@ -77,4 +77,7 @@
     <string name="phone">Phone</string>
     <string name="birthdate">Birthdate</string>
     <string name="gender">Gender</string>
+    <string name="the_air_quality_is_generally_acceptable_for_most_people_but_some_individuals_who_suffer_from_allergies_may_experience_mild_to_moderate_symptoms_when_exposed_to_the_air_for_long_periods_of_time">The air quality is generally acceptable for most people, but some individuals who suffer from allergies may experience mild to moderate symptoms when exposed to the air for long periods of time.</string>
+    <string name="detailed_readings">Detailed Readings</string>
+    <string name="date">Date</string>
 </resources>

@@ -73,4 +73,6 @@
     <dimen name="dimen_250dp">250dp</dimen>
     <dimen name="dimen_210dp">210dp</dimen>
     <dimen name="dimen_220dp">220dp</dimen>
+    <dimen name="dimen_margin_26dp">26dp</dimen>
+    <dimen name="dimen_margin_320dp">320dp</dimen>
 </resources>

@@ -6,6 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_date_history"
+        style="@style/text_style_black_18sp_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_margin_26dp"
+        android:layout_marginEnd="@dimen/dimen_margin_320dp"
+        android:text="@string/date"
+        app:layout_constraintBottom_toTopOf="@+id/Const_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Const_layout"
@@ -254,5 +269,7 @@
             app:layout_constraintVertical_bias="0.645" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
