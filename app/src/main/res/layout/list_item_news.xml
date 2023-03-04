@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/dimen_10dp"
+    app:cardElevation="@dimen/dimen_30dp"
+    app:cardCornerRadius="@dimen/dimen_10dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+     >
+
+        <ImageView
+            android:id="@+id/iv_news"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_250dp"
+            android:contentDescription="@string/news"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_news"
+            style="@style/text_style_black_18sp"
+            android:layout_width="@dimen/dimen_0dp"
+            android:padding="@dimen/dimen_8dp"
+            android:gravity="center"
+            android:text="@string/news"
+            app:layout_constraintEnd_toEndOf="@+id/iv_news"
+            app:layout_constraintStart_toStartOf="@+id/iv_news"
+            app:layout_constraintTop_toBottomOf="@+id/iv_news" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
