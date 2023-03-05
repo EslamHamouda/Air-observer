@@ -5,18 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.airobserver.R
 import com.example.airobserver.databinding.ActivityOnBoardingBinding
 import com.example.airobserver.databinding.FragmentRegisterBinding
+import com.example.airobserver.ui.BaseFragment
+import com.example.airobserver.ui.viewmodel.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
-class RegisterFragment : Fragment() {
+@AndroidEntryPoint
+class RegisterFragment : BaseFragment() {
     lateinit var binding: FragmentRegisterBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private val viewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
