@@ -31,4 +31,25 @@ class AuthRepository @Inject constructor(
                 services.register(fname, lname, email, phone, password, birthday, gender)
             }
         }
+
+    suspend fun getOTP(email:String) =
+        withContext(Dispatchers.IO) {
+            startApiCall {
+                services.getOTP(email)
+            }
+        }
+
+    suspend fun checkOTP(email:String,otp:Int) =
+        withContext(Dispatchers.IO) {
+            startApiCall {
+                services.checkOTP(email, otp)
+            }
+        }
+
+    suspend fun newPassword(email:String,password:String) =
+        withContext(Dispatchers.IO) {
+            startApiCall {
+                services.newPassword(email, password)
+            }
+        }
 }

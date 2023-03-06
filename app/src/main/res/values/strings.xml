@@ -76,4 +76,6 @@
     <string name="birthdate">Birthdate</string>
     <string name="gender">Gender</string>
     <string name="not_authorized">Authorization has been denied for this request.</string>
+    <string name="choose_your_profile_photo">Choose your profile photo</string>
+    <string name="edit_your_profile">Edit your profile</string>
 </resources>

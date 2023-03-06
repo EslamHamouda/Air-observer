@@ -63,5 +63,7 @@ class SharedPref @Inject constructor() {
 
     companion object {
         const val FIRST_RUN = "FIRST_RUN"
+        const val IS_LOGIN = "IS_LOGIN"
+        const val EMAIL = "EMAIL"
     }
 }

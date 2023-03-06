@@ -1,6 +1,5 @@
 package com.example.airobserver.ui.auth
 
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,6 +16,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentRegisterBinding
 import com.example.airobserver.databinding.FragmentVerificationBinding
+import com.example.airobserver.databinding.FragmentVerificationResetPasswordBinding
 import com.example.airobserver.ui.BaseFragment
 import com.example.airobserver.ui.viewmodel.AuthViewModel
 import com.example.airobserver.utils.ApiResponseStates
@@ -24,21 +24,18 @@ import com.example.airobserver.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class VerificationFragment : BaseFragment() {
-    lateinit var binding: FragmentVerificationBinding
-    private val viewModel: AuthViewModel by viewModels()
+class VerificationResetPasswordFragment : BaseFragment() {
+    lateinit var binding: FragmentVerificationResetPasswordBinding
     private val args:VerificationFragmentArgs by navArgs()
-    @Inject
-    lateinit var pref: SharedPreferences
+    private val viewModel: AuthViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding=FragmentVerificationBinding.inflate(inflater)
+        binding=FragmentVerificationResetPasswordBinding.inflate(inflater)
         return binding.root
     }
 
@@ -61,7 +58,7 @@ class VerificationFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    dataResponseHandling(this@VerificationFragment.requireActivity(),
+                    dataResponseHandling(this@VerificationResetPasswordFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
                         {
@@ -70,8 +67,7 @@ class VerificationFragment : BaseFragment() {
                         { it1 ->
                             it as ApiResponseStates.Success
                             showSnackbar(it.value?.message.toString(),requireActivity())
-                            findNavController().navigate(VerificationFragmentDirections.actionVerificationFragmentToLoginFragment())
-                            findNavController().popBackStack()
+                            findNavController().navigate(VerificationResetPasswordFragmentDirections.actionVerificationResetPasswordFragmentToResetPasswordFragment(args.email))
                         })
                 }
 

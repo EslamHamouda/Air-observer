@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         list.add(gasmodel("CO","Carbon monoxide",22,"#7e0023","Good"))
         list.add(gasmodel("NO2","Nitrogen dioxide",33,"#00e400","Good"))
         list.add(gasmodel("SO2","PSulfur dioxide",15,"#ffff00","Good"))
-        list.add(gasmodel("PMS2.5","Ozone",10,"#ff7e00","Good"))
+        list.add(gasmodel("O3","Ozone",10,"#ff7e00","Good"))
         binding.rvDetailedReadings.adapter=DetailedReadingsAdapter(list)
 
     }

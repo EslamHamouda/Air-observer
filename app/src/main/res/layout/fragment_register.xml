@@ -50,6 +50,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_firstname"
             style="@style/edit_text_input_style"
+            android:maxLength="30"
             android:hint="@string/first_name"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -64,6 +65,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_lastname"
             style="@style/edit_text_input_style"
+            android:maxLength="30"
             android:hint="@string/last_name"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -97,6 +99,7 @@
             android:id="@+id/edt_phone"
             style="@style/edit_text_input_style"
             android:hint="@string/phone"
+            android:maxLength="11"
             android:inputType="phone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -113,8 +116,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_date"
             style="@style/edit_text_input_style"
+            android:maxLength="10"
             android:hint="@string/birthdate"
-            android:inputType="text" />
+            android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
