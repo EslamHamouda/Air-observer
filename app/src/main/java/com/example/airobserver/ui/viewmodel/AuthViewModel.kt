@@ -62,7 +62,7 @@ class AuthViewModel @Inject constructor(
         viewModelScope.launch {
             repository.getOTP(email).collectLatest {
                 _getOTPResponse.value =
-                    it as ApiResponseStates<BaseResponse<String>>
+                    it
             }
         }
     }

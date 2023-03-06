@@ -39,6 +39,7 @@ class VerificationResetPasswordFragment : BaseFragment() {
         return binding.root
     }
 
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,6 +51,7 @@ class VerificationResetPasswordFragment : BaseFragment() {
         }
     }
 
+
     @RequiresApi(Build.VERSION_CODES.M)
     private fun getVerificationResponse() {
         lifecycleScope.launch {
@@ -58,6 +60,13 @@ class VerificationResetPasswordFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
+                    when(it) {
+                        is ApiResponseStates.Success -> {
+                            showSnackbar("Your email is active.",requireActivity())
+                            findNavController().navigate(VerificationResetPasswordFragmentDirections.actionVerificationResetPasswordFragmentToResetPasswordFragment(args.email))
+                        }
+                        else -> {}
+                    }
                     dataResponseHandling(this@VerificationResetPasswordFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,

@@ -59,6 +59,14 @@ class ResetPasswordFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
+                    when(it) {
+                        is ApiResponseStates.Success -> {
+                            showSnackbar("Change password is success and message was sent",requireActivity())
+                            this@ResetPasswordFragment.
+                            findNavController().navigate(ResetPasswordFragmentDirections.actionResetPasswordFragmentToLoginFragment())
+                        }
+                        else -> {}
+                    }
                     dataResponseHandling(this@ResetPasswordFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
