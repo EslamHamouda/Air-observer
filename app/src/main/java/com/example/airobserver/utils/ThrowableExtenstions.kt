@@ -15,6 +15,7 @@ fun Throwable.handling(context: Context): String {
     return when (this) {
         is HttpException -> when (code()) {
             401 -> context.getString(R.string.not_authorized)
+            400 -> "An signup was failed \n Email or phone already duplicated in the database."
             //422 -> context.getString(R.string.unprocessable_content)
             else -> {
                 try {
