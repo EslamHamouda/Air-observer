@@ -24,11 +24,10 @@ class AuthRepository @Inject constructor(
                          email:String,
                          phone:String,
                          password:String,
-                         birthday:String,
                          gender:String) =
         withContext(Dispatchers.IO) {
             startApiCall {
-                services.register(fname, lname, email, phone, password, birthday, gender)
+                services.register(fname, lname, email, phone, password, gender)
             }
         }
 

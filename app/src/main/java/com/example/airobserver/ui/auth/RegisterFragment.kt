@@ -67,7 +67,6 @@ class RegisterFragment : BaseFragment() {
                 binding.edtEmail.text.toString(),
                 binding.edtPhone.text.toString(),
                 binding.edtPassword.text.toString(),
-                binding.edtDate.text.toString(),
                 binding.autoCompleteGender.text.toString())
                 getRegisterResponse()
             }
@@ -82,6 +81,13 @@ class RegisterFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
+                    when(it) {
+                        is ApiResponseStates.Success -> {
+                            showSnackbar("An signup was succeed and message was sent.",requireActivity())
+                            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment(binding.edtEmail.text.toString()))
+                        }
+                        else -> {}
+                    }
                     dataResponseHandling(this@RegisterFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
@@ -91,7 +97,6 @@ class RegisterFragment : BaseFragment() {
                                 binding.edtEmail.text.toString(),
                                 binding.edtPhone.text.toString(),
                                 binding.edtPassword.text.toString(),
-                                binding.edtDate.text.toString(),
                                 binding.autoCompleteGender.text.toString())
                         },
                         { it1 ->

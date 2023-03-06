@@ -39,6 +39,7 @@ class VerificationFragment : BaseFragment() {
     ): View {
         // Inflate the layout for this fragment
         binding=FragmentVerificationBinding.inflate(inflater)
+        viewModel.getOTP(args.email)
         return binding.root
     }
 
@@ -61,6 +62,13 @@ class VerificationFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
+                    when(it) {
+                        is ApiResponseStates.Success -> {
+                            showSnackbar("Your email is active.",requireActivity())
+                            findNavController().navigate(VerificationFragmentDirections.actionVerificationFragmentToLoginFragment())
+                        }
+                        else -> {}
+                    }
                     dataResponseHandling(this@VerificationFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
@@ -71,7 +79,6 @@ class VerificationFragment : BaseFragment() {
                             it as ApiResponseStates.Success
                             showSnackbar(it.value?.message.toString(),requireActivity())
                             findNavController().navigate(VerificationFragmentDirections.actionVerificationFragmentToLoginFragment())
-                            findNavController().popBackStack()
                         })
                 }
 
