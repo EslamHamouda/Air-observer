@@ -4,7 +4,7 @@ import com.example.airobserver.domain.model.response.NewsResponse
 import retrofit2.http.*
 
 interface APIServices {
-    @GET("everything")
-    fun getNews(@Query("q") query: String, @Query("apiKey") apiKey: String): NewsResponse
+    @POST("userinfo.php")
+    fun login(@Field("Gmail") gmail: String, @Field("password") password: String): NewsResponse
 
 }
