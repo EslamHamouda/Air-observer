@@ -2,16 +2,17 @@ package com.example.airobserver.ui.home.home_fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.ValueCallback
-import android.widget.Toast
-import com.example.airobserver.R
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.fragment.app.Fragment
 import com.example.airobserver.databinding.FragmentHomeBinding
 import com.example.airobserver.domain.model.gasmodel
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -26,12 +27,20 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint("SetJavaScriptEnabled", "ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.aqi.settings.javaScriptEnabled = true;
         binding.aqi.loadUrl("file:///android_asset/index.html")
-        //binding.aqi.loadUrl("file:///android_asset/index.js/setDial(300)")
+        binding.aqi.setOnTouchListener { v, event ->
+            event.action == MotionEvent.ACTION_MOVE
+        }
+        binding.aqi.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView, url: String) {
+                super.onPageFinished(view, url)
+                view.evaluateJavascript("setDial(500)", null);
+            }
+        }
 
         val list = arrayListOf<gasmodel>()
         list.add(gasmodel("PMS2.5","Particulate Matter",22,"#FF0000","Good"))
