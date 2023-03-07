@@ -1,6 +1,7 @@
 package com.example.airobserver.data
 
 import com.example.airobserver.domain.model.BaseResponse
+import com.example.airobserver.domain.model.response.GetProfileResponse
 import com.example.airobserver.domain.model.response.LoginResponse
 import com.example.airobserver.domain.model.response.RegisterResponse
 import retrofit2.http.*
@@ -30,6 +31,21 @@ interface APIServices {
 
     @POST("ChangePass.php")
     @FormUrlEncoded
-    suspend fun newPassword(@Field("Email") email:String, @Field("Password") password:String): BaseResponse<String>
+    suspend fun newPassword(@Field("Email") email:String, @Field("Password") password:String): BaseResponse<GetProfileResponse>
+
+    @POST("datainfo.php")
+    @FormUrlEncoded
+    suspend fun getProfile(@Field("Email") email:String): BaseResponse<GetProfileResponse>
+
+    @POST("newda.php")
+    @FormUrlEncoded
+    suspend fun updateProfile(@Field("FirstName") fname:String,
+                              @Field("LastName") lname:String,
+                              @Field("Email") email:String,
+                              @Field("Phone") phone:String,
+                              @Field("Password") password:String,
+                              @Field("Gender") gender:String,
+                              @Field("Birthday") birthday:String): BaseResponse<String>
+
 
 }

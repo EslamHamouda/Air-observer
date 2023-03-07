@@ -3,6 +3,7 @@ package com.example.airobserver.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.airobserver.domain.model.BaseResponse
+import com.example.airobserver.domain.model.response.GetProfileResponse
 import com.example.airobserver.domain.model.response.LoginResponse
 import com.example.airobserver.domain.model.response.RegisterResponse
 import com.example.airobserver.domain.repo.AuthRepository
@@ -89,6 +90,40 @@ class AuthViewModel @Inject constructor(
         viewModelScope.launch {
             repository.newPassword(email, password).collectLatest {
                 _newPasswordResponse.value =
+                    it as ApiResponseStates<BaseResponse<String>>
+            }
+        }
+    }
+
+    private val _getProfileResponse: MutableStateFlow<ApiResponseStates<BaseResponse<GetProfileResponse>>> =
+        MutableStateFlow(ApiResponseStates.Success(null))
+    val getProfileResponse: StateFlow<ApiResponseStates<BaseResponse<GetProfileResponse>>>
+        get() = _getProfileResponse
+
+    fun getProfile(email:String) {
+        viewModelScope.launch {
+            repository.getProfile(email).collectLatest {
+                _getProfileResponse.value =
+                    it as ApiResponseStates<BaseResponse<GetProfileResponse>>
+            }
+        }
+    }
+
+    private val _updateProfileResponse: MutableStateFlow<ApiResponseStates<BaseResponse<String>>> =
+        MutableStateFlow(ApiResponseStates.Success(null))
+    val updateProfileResponse: StateFlow<ApiResponseStates<BaseResponse<String>>>
+        get() = _updateProfileResponse
+
+    fun updateProfile(fname:String,
+                 lname:String,
+                 email:String,
+                 phone:String,
+                 password:String,
+                 gender:String,
+                 birthdate:String) {
+        viewModelScope.launch {
+            repository.updateProfile(fname, lname, email, phone, password, gender, birthdate).collectLatest {
+                _updateProfileResponse.value =
                     it as ApiResponseStates<BaseResponse<String>>
             }
         }

@@ -51,4 +51,24 @@ class AuthRepository @Inject constructor(
                 services.newPassword(email, password)
             }
         }
+
+    suspend fun getProfile(email:String) =
+        withContext(Dispatchers.IO) {
+            startApiCall {
+                services.getProfile(email)
+            }
+        }
+
+    suspend fun updateProfile(fname:String,
+                              lname:String,
+                              email:String,
+                              phone:String,
+                              password:String,
+                              gender:String,
+                              birthdate:String) =
+        withContext(Dispatchers.IO) {
+            startApiCall {
+                services.updateProfile(fname,lname,email,phone,password,gender,birthdate)
+            }
+        }
 }
