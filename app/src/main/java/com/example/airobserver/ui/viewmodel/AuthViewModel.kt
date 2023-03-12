@@ -44,9 +44,10 @@ class AuthViewModel @Inject constructor(
                  email:String,
                  phone:String,
                  password:String,
+                 birthdate: String,
                  gender:String) {
         viewModelScope.launch {
-            repository.register(fname, lname, email, phone, password, gender).collectLatest {
+            repository.register(fname, lname, email, phone, password,birthdate, gender).collectLatest {
                 _registerResponse.value =
                     it as ApiResponseStates<BaseResponse<String>>
             }

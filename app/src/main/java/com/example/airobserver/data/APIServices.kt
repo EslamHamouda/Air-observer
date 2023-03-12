@@ -18,6 +18,7 @@ interface APIServices {
                          @Field("Email") email:String,
                          @Field("Phone") phone:String,
                          @Field("Password") password:String,
+                         @Field("Birthday") birthday:String,
                          @Field("Gender") gender:String
     ): BaseResponse<String>
 
