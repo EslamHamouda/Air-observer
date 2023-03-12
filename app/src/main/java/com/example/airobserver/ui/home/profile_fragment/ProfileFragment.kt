@@ -3,6 +3,7 @@ package com.example.airobserver.ui.home.profile_fragment
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import com.example.airobserver.databinding.FragmentProfileBinding
 import com.example.airobserver.di.SharedPref
 import com.example.airobserver.ui.BaseFragment
 import com.example.airobserver.ui.auth.LoginFragmentDirections
+import com.example.airobserver.ui.auth.RegisterFragmentDirections
 import com.example.airobserver.ui.viewmodel.AuthViewModel
 import com.example.airobserver.utils.ApiResponseStates
 import com.example.airobserver.utils.putData
@@ -47,7 +49,7 @@ class ProfileFragment : BaseFragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getProfile(pref.getString(SharedPref.EMAIL,"").toString())
+        viewModel.getProfile("eslam.ee600@gmail.com")
         getProfileResponse()
     }
 
@@ -59,11 +61,36 @@ class ProfileFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
+                    when(it) {
+                        is ApiResponseStates.Success -> {
+                            showSnackbar("Authorization has been accepted for this request.",requireActivity())
+                            binding.edtFirstname.setText(it.value?.data?.firstname.toString())
+                            binding.edtLastname.setText(it.value?.data?.lastname.toString())
+                            binding.edtEmail.setText(it.value?.data?.email.toString())
+                            binding.edtPhone.setText(it.value?.data?.phone.toString())
+                            binding.edtDate.setText(it.value?.data?.Birthday)
+                            binding.autoCompleteGender.setText(it.value?.data?.gender.toString())
+                        }
+                        else -> {}
+                    }
                     dataResponseHandling(this@ProfileFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
                         {
-                            viewModel.getProfile(pref.getString(SharedPref.EMAIL,"").toString())
+                            try {
+                               it as ApiResponseStates.Success
+                                it.value?.message?.let { it1 ->
+                                    showSnackbar(
+                                        it1,requireActivity()
+                                    ) {
+                                        viewModel.getProfile(
+                                            pref.getString(SharedPref.EMAIL, "").toString()
+                                        )
+                                    }
+                                }
+                            }catch (e:Exception){
+                                Log.d("mm",e.message.toString())
+                            }
                         },
                         { it1 ->
                             binding.edtFirstname.setText(it1.firstname.toString())
