@@ -28,8 +28,6 @@ fun Fragment.hideKeyBoard() =
 fun showSnackbar(msg: String, activity: Activity, tryAgain: () -> Unit) {
     activity.view()?.let {
         Snackbar.make(it, msg, Snackbar.LENGTH_LONG)
-            .setBackgroundTint(it.context.getColor(R.color.blue))
-            .setActionTextColor(it.context.getColor(R.color.white))
             .setAction(it.context.getString(R.string.try_again)) {
                 tryAgain()
             }
@@ -41,8 +39,6 @@ fun showSnackbar(msg: String, activity: Activity, tryAgain: () -> Unit) {
 fun showSnackbar(msg: String, activity: Activity) {
     activity.view()?.let {
         Snackbar.make(it, msg, Snackbar.LENGTH_LONG)
-            .setBackgroundTint(it.context.getColor(R.color.blue))
-            .setActionTextColor(it.context.getColor(R.color.white))
             .show()
     }
 }
@@ -51,8 +47,6 @@ fun showSnackbar(msg: String, activity: Activity) {
 fun showSnackBar(msg: String, view: View) {
     view.let {
         Snackbar.make(it, msg, Snackbar.LENGTH_LONG)
-            .setBackgroundTint(it.context.getColor(R.color.blue))
-            .setActionTextColor(it.context.getColor(R.color.white))
             .show()
     }
 }
@@ -61,8 +55,6 @@ fun showSnackBar(msg: String, view: View) {
 fun showSnackBar(msg: String, view: View, tryAgain: () -> Unit) {
     view.let {
         Snackbar.make(it, msg, Snackbar.LENGTH_LONG)
-            .setBackgroundTint(it.context.getColor(R.color.blue))
-            .setActionTextColor(it.context.getColor(R.color.white))
             .setAction(it.context.getString(R.string.try_again)) {
                 tryAgain()
             }

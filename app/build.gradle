@@ -53,7 +53,7 @@ dependencies {
     implementation 'io.github.chaosleung:pinview:1.4.4'
     // Dots indicator
     implementation("com.tbuonomo:dotsindicator:4.3")
-    def lifecycle_version = "2.5.1"
+    def lifecycle_version = "2.6.0"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData

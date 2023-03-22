@@ -17,8 +17,9 @@
 
     <TextView
         android:id="@+id/tv_title"
-        style="@style/text_style_blue_20sp_bold_center"
+        style="@style/text_style_primary_20sp_bold"
         android:layout_width="@dimen/dimen_0dp"
+        android:gravity="center"
         android:layout_marginTop="@dimen/dimen_32dp"
         android:layout_marginHorizontal="@dimen/dimen_16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,10 +29,11 @@
 
     <TextView
         android:id="@+id/tv_description"
-        style="@style/text_style_gray_15sp_center"
+        style="@style/text_style_15sp"
+        android:gravity="center"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_marginTop="@dimen/dimen_8dp"
-        android:text="@string/description_AirQuality"
+        tools:text="@string/description_AirQuality"
         app:layout_constraintEnd_toEndOf="@+id/tv_title"
         app:layout_constraintStart_toStartOf="@+id/tv_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />

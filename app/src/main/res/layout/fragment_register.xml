@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_or_login"
@@ -26,11 +26,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/undraw_welcome" />
+        app:srcCompat="@drawable/undraw_sign_up" />
 
     <TextView
         android:id="@+id/tv_signup"
-        style="@style/text_style_black_30sp_bold"
+        style="@style/text_style_onPrimaryContainer_30sp_bold"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_marginHorizontal="@dimen/dimen_32dp"
         android:layout_marginTop="@dimen/dimen_16dp"
@@ -157,7 +157,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_register"
-        style="@style/button_style_blue_margin_horizontal_32dp"
+        style="@style/button_style_margin_horizontal_64dp"
         android:layout_marginTop="@dimen/dimen_16dp"
         android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
