@@ -13,6 +13,7 @@ import com.example.airobserver.databinding.ListItemGasBinding
 import com.example.airobserver.databinding.ListItemNewsBinding
 import com.example.airobserver.domain.model.gasmodel
 import com.example.airobserver.domain.model.response.Articles
+import com.example.airobserver.utils.dateFormat
 
 class NewsAdapter(
    private val list: List<Articles>
@@ -27,6 +28,8 @@ class NewsAdapter(
                 .error(R.drawable.ic_news)
                 .into(binding.ivNews)
             binding.tvNews.text=item.title
+            binding.tvSourceName.text=item.source?.name
+            binding.tvTime.text= dateFormat(item.publishedAt)
             binding.root.setOnClickListener {
                 it.findNavController().navigate(NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(item.url!!))
             }
