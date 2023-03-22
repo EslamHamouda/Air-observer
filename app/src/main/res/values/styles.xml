@@ -17,6 +17,12 @@
     <style name="text_style_primary_20sp" parent="text_style_primary">
         <item name="android:textSize">@dimen/dimen_20sp</item>
     </style>
+    <style name="text_style_primary_30sp" parent="text_style_primary">
+        <item name="android:textSize">@dimen/dimen_30sp</item>
+    </style>
+    <style name="text_style_primary_30sp_bold" parent="text_style_primary_30sp">
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="text_style_primary_20sp_bold" parent="text_style_primary_20sp">
         <item name="android:textStyle">bold</item>
     </style>
