@@ -11,11 +11,18 @@
     android:layout_height="match_parent"
     android:background="@color/md_theme_light_surface"
     >
-
-    <WebView
+    <!--<WebView
         android:id="@+id/aqi"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
+    <com.ekndev.gaugelibrary.ArcGauge
+        android:id="@+id/gauge"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="200dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +39,7 @@
         android:text="The air quality is generally acceptable for most people, but some individuals who suffer from allergies."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aqi" />
+        app:layout_constraintTop_toBottomOf="@+id/gauge" />
 
     <TextView
         android:id="@+id/tv_detailed_text"

@@ -1,6 +1,7 @@
 package com.example.airobserver.ui.home.home_fragment
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
+import com.ekndev.gaugelibrary.Range
 import com.example.airobserver.databinding.FragmentHomeBinding
 import com.example.airobserver.domain.model.gasmodel
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +32,7 @@ class HomeFragment : Fragment() {
     @SuppressLint("SetJavaScriptEnabled", "ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.aqi.settings.javaScriptEnabled = true;
+        /*binding.aqi.settings.javaScriptEnabled = true;
         binding.aqi.loadUrl("file:///android_asset/index.html")
         binding.aqi.setOnTouchListener { v, event ->
             event.action == MotionEvent.ACTION_MOVE
@@ -40,7 +42,31 @@ class HomeFragment : Fragment() {
                 super.onPageFinished(view, url)
                 view.evaluateJavascript("setDial(500)", null);
             }
-        }
+        }*/
+        val range = Range()
+        range.color = Color.parseColor("#ce0000")
+        range.from = 0.0
+        range.to = 50.0
+
+        val range2 = Range()
+        range2.color = Color.parseColor("#E3E500")
+        range2.from = 50.0
+        range2.to = 100.0
+
+        val range3 = Range()
+        range3.color = Color.parseColor("#00b20b")
+        range3.from = 100.0
+        range3.to = 150.0
+
+        //add color ranges to gauge
+        binding.gauge.addRange(range)
+        binding.gauge.addRange(range2)
+        binding.gauge.addRange(range3)
+
+        //set min max and current value
+        binding.gauge.minValue = 0.0
+        binding.gauge.maxValue = 500.0
+        binding.gauge.value = 120.0
 
         val list = arrayListOf<gasmodel>()
         list.add(gasmodel("PMS2.5","Particulate Matter",22,"#FF0000","Good"))
