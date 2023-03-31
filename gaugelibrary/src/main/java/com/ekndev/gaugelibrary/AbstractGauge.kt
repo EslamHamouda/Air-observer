@@ -20,26 +20,25 @@ abstract class AbstractGauge : View {
     var maxValue = 100.0
     private var needleColor: Paint? = null
     var gaugeBackGroundPaint: Paint? = null
-    var gaugeBackgroundColor = Color.parseColor("#EAEAEA")
-        private set
+    private var gaugeBackgroundColor = Color.parseColor("#00658D")
     var textPaints: Paint? = null
     protected var rectTop = 0f
     protected var rectLeft = 0f
     protected var rectRight = 400f
-    protected var rectBottom = 400f
+    protected var rectBottom = 440f
     var padding = 0f
     protected var rectF: RectF? = null
         get() {
             if (field == null) field = RectF(
                 rectLeft + padding,
-                rectTop + padding,
+                rectTop + padding*3.5f,
                 rectRight - padding,
-                rectBottom - padding
+                rectBottom - 0f
             )
             return field
         }
         private set
-    var isUseRangeBGColor = false
+    private var isUseRangeBGColor = false
     private var formatter: ValueFormatter = ValueFormatterImpl()
 
     constructor(context: Context?) : super(context)
@@ -68,7 +67,7 @@ abstract class AbstractGauge : View {
             val measuredWidth = measuredWidth
             val minSize = measuredHeight.coerceAtMost(measuredWidth) / 1f
             val maxSize = measuredHeight.coerceAtLeast(measuredWidth) / 1f
-            val f1 = minSize / 400f
+            val f1 = minSize / 300f
             val f2 = minSize / 200f
             if (measuredWidth > measuredHeight) {
                 if (f2 > f1) return f1
@@ -113,7 +112,7 @@ abstract class AbstractGauge : View {
             gaugeBackGroundPaint!!.color = gaugeBackgroundColor
             gaugeBackGroundPaint!!.isAntiAlias = true
             gaugeBackGroundPaint!!.style = Paint.Style.STROKE
-            gaugeBackGroundPaint!!.setShadowLayer(15.0f,0f,5.0f,0X50000000);
+            //gaugeBackGroundPaint!!.setShadowLayer(15.0f,0f,5.0f,0X50000000);
             //setLayerType(LAYER_TYPE_SOFTWARE, gaugeBackGroundPaint);
         }
         return gaugeBackGroundPaint!!
@@ -147,7 +146,7 @@ abstract class AbstractGauge : View {
         return getCalculateValuePercentage(minValue, maxValue, value)
     }
 
-    protected fun getCalculateValuePercentageOld(min: Double, max: Double, value: Double): Int {
+    private fun getCalculateValuePercentageOld(min: Double, max: Double, value: Double): Int {
         if (min >= value) return 0
         return if (max <= value) 100 else ((value - min) / (max - min) * 100).toInt()
     }

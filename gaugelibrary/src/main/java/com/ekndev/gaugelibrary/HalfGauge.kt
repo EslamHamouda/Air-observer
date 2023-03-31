@@ -7,7 +7,7 @@ import android.graphics.Paint
 import android.os.Handler
 import android.util.AttributeSet
 
-class HalfGauge : AbstractGauge {
+open class HalfGauge : AbstractGauge {
     private val needleStart = 30f
     private val needleEnd = 150f
     private var currentAngle = 30f
@@ -121,6 +121,7 @@ class HalfGauge : AbstractGauge {
         drawMinValue(canvas)
         //drawMaxValue
         drawMaxValue(canvas)
+
     }
 
     private fun drawValueText(canvas: Canvas) {
@@ -175,7 +176,7 @@ class HalfGauge : AbstractGauge {
         ) + 0.5f
     }
 
-    val needleAngle: Int
+    private val needleAngle: Int
         get() {
             if (needleAngleNext != null && isEnableAnimation) {
                 if (needleAngleNext!!.toFloat() != currentAngle) {
@@ -196,7 +197,7 @@ class HalfGauge : AbstractGauge {
                 ((needleEnd - needleStart) / 100 * calculateValuePercentage + needleStart).toInt()
         }
 
-    protected fun getRangePaint(color: Int): Paint {
+    private fun getRangePaint(color: Int): Paint {
         val range = Paint()
         range.color = color
         range.isAntiAlias = true
@@ -205,7 +206,7 @@ class HalfGauge : AbstractGauge {
         return range
     }
 
-    protected fun getRangeValue(color: Int): Paint {
+    private fun getRangeValue(color: Int): Paint {
         val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         textPaint.color = color
         textPaint.style = Paint.Style.FILL

@@ -7,8 +7,8 @@ import android.graphics.Paint
 import android.util.AttributeSet
 
 class ArcGauge : FullGauge {
-    override var sweepAngle = 240f
-    override var startAngle = 150f
+    override var sweepAngle = 190f
+    override var startAngle = 175f
     override var gaugeBGWidth = 25f
 
     constructor(context: Context?) : super(context) {
@@ -38,7 +38,7 @@ class ArcGauge : FullGauge {
     private fun init() {
         gaugeBackGroundPaint?.strokeWidth = gaugeBGWidth
         gaugeBackGroundPaint?.strokeCap = Paint.Cap.ROUND
-        gaugeBackGroundPaint?.color = Color.parseColor("#D6D6D6")
+        gaugeBackGroundPaint?.color = Color.parseColor("#F1F1F1")
         textPaints?.textSize = 35f
         padding = 20f
     }
