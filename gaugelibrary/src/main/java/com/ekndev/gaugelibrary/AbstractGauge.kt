@@ -271,9 +271,9 @@ abstract class AbstractGauge : View {
         return textPaints!!
     }
 
-    protected fun getFormattedValue(value: Double): String? {
-        return formatter.getFormattedValue(value)
-            ?: return ValueFormatterImpl().getFormattedValue(value)
+    protected fun getFormattedValue(value: Double): String {
+        return formatter.getFormattedValue(value.toInt())
+            ?: return ValueFormatterImpl().getFormattedValue(value.toInt())
     }
 
     protected val formattedValue: String?

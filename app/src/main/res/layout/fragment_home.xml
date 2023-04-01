@@ -29,6 +29,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_aqi_text"
+        style="@style/text_style_black_20sp_bold"
+        android:layout_marginTop="@dimen/dimen_50dp"
+        android:text="AQI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/gauge"
+        app:layout_constraintTop_toTopOf="@+id/gauge" />
+
+    <TextView
         android:id="@+id/tv_note"
         style="@style/text_style_gray_15sp"
         android:layout_width="@dimen/dimen_0dp"
@@ -50,14 +59,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_note" />
 
+    <TextView
+        android:id="@+id/tv_aqi_feedback"
+        style="@style/text_style_blue_20sp_bold"
+        android:layout_marginTop="32dp"
+        android:text="Good"
+        app:layout_constraintEnd_toEndOf="@+id/gauge"
+        app:layout_constraintStart_toStartOf="@+id/gauge"
+        app:layout_constraintTop_toBottomOf="@+id/tv_aqi_text" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_detailed_readings"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
+        app:spanCount="1"
         tools:itemCount="6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

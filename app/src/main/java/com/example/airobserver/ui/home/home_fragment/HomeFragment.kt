@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         range.to = 50.0
 
         val range2 = Range()
-        range2.color = Color.parseColor("#ffff00")
+        range2.color = Color.parseColor("#018ABE")
         range2.from = 50.0
         range2.to = 100.0
 
@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
         //set min max and current value
         binding.gauge.minValue = 0.0
         binding.gauge.maxValue = 150.0
-        binding.gauge.value = 50.0
+        binding.gauge.value = 40.0
 
         val list = arrayListOf<gasmodel>()
         list.add(gasmodel("PMS2.5","Particulate Matter",22,"#FF0000","Good"))

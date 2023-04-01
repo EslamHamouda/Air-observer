@@ -40,6 +40,7 @@ class ArcGauge : FullGauge {
         gaugeBackGroundPaint?.strokeCap = Paint.Cap.ROUND
         gaugeBackGroundPaint?.color = Color.parseColor("#F1F1F1")
         textPaints?.textSize = 35f
+        textPaints?.color = Color.parseColor("#018ABE")
         padding = 20f
     }
 
