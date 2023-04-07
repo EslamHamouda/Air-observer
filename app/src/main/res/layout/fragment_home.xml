@@ -102,6 +102,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_detailed_text" />
 
+    <TextView
+        android:id="@+id/tv_todayMeasure_text"
+        style="@style/text_style_black_15sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Today measurement:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailed_aqi" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart"
@@ -112,7 +120,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailed_aqi" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_todayMeasure_text" />
 
     <include
         android:id="@+id/progressBar"
