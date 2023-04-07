@@ -4,19 +4,16 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import com.ekndev.gaugelibrary.Range
 import com.example.airobserver.databinding.FragmentHomeBinding
-import com.example.airobserver.domain.model.gasmodel
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -83,51 +80,65 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupLineChartData() {
-        val yVals = ArrayList<Entry>()
-        yVals.add(Entry(0f, 30f, "0"))
-        yVals.add(Entry(1f, 2f, "1"))
-        yVals.add(Entry(2f, 4f, "2"))
-        yVals.add(Entry(3f, 6f, "3"))
-        yVals.add(Entry(4f, 8f, "4"))
-        yVals.add(Entry(5f, 10f, "5"))
-        yVals.add(Entry(6f, 22f, "6"))
-        yVals.add(Entry(7f, 12.5f, "7"))
-        yVals.add(Entry(8f, 22f, "8"))
-        yVals.add(Entry(9f, 32f, "9"))
-        yVals.add(Entry(10f, 54f, "10"))
-        yVals.add(Entry(11f, 28f, "11"))
-        val set1 = LineDataSet(yVals, "DataSet 1")
+        val points = ArrayList<Entry>()
+        points.add(Entry(0f,  100f, "0"))
+        points.add(Entry(4f,  50f, "1"))
+        points.add(Entry(8f,  250f, "2"))
+        points.add(Entry(12f,  500f, "3"))
+        points.add(Entry(16f,  180f, "4"))
+        points.add(Entry(20f, 140f, "5"))
+        points.add(Entry(24f, 130f, "6"))
+        val dataSet = LineDataSet(points, "DataSet")
 
-        // set1.fillAlpha = 110
-        // set1.setFillColor(Color.RED)
+
+        // dataSet.fillAlpha = 110
+        // dataSet.setFillColor(Color.RED)
         // set the line to be drawn like this "- - - - - -"
-        // set1.enableDashedLine(5f, 5f, 0f)
-        // set1.enableDashedHighlightLine(10f, 5f, 0f)
+        // dataSet.enableDashedLine(5f, 5f, 0f)
+        // dataSet.enableDashedHighlightLine(10f, 5f, 0f)
 
-        set1.color = Color.parseColor("#018ABE")
-        set1.setCircleColor(Color.parseColor("#00658D"))
-        set1.lineWidth = 1f
-        set1.circleRadius = 3f
-        set1.setDrawCircleHole(false)
-        set1.valueTextSize = 0f
-        set1.setDrawFilled(true)
+        dataSet.color = Color.parseColor("#018ABE")
+        dataSet.setCircleColor(Color.parseColor("#00658D"))
+        dataSet.lineWidth = 1f
+        dataSet.circleRadius = 3f
+        dataSet.setDrawCircleHole(false)
+        dataSet.valueTextSize = 10f
+        dataSet.setDrawFilled(true)
 
         val dataSets = ArrayList<ILineDataSet>()
-        dataSets.add(set1)
+        dataSets.add(dataSet)
         val data = LineData(dataSets)
 
         // set data
         binding.lineChart.data = data
-        binding.lineChart.description.isEnabled = false
+        binding.lineChart.description.isEnabled = true
+        binding.lineChart.description.text = "Today Air Quality Index"
         binding.lineChart.legend.isEnabled = false
         binding.lineChart.setPinchZoom(true)
-        binding.lineChart.xAxis.enableGridDashedLine(5f, 5f, 0f)
-        binding.lineChart.axisRight.enableGridDashedLine(5f, 5f, 0f)
-        binding.lineChart.axisLeft.enableGridDashedLine(5f, 5f, 0f)
+     /* binding.lineChart.xAxis.enableGridDashedLine(5f, 5f, 0f)
+        binding.lineChart.axisLeft.enableGridDashedLine(5f, 5f, 0f)*/
+        binding.lineChart.xAxis.mAxisMinimum = 0f
+        binding.lineChart.xAxis.mAxisMaximum = 24f
+        binding.lineChart.axisLeft.axisMinimum = 0f
+        binding.lineChart.axisLeft.axisMaximum = 500f
         binding.lineChart.axisRight.isEnabled = false
+        binding.lineChart.xAxis.valueFormatter = object : ValueFormatter() {
+            override fun getFormattedValue(value: Float): String {
+                return convertTo12HourFormat(value.toInt())
+            }
+        }
         //binding.lineChart.setDrawGridBackground(true)
-        binding.lineChart.xAxis.labelCount = 11
+        binding.lineChart.xAxis.labelCount = 6
         binding.lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+    }
+
+    fun convertTo12HourFormat(hour: Int): String {
+        var convertedHour = hour % 12
+        if (convertedHour == 0) {
+            convertedHour = 12
+        }
+        val suffix = if (hour < 12) "AM" else "PM"
+        return "$convertedHour$suffix"
     }
 
 
