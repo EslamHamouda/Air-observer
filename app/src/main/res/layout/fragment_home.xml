@@ -19,81 +19,98 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />-->
-    <com.ekndev.gaugelibrary.ArcGauge
-        android:id="@+id/gauge"
-        android:layout_width="@dimen/dimen_0dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_aqi_text"
-        style="@style/text_style_black_20sp_bold"
-        android:layout_marginTop="@dimen/dimen_50dp"
-        android:text="AQI"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/gauge"
-        app:layout_constraintTop_toTopOf="@+id/gauge" />
-
-    <TextView
-        android:id="@+id/tv_note"
-        style="@style/text_style_gray_15sp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
         android:layout_width="@dimen/dimen_0dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:text="The air quality is generally acceptable for most people, but some individuals who suffer from allergies."
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gauge" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/md_theme_light_primary"
+        app:strokeWidth="@dimen/dimen_1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/dimen_20dp">
+
+            <com.ekndev.gaugelibrary.ArcGauge
+                android:id="@+id/gauge"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_aqi_text"
+                style="@style/text_style_black_20sp_bold"
+                android:layout_marginTop="@dimen/dimen_50dp"
+                android:text="AQI"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/gauge"
+                app:layout_constraintTop_toTopOf="@+id/gauge" />
+
+            <TextView
+                android:id="@+id/tv_note"
+                style="@style/text_style_blue_15sp"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:text="The air quality is generally acceptable for most people, but some individuals who suffer from allergies."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_aqi_feedback" />
+
+            <TextView
+                android:id="@+id/tv_aqi_feedback"
+                style="@style/text_style_blue_20sp_bold"
+                android:layout_marginTop="32dp"
+                android:text="Good"
+                app:layout_constraintEnd_toEndOf="@+id/gauge"
+                app:layout_constraintStart_toStartOf="@+id/gauge"
+                app:layout_constraintTop_toBottomOf="@+id/tv_aqi_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/tv_detailed_text"
         style="@style/text_style_black_15sp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="What Am I Breathing Right now"
+        android:text="What am I breathing now:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_note" />
-
-    <TextView
-        android:id="@+id/tv_aqi_feedback"
-        style="@style/text_style_blue_20sp_bold"
-        android:layout_marginTop="32dp"
-        android:text="Good"
-        app:layout_constraintEnd_toEndOf="@+id/gauge"
-        app:layout_constraintStart_toStartOf="@+id/gauge"
-        app:layout_constraintTop_toBottomOf="@+id/tv_aqi_text" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_detailed_readings"
-        android:layout_width="@dimen/dimen_0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="1"
-        tools:itemCount="6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detailed_text"
-        tools:listitem="@layout/list_item_gas" />
+        app:layout_constraintTop_toBottomOf="@+id/card_view" />
 
     <include
-        layout="@layout/layout_week_aqi"
+        android:id="@+id/detailed_aqi"
+        layout="@layout/layout_detailed_aqi"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_detailed_readings" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_detailed_text" />
+
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailed_aqi" />
 
     <include
         android:id="@+id/progressBar"

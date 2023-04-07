@@ -53,7 +53,7 @@ dependencies {
     implementation 'io.github.chaosleung:pinview:1.4.4'
     // Dots indicator
     implementation("com.tbuonomo:dotsindicator:4.3")
-    def lifecycle_version = "2.6.0"
+    def lifecycle_version = "2.6.1"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData
@@ -86,4 +86,7 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+
+    //Charts
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

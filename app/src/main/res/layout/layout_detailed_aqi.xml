@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:strokeColor="@color/md_theme_light_primary"
+    app:strokeWidth="@dimen/dimen_1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_co"
+            style="@style/text_style_black_15sp"
+            android:layout_width="@dimen/dimen_0dp"
+            app:layout_constraintHorizontal_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="@string/CO_text"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_so2"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today11"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/circle_background"
+            android:backgroundTint="@color/seed"
+            android:gravity="center"
+            android:text="27"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_co"
+            app:layout_constraintStart_toEndOf="@+id/tv_aqi_today9"
+            app:layout_constraintStart_toStartOf="@+id/tv_co"
+            app:layout_constraintTop_toBottomOf="@+id/tv_co" />
+
+        <TextView
+            android:id="@+id/tv_so2"
+            style="@style/text_style_black_15sp"
+            android:layout_width="@dimen/dimen_0dp"
+            app:layout_constraintHorizontal_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="@string/SO2_text"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today9"
+            app:layout_constraintEnd_toStartOf="@+id/tv_co"
+            app:layout_constraintStart_toEndOf="@+id/tv_no2"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today9"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/circle_background"
+            android:backgroundTint="@color/seed"
+            android:gravity="center"
+            android:text="25"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_so2"
+            app:layout_constraintStart_toStartOf="@+id/tv_so2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_so2" />
+
+        <TextView
+            android:id="@+id/tv_no2"
+            style="@style/text_style_black_15sp"
+            android:layout_width="@dimen/dimen_0dp"
+            app:layout_constraintHorizontal_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="@string/NO2_text"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today8"
+            app:layout_constraintEnd_toStartOf="@+id/tv_so2"
+            app:layout_constraintStart_toEndOf="@+id/tv_o3"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today8"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/circle_background"
+            android:backgroundTint="@color/seed"
+            android:gravity="center"
+            android:text="20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_no2"
+            app:layout_constraintStart_toStartOf="@+id/tv_no2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_no2" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today7"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/circle_background"
+            android:backgroundTint="@color/seed"
+            android:gravity="center"
+            android:text="26"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_o3"
+            app:layout_constraintStart_toStartOf="@+id/tv_o3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_o3" />
+
+        <TextView
+            android:id="@+id/tv_o3"
+            style="@style/text_style_black_15sp"
+            android:layout_width="@dimen/dimen_0dp"
+            app:layout_constraintHorizontal_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="@string/O3_text"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today7"
+            app:layout_constraintEnd_toStartOf="@+id/tv_no2"
+            app:layout_constraintStart_toEndOf="@+id/tv_pm10"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+
+        <TextView
+            android:id="@+id/tv_pm10"
+            style="@style/text_style_black_15sp"
+            android:layout_width="@dimen/dimen_0dp"
+            app:layout_constraintHorizontal_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="@string/PMS10_text"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today6"
+            app:layout_constraintEnd_toStartOf="@+id/tv_o3"
+            app:layout_constraintStart_toEndOf="@+id/tv_pm2.5"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today6"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/circle_background"
+            android:backgroundTint="@color/seed"
+            android:gravity="center"
+            android:text="28"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_pm10"
+            app:layout_constraintStart_toStartOf="@+id/tv_pm10"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pm10" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_pm2.5"
+            style="@style/text_style_black_15sp"
+            android:layout_width="@dimen/dimen_0dp"
+            app:layout_constraintHorizontal_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="@string/PMS2.5_text"
+            app:layout_constraintBottom_toTopOf="@+id/tv_aqi_today"
+            app:layout_constraintEnd_toStartOf="@+id/tv_pm10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/tv_aqi_today"
+            style="@style/text_style_black_15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/circle_background"
+            android:backgroundTint="@color/seed"
+            android:gravity="center"
+            android:text="23"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_pm2.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_pm2.5"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pm2.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

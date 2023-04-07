@@ -44,8 +44,8 @@
     <string name="CO_text">CO</string>
     <string name="SO2_text">SO2</string>
     <string name="O3_text">O3</string>
-    <string name="PMS10_text">PMS 10</string>
-    <string name="PMS2.5_text">PMS 2.5</string>
+    <string name="PMS10_text">PMS10</string>
+    <string name="PMS2.5_text">PMS2.5</string>
     <string name="NO2_text">NO2</string>
     <string name="normal_percentage">Normal Percentage</string>
     <string name="recent_percentage">Recent Percentage</string>
