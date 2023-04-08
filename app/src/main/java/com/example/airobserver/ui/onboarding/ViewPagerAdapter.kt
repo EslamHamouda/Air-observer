@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.airobserver.databinding.ItemOnboardingSliderBinding
 
 class ViewPagerAdapter(
-    private val context: Context,
     private val images:List<Int>,
     private val headings:List<Int>,
     private val description:List<Int>

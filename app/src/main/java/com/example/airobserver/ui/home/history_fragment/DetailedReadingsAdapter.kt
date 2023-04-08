@@ -1,32 +1,33 @@
-package com.example.airobserver.ui.home.home_fragment
+package com.example.airobserver.ui.home.history_fragment
 
-import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.airobserver.databinding.ListItemDetailedReadingsBinding
 import com.example.airobserver.databinding.ListItemGasBinding
 import com.example.airobserver.domain.model.gasmodel
 
 class DetailedReadingsAdapter(
-   private val list: List<gasmodel>
+   private val list: List<String>
 ) : RecyclerView.Adapter<DetailedReadingsAdapter.ViewHolder>() {
-    inner class ViewHolder(private val binding: ListItemGasBinding) :
+    inner class ViewHolder(private val binding: ListItemDetailedReadingsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: gasmodel) {
-            binding.tvGas.text=item.abs
-            binding.tvGasName.text=item.name
-            binding.tvGasPercentage.text = item.value.toString()
-            val color=ColorStateList.valueOf(Color.parseColor(item.color))
-            binding.todayAqiColor.backgroundTintList=color
-            binding.tvGasFeedback.text=item.status
+        fun bind(item: String) {
+            binding.tvPm25.text = 25.toString()
+            binding.tvPm10.text = 10.toString()
+            binding.tvCo.text = 2.toString()
+            binding.tvO3.text = 10.toString()
+            binding.tvSo2.text = 20.toString()
+            binding.tvNo2.text = 10.toString()
+            binding.tvTime.text = "5/20"
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ListItemGasBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ListItemDetailedReadingsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
