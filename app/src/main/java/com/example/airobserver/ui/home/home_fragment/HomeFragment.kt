@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ekndev.gaugelibrary.Range
 import com.example.airobserver.databinding.FragmentHomeBinding
+import com.example.airobserver.utils.convertTo12HourFormat
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -131,15 +132,5 @@ class HomeFragment : Fragment() {
         binding.lineChart.xAxis.labelCount = 6
         binding.lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
     }
-
-    fun convertTo12HourFormat(hour: Int): String {
-        var convertedHour = hour % 12
-        if (convertedHour == 0) {
-            convertedHour = 12
-        }
-        val suffix = if (hour < 12) "AM" else "PM"
-        return "$convertedHour$suffix"
-    }
-
 
 }

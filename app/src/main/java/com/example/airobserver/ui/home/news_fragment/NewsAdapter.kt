@@ -3,8 +3,10 @@ package com.example.airobserver.ui.home.news_fragment
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -13,6 +15,7 @@ import com.example.airobserver.databinding.ListItemGasBinding
 import com.example.airobserver.databinding.ListItemNewsBinding
 import com.example.airobserver.domain.model.gasmodel
 import com.example.airobserver.domain.model.response.Articles
+import com.example.airobserver.utils.convertTo12HourAndDateFormat
 import com.example.airobserver.utils.dateFormat
 
 class NewsAdapter(
@@ -20,6 +23,7 @@ class NewsAdapter(
 ) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ListItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @RequiresApi(Build.VERSION_CODES.O)
         fun bind(item: Articles) {
             Glide.with(binding.ivNews.context)
                 .load(item.urlToImage)
@@ -29,7 +33,7 @@ class NewsAdapter(
                 .into(binding.ivNews)
             binding.tvNews.text=item.title
             binding.tvSourceName.text=item.source?.name
-            binding.tvTime.text= dateFormat(item.publishedAt)
+            binding.tvTime.text= convertTo12HourAndDateFormat(item.publishedAt)
             binding.root.setOnClickListener {
                 it.findNavController().navigate(NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(item.url!!))
             }
@@ -42,6 +46,7 @@ class NewsAdapter(
         return ViewHolder(binding)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])
     }
