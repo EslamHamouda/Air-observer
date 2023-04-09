@@ -7,19 +7,19 @@
         android:icon="@drawable/ic_home"
         android:contentDescription="@string/home"
         android:enabled="true"
-        android:title="@string/home" />
+        />
     <item
         android:id="@+id/historyFragment"
         android:icon="@drawable/ic_history"
         android:contentDescription="@string/history"
         android:enabled="true"
-        android:title="@string/history" />
+        />
     <item
         android:id="@+id/newsFragment"
         android:icon="@drawable/ic_news"
         android:contentDescription="@string/news"
         android:enabled="true"
-        android:title="@string/news" />
+        />
    <!-- <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_account"

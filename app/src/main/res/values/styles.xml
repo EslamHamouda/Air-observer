@@ -218,11 +218,18 @@
         <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/dimen_32dp</item>
     </style>
 
+    <!--Toolbar-->
     <style name="toolbar_theme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="colorControlNormal">@color/white</item>
     </style>
-
     <style name="toolbar_theme_home" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="colorControlNormal">@color/md_theme_light_primary</item>
+    </style>
+
+    <!--BottomNav-->
+    <style name="bottom_nav_style" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="cornerFamily">rounded</item>
+        <item name="android:topRightRadius">@dimen/dimen_10dp</item>
+        <item name="android:topLeftRadius">@dimen/dimen_10dp</item>
     </style>
 </resources>

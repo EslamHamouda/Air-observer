@@ -10,7 +10,6 @@
         style="@style/text_style_primary_20sp_bold"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_marginHorizontal="@dimen/dimen_16dp"
-        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="January"
         app:layout_constraintEnd_toEndOf="parent"
