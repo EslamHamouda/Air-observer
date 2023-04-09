@@ -56,7 +56,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.profile ->{
-                this.findNavController(R.id.fragmentContainerView).navigate(HomeFragmentDirections.actionHomeFragmentToProfileActivity())
+                startActivity(Intent(this, ProfileActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)
