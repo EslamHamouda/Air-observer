@@ -9,12 +9,20 @@
         android:id="@+id/homeFragment"
         android:name="com.example.airobserver.ui.home.home_fragment.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_profileActivity"
+            app:destination="@id/profileActivity" />
+    </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.example.airobserver.ui.home.history_fragment.HistoryFragment"
         android:label="HistoryFragment"
-        tools:layout="@layout/fragment_history"/>
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_historyFragment_to_profileActivity"
+            app:destination="@id/profileActivity" />
+    </fragment>
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.example.airobserver.ui.home.news_fragment.NewsFragment"
@@ -25,11 +33,6 @@
             app:destination="@id/newsDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.airobserver.ui.home.profile_fragment.ProfileFragment"
-        android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile"/>
-    <fragment
         android:id="@+id/newsDetailFragment"
         android:name="com.example.airobserver.ui.home.news_fragment.NewsDetailFragment"
         android:label="fragment_news_detail"
@@ -38,4 +41,9 @@
             android:name="url"
             app:argType="string" />
     </fragment>
+    <activity
+        android:id="@+id/profileActivity"
+        android:name="com.example.airobserver.ui.home.profile_fragment.ProfileActivity"
+        android:label="activity_profile"
+        tools:layout="@layout/activity_profile" />
 </navigation>

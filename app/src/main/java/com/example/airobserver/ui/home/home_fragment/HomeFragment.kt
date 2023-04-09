@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ekndev.gaugelibrary.Range
 import com.example.airobserver.databinding.FragmentHomeBinding
@@ -29,6 +30,7 @@ class HomeFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding=FragmentHomeBinding.inflate(inflater)
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
         return binding.root
     }
 

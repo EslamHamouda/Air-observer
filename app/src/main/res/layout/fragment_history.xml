@@ -17,32 +17,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/lineChart"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view_graph"
         android:layout_width="@dimen/dimen_0dp"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/iv_next"
         app:layout_constraintStart_toEndOf="@+id/iv_back"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:strokeColor="@color/seed"
+        app:strokeWidth="@dimen/dimen_1dp">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/iv_next"
+            app:layout_constraintStart_toEndOf="@+id/iv_back"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+    </com.google.android.material.card.MaterialCardView>
 
     <ImageView
         android:id="@+id/iv_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_arrow_forward"
-        app:layout_constraintBottom_toBottomOf="@+id/lineChart"
+        app:layout_constraintBottom_toBottomOf="@+id/card_view_graph"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lineChart" />
+        app:layout_constraintTop_toTopOf="@+id/card_view_graph" />
 
     <ImageView
         android:id="@+id/iv_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_arrow_back_"
-        app:layout_constraintBottom_toBottomOf="@+id/lineChart"
+        app:layout_constraintBottom_toBottomOf="@+id/card_view_graph"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lineChart" />
+        app:layout_constraintTop_toTopOf="@+id/card_view_graph" />
 
     <TextView
         android:id="@+id/tv_detailed_text_text"
@@ -51,7 +64,7 @@
         android:layout_marginTop="16dp"
         android:text="Detailed readings:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineChart" />
+        app:layout_constraintTop_toBottomOf="@+id/card_view_graph" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_detailed_readings"

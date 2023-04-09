@@ -20,10 +20,10 @@
         android:contentDescription="@string/news"
         android:enabled="true"
         android:title="@string/news" />
-    <item
+   <!-- <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_account"
         android:contentDescription="@string/profile"
         android:enabled="true"
-        android:title="@string/profile" />
+        android:title="@string/profile" />-->
 </menu>

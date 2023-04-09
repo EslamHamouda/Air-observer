@@ -31,13 +31,21 @@
         android:id="@+id/materialToolbar"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
-        app:title="@string/app_name"
-        app:titleTextColor="@color/white"
+        android:backgroundTint="@android:color/transparent"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:theme="@style/toolbar_theme_home"
+        app:menu="@menu/menu_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+        <Spinner
+            android:id="@+id/spinner_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/md_theme_light_primary"
+            android:layout_gravity="center"
+            />
+    </com.google.android.material.appbar.MaterialToolbar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -87,6 +87,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="text_style_black_22sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_22sp</item>
+    </style>
+
     <style name="text_style_black_25sp" parent="text_style_black">
         <item name="android:textSize">@dimen/dimen_25sp</item>
     </style>
@@ -212,5 +216,13 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/dimen_10dp</item>
         <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/dimen_32dp</item>
+    </style>
+
+    <style name="toolbar_theme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="toolbar_theme_home" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/md_theme_light_primary</item>
     </style>
 </resources>
