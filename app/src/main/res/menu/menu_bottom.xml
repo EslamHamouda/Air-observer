@@ -6,24 +6,24 @@
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:contentDescription="@string/home"
-        app:showAsAction="ifRoom"
-        android:title="" />
+        android:enabled="true"
+        />
     <item
         android:id="@+id/historyFragment"
         android:icon="@drawable/ic_history"
         android:contentDescription="@string/history"
-        app:showAsAction="ifRoom"
-        android:title="" />
+        android:enabled="true"
+        />
     <item
         android:id="@+id/newsFragment"
         android:icon="@drawable/ic_news"
         android:contentDescription="@string/news"
-        app:showAsAction="ifRoom"
-        android:title="" />
-    <item
+        android:enabled="true"
+        />
+   <!-- <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_account"
         android:contentDescription="@string/profile"
-        app:showAsAction="ifRoom"
-        android:title="" />
+        android:enabled="true"
+        android:title="@string/profile" />-->
 </menu>

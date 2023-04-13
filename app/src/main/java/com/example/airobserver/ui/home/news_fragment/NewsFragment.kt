@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
@@ -37,6 +38,7 @@ class NewsFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentNewsBinding.inflate(inflater)
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
         viewModel.getNews()
         return binding.root
     }

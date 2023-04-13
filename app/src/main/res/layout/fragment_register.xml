@@ -4,10 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_light_surface">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_or_login"
@@ -26,11 +27,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/undraw_welcome" />
+        app:srcCompat="@drawable/undraw_sign_up" />
 
     <TextView
         android:id="@+id/tv_signup"
-        style="@style/text_style_black_30sp_bold"
+        style="@style/text_style_primary_30sp_bold"
+        android:gravity="center"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_marginHorizontal="@dimen/dimen_32dp"
         android:layout_marginTop="@dimen/dimen_16dp"
@@ -40,125 +42,169 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_signup" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_firstname"
-        style="@style/edit_text_style"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signup">
+        app:layout_constraintTop_toBottomOf="@+id/tv_signup"
+        app:strokeColor="@color/md_theme_light_primary"
+        app:strokeWidth="@dimen/dimen_1dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_firstname"
-            style="@style/edit_text_input_style"
-            android:hint="@string/first_name"
-            android:inputType="textPersonName" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/dimen_8dp"
+            android:paddingBottom="@dimen/dimen_20dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_lastname"
-        style="@style/edit_text_style"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_firstname">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_firstname"
+                style="@style/edit_text_style"
+                android:layout_marginHorizontal="@dimen/dimen_0dp"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_lastname"
-            style="@style/edit_text_input_style"
-            android:hint="@string/last_name"
-            android:inputType="textPersonName" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_firstname"
+                    style="@style/edit_text_input_style"
+                    android:hint="@string/first_name"
+                    android:inputType="textPersonName"
+                    android:maxLength="30" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_email"
-        style="@style/edit_text_style"
-        android:layout_marginTop="@dimen/dimen_16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_lastname">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_lastname"
+                style="@style/edit_text_style"
+                android:layout_marginHorizontal="@dimen/dimen_0dp"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_firstname">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_email"
-            style="@style/edit_text_input_style"
-            android:hint="@string/email"
-            android:inputType="textWebEmailAddress"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_lastname"
+                    style="@style/edit_text_input_style"
+                    android:hint="@string/last_name"
+                    android:inputType="textPersonName"
+                    android:maxLength="30" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_phone"
-        style="@style/edit_text_style"
-        android:layout_marginTop="@dimen/dimen_16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_email">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_email"
+                style="@style/edit_text_style"
+                android:layout_marginHorizontal="@dimen/dimen_0dp"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_lastname">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_phone"
-            style="@style/edit_text_input_style"
-            android:hint="@string/phone"
-            android:inputType="phone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_email"
+                    style="@style/edit_text_input_style"
+                    android:hint="@string/email"
+                    android:inputType="textWebEmailAddress"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_date"
-        style="@style/edit_text_style"
-        android:layout_marginTop="@dimen/dimen_16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_phone">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_phone"
+                style="@style/edit_text_style"
+                android:layout_marginHorizontal="@dimen/dimen_0dp"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_email">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_date"
-            style="@style/edit_text_input_style"
-            android:hint="@string/birthdate"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_phone"
+                    style="@style/edit_text_input_style"
+                    android:hint="@string/phone"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_gender"
-        style="@style/drop_down_menu_style"
-        android:layout_marginTop="16dp"
-        android:hint="@string/gender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_date">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_date"
+                style="@style/edit_text_style"
+                android:layout_marginHorizontal="@dimen/dimen_0dp"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_phone">
 
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteGender"
-            style="@style/edit_text_input_style"
-            android:drawableEnd="@drawable/ic_mail"
-            android:inputType="none"
-            android:text="@string/gender"
-            tools:text="Gender" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_date"
+                    style="@style/edit_text_input_style"
+                    android:hint="@string/birthdate"
+                    android:inputType="date"
+                    android:maxLength="10" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_password"
-        style="@style/edit_text_style"
-        android:layout_marginTop="@dimen/dimen_16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_gender"
-        app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_gender"
+                style="@style/drop_down_menu_style"
+                android:layout_marginHorizontal="@dimen/dimen_0dp"
+                android:hint="@string/gender"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_date">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_password"
-            style="@style/edit_text_input_style"
-            android:hint="@string/password"
-            android:inputType="textPassword|textCapWords|textCapCharacters" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteGender"
+                    style="@style/edit_text_input_style"
+                    android:drawableEnd="@drawable/ic_mail"
+                    android:inputType="none"
+                    android:text="@string/gender"
+                    tools:text="Gender" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password"
+                style="@style/edit_text_style"
+                android:layout_marginHorizontal="@dimen/dimen_0dp"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_gender"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_password"
+                    style="@style/edit_text_input_style"
+                    android:hint="@string/password"
+                    android:inputType="textPassword|textCapWords|textCapCharacters" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_register"
-        style="@style/button_style_blue_margin_horizontal_32dp"
-        android:layout_marginTop="@dimen/dimen_16dp"
+        style="@style/button_style_margin_horizontal_64dp"
+        android:layout_marginTop="16dp"
         android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_password" />
+        app:layout_constraintTop_toBottomOf="@+id/card_view" />
+
+    <include
+        android:id="@+id/progressBar"
+        layout="@layout/progressbar_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

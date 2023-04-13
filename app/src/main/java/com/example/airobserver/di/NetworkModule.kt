@@ -1,8 +1,7 @@
 package com.example.airobserver.di
 
-import android.content.SharedPreferences
-import com.example.airobserver.data.APIServicesNews
 import com.example.airobserver.data.APIServices
+import com.example.airobserver.data.APIServicesNews
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -19,11 +18,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    private const val BASE_URL = "https://newsapi.org/v2/everything?q=air%20pollution&apiKey=c9402dc3e3d1417f8a8759bb2a909b46"
+    private const val BASE_URL = "http://airobserver4-001-site1.htempurl.com/"
     @Provides
     @Singleton
     @Named("RetrofitObject")
-    fun provideRetrofit(pref: SharedPreferences): Retrofit {
+    fun provideRetrofit(): Retrofit {
         val gson = GsonBuilder()
             .setLenient()
             .create()

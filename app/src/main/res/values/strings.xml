@@ -3,21 +3,21 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="or_create_new_account">Don\'t have an account? <font color='#0363f5'>Register</font></string>
-    <string name="or_login">Already have an account? <font color='#0363f5'>Login</font></string>
+    <string name="or_create_new_account">Don\'t have an account? <font color='#00658D'>Register</font></string>
+    <string name="or_login">Already have an account? <font color='#00658D'>Login</font></string>
     <string name="haven_t_account">Haven\'t Account ?</string>
     <string name="register">Register</string>
     <string name="gmail_icon">Gmail_icon</string>
-    <string name="sign_up">Sign Up</string>
+    <string name="sign_up">Sign up</string>
     <string name="full_name">Full Name</string>
     <string name="register_image">Register_Image</string>
     <string name="check_email">Check Email</string>
     <string name="submit">Submit</string>
-    <string name="forgot_password">Forgot Password?</string>
-    <string name="don_t_worry_it_happens_please_enter_your_email">Don\'t worry it happens.\n Please enter your email to continue…</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="don_t_worry_it_happens_please_enter_your_email">Don\'t worry it happens,\nPlease enter your email to continue.</string>
     <string name="enter_otp">Enter OTP</string>
     <string name="check">Check</string>
-    <string name="an_4_digit_code_has_been_send_to_your_email">An 4 digit code has been send to your Email</string>
+    <string name="an_4_digit_code_has_been_send_to_your_email">An 6 digit code has been send to your Email.</string>
     <string name="todo">TODO</string>
     <string name="otp">OTP</string>
     <string name="update_password">update password</string>
@@ -44,14 +44,14 @@
     <string name="CO_text">CO</string>
     <string name="SO2_text">SO2</string>
     <string name="O3_text">O3</string>
-    <string name="PMS10_text">PMS 10</string>
-    <string name="PMS2.5_text">PMS 2.5</string>
+    <string name="PMS10_text">PMS10</string>
+    <string name="PMS2.5_text">PMS2.5</string>
     <string name="NO2_text">NO2</string>
     <string name="normal_percentage">Normal Percentage</string>
     <string name="recent_percentage">Recent Percentage</string>
     <string name="predict_illnesses">Predict Illnesses for this percentages:</string>
     <string name="name_of_account">Hello Name Of Account</string>
-    <string name="logout">LogOut</string>
+    <string name="logout">Logout</string>
     <string name="profile_text">Share a Little bit about Yourself</string>
     <string name="first_Illness">-1</string>
     <string name="second_Illness">-2</string>
@@ -65,19 +65,21 @@
     <string name="history">History</string>
     <string name="news">News</string>
     <string name="profile">Profile</string>
-    <string name="connection_timeout">انقضت مهلة الإتصال</string>
+    <string name="connection_timeout">Connection timeout</string>
     <string name="error_in_json_data">خطأ في البيانات يرجى إعادة المحاولة لاحقاً</string>
-    <string name="no_internet_connection">لا يوجد إتصال بالإنترنت</string>
-    <string name="connection_error">خطأ في الإتصال</string>
-    <string name="try_again" translatable="false">أعد المحاولة</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="connection_error">Connection error</string>
+    <string name="try_again" translatable="false">Try again</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
     <string name="phone">Phone</string>
     <string name="birthdate">Birthdate</string>
     <string name="gender">Gender</string>
-    <string name="the_air_quality_is_generally_acceptable_for_most_people_but_some_individuals_who_suffer_from_allergies_may_experience_mild_to_moderate_symptoms_when_exposed_to_the_air_for_long_periods_of_time">The air quality is generally acceptable for most people, but some individuals who suffer from allergies may experience mild to moderate symptoms when exposed to the air for long periods of time.</string>
-    <string name="detailed_readings">Detailed Readings</string>
-    <string name="date">Date</string>
+    <string name="not_authorized">Authorization has been denied for this request.</string>
+    <string name="choose_your_profile_photo">Choose your profile photo</string>
+    <string name="edit_your_profile">Edit</string>
+    <string-array name="spinner_items">
+        <item>Cairo</item>
+        <item>Giza</item>
+    </string-array>
 </resources>

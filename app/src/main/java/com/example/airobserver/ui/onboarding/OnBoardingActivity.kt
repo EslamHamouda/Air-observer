@@ -62,7 +62,7 @@ class OnBoardingActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.viewPager2.adapter = ViewPagerAdapter(this, images, headings, description)
+        binding.viewPager2.adapter = ViewPagerAdapter(images, headings, description)
         binding.dotsIndicator.attachTo(binding.viewPager2)
         binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {

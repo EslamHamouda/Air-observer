@@ -1,0 +1,2 @@
+com.ekndev.gaugelibrary
+string app_name

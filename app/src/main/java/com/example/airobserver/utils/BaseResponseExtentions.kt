@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi
 import com.example.airobserver.domain.model.BaseResponse
 
 
+
 @RequiresApi(Build.VERSION_CODES.M)
 fun <T> BaseResponse<T>.handle(activity: Activity, successFunc: (T) -> Unit) {
     when (code) {

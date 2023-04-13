@@ -43,7 +43,7 @@ android {
 }
 
 dependencies {
-
+    implementation project(":gaugelibrary")
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
@@ -56,7 +56,7 @@ dependencies {
     implementation 'io.github.chaosleung:pinview:1.4.4'
     // Dots indicator
     implementation("com.tbuonomo:dotsindicator:4.3")
-    def lifecycle_version = "2.5.1"
+    def lifecycle_version = "2.6.1"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData
@@ -89,4 +89,7 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+
+    //Charts
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

@@ -14,7 +14,8 @@ import java.net.UnknownHostException
 fun Throwable.handling(context: Context): String {
     return when (this) {
         is HttpException -> when (code()) {
-            //401 -> context.getString(R.string.not_authorized)
+            401 -> context.getString(R.string.not_authorized)
+            400 -> "An signup was failed \n Email or phone already duplicated in the database."
             //422 -> context.getString(R.string.unprocessable_content)
             else -> {
                 try {
@@ -33,8 +34,6 @@ fun Throwable.handling(context: Context): String {
         is SocketTimeoutException -> {
             context.getString(R.string.connection_timeout)
         }
-
-        is JsonSyntaxException -> context.getString(R.string.error_in_json_data)
         
         is UnknownHostException->context.getString(R.string.no_internet_connection)
 
@@ -48,9 +47,9 @@ fun Throwable.handling(context: Context): String {
 fun Throwable.loginHandling(context: Context): String {
     return when (this) {
         is HttpException -> when (code()) {
-            401 -> context.getString(R.string.app_name)
+            401 -> context.getString(R.string.not_authorized)
             //403 -> context.getString(R.string.unprocessable_content)
-            411 -> context.getString(R.string.app_name)
+            //411 -> context.getString(R.string.app_name)
             else -> {
                 try {
                     val error = Gson().fromJson(
@@ -89,7 +88,7 @@ private fun HttpException.getLoginGeneralErrorMessage(context: Context): String 
     val msg = this.response()?.errorBody()?.string()
     return if (msg.isNullOrEmpty()) {
         Log.e("", "Throwable: $message")
-        context.getString(R.string.app_name)
+        context.getString(R.string.connection_error)
     } else {
         Log.e("", "Throwable: $msg")
         msg.toString()
