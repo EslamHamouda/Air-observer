@@ -106,7 +106,7 @@ class HomeFragment : Fragment() {
         dataSet.circleRadius = 3f
         dataSet.setDrawCircleHole(false)
         dataSet.valueTextSize = 10f
-        dataSet.setDrawFilled(true)
+        //dataSet.setDrawFilled(true)
 
         val dataSets = ArrayList<ILineDataSet>()
         dataSets.add(dataSet)

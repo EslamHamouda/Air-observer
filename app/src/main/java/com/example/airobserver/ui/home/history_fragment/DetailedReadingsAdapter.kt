@@ -8,20 +8,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.airobserver.databinding.ListItemDetailedReadingsBinding
 import com.example.airobserver.databinding.ListItemGasBinding
 import com.example.airobserver.domain.model.gasmodel
+import com.example.airobserver.domain.model.response.AqiHistory
 
 class DetailedReadingsAdapter(
-   private val list: List<String>
+   private val list: List<AqiHistory>
 ) : RecyclerView.Adapter<DetailedReadingsAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ListItemDetailedReadingsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: String) {
-            binding.tvPm25.text = 25.toString()
-            binding.tvPm10.text = 10.toString()
-            binding.tvCo.text = 2.toString()
-            binding.tvO3.text = 10.toString()
-            binding.tvSo2.text = 20.toString()
-            binding.tvNo2.text = 10.toString()
-            binding.tvTime.text = "5/20"
+        fun bind(item: AqiHistory) {
+            binding.tvPm25.text = item.PM10
+            binding.tvPm10.text = item.PM10
+            binding.tvCo.text = item.CO
+            binding.tvO3.text = item.O3
+            binding.tvSo2.text = item.SO2
+            binding.tvNo2.text = item.NO2
+            binding.tvTime.text = item.pollutantDate
+            binding.tvAqi.text = "AQI: ${item.MAX} | ${item.Category}"
         }
     }
 

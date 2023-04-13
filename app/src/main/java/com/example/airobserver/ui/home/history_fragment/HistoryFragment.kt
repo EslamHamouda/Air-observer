@@ -1,15 +1,32 @@
 package com.example.airobserver.ui.home.history_fragment
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentHistoryBinding
+import com.example.airobserver.di.SharedPref
+import com.example.airobserver.ui.BaseFragment
+import com.example.airobserver.ui.auth.LoginFragmentDirections
+import com.example.airobserver.ui.viewmodel.AuthViewModel
+import com.example.airobserver.ui.viewmodel.HomeViewModel
+import com.example.airobserver.utils.ApiResponseStates
 import com.example.airobserver.utils.convertTo12HourFormat
+import com.example.airobserver.utils.putData
+import com.example.airobserver.utils.showSnackbar
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -17,11 +34,13 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HistoryFragment : Fragment() {
+class HistoryFragment : BaseFragment() {
     lateinit var binding:FragmentHistoryBinding
-
+    private val viewModel: HomeViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,13 +48,37 @@ class HistoryFragment : Fragment() {
         // Inflate the layout for this fragment
         binding=FragmentHistoryBinding.inflate(inflater)
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
+        viewModel.aqiHistory()
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupLineChartData()
-        binding.rvDetailedReadings.adapter = DetailedReadingsAdapter(arrayListOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"))
+        getAqiHistory()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun getAqiHistory() {
+        lifecycleScope.launch {
+            viewModel.aqiHistoryResponse.flowWithLifecycle(
+                lifecycle,
+                Lifecycle.State.STARTED
+            )
+                .collectLatest {
+                    dataResponseHandling(this@HistoryFragment.requireActivity(),
+                        it,
+                        binding.progressBar.progressBar,
+                        {
+                            viewModel.aqiHistory()
+                        },
+                        { it1 ->
+                            binding.rvDetailedReadings.adapter = DetailedReadingsAdapter(it1)
+                        })
+                }
+
+        }
     }
 
     private fun setupLineChartData() {
@@ -69,7 +112,7 @@ class HistoryFragment : Fragment() {
         dataSet.circleRadius = 3f
         dataSet.setDrawCircleHole(false)
         dataSet.valueTextSize = 10f
-        dataSet.setDrawFilled(true)
+        //dataSet.setDrawFilled(true)
 
         val dataSets = ArrayList<ILineDataSet>()
         dataSets.add(dataSet)

@@ -1,6 +1,7 @@
 package com.example.airobserver.data
 
 import com.example.airobserver.domain.model.BaseResponse
+import com.example.airobserver.domain.model.response.AqiHistory
 import com.example.airobserver.domain.model.response.GetProfileResponse
 import com.example.airobserver.domain.model.response.LoginResponse
 import com.example.airobserver.domain.model.response.RegisterResponse
@@ -46,5 +47,8 @@ interface APIServices {
                               @Field("Phone") phone:String,
                               @Field("Gender") gender:String,
                               @Field("Birthday") birthday:String): BaseResponse<String>
+
+    @GET("apiDummyData.php")
+    suspend fun aqiHistory(): BaseResponse<ArrayList<AqiHistory>>
 
 }

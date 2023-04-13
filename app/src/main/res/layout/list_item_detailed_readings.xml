@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dimen_10dp"
@@ -196,5 +194,16 @@
             app:layout_constraintBottom_toBottomOf="@+id/iv_time"
             app:layout_constraintStart_toEndOf="@+id/iv_time"
             app:layout_constraintTop_toTopOf="@+id/iv_time" />
+
+        <TextView
+            android:id="@+id/tv_aqi"
+            style="@style/text_style_14sp"
+            android:layout_width="@dimen/dimen_0dp"
+            android:gravity="center"
+            android:paddingVertical="@dimen/dimen_8dp"
+            android:text="AQI: 26 | Good"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_co"
+            app:layout_constraintTop_toBottomOf="@+id/tv_co" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

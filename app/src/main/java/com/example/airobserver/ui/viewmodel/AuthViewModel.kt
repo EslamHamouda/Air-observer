@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.domain.model.response.GetProfileResponse
 import com.example.airobserver.domain.model.response.LoginResponse
-import com.example.airobserver.domain.model.response.RegisterResponse
 import com.example.airobserver.domain.repo.AuthRepository
 import com.example.airobserver.utils.ApiResponseStates
 import dagger.hilt.android.lifecycle.HiltViewModel
