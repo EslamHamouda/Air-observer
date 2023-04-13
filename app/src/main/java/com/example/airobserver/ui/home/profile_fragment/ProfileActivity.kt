@@ -41,6 +41,7 @@ class ProfileActivity : AppCompatActivity() {
         setSupportActionBar(binding.materialToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
