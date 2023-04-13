@@ -13,6 +13,7 @@ tools:context=".ui.home.profile_fragment.ProfileActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar"
+        app:menu="@menu/menu_profile"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
         app:title="Profile"
@@ -79,7 +80,7 @@ tools:context=".ui.home.profile_fragment.ProfileActivity">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_firstname"
                     style="@style/edit_text_input_style"
-                    android:enabled="false"
+
                     android:hint="@string/first_name"
                     android:inputType="textPersonName"
                     android:maxLength="30" />
@@ -98,7 +99,7 @@ tools:context=".ui.home.profile_fragment.ProfileActivity">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_lastname"
                     style="@style/edit_text_input_style"
-                    android:enabled="false"
+
                     android:hint="@string/last_name"
                     android:inputType="textPersonName"
                     android:maxLength="30" />
@@ -137,7 +138,6 @@ tools:context=".ui.home.profile_fragment.ProfileActivity">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_phone"
                     style="@style/edit_text_input_style"
-                    android:enabled="false"
                     android:hint="@string/phone"
                     android:inputType="phone"
                     android:maxLength="11"

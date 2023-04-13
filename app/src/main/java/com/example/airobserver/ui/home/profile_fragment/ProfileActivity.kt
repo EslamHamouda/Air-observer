@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.ProgressBar
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
@@ -14,6 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.example.airobserver.R
 import com.example.airobserver.databinding.ActivityHomeBinding
 import com.example.airobserver.databinding.ActivityProfileBinding
 import com.example.airobserver.di.SharedPref
@@ -38,9 +40,10 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         setSupportActionBar(binding.materialToolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
 
     }
 
@@ -236,6 +239,18 @@ class ProfileActivity : AppCompatActivity() {
                 showSnackbar(it.throwable.handling(activity), activity) { tryAgain() }
 
             }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.edit->{
+                binding.tilFirstname.isEnabled=true
+                binding.tilLastname.isEnabled=true
+                binding.tilPhone.isEnabled=true
+                true
+            }
+            else -> {super.onOptionsItemSelected(item)}
         }
     }
 }
