@@ -1,8 +1,7 @@
 package com.example.airobserver.di
 
-import android.content.SharedPreferences
-import com.example.airobserver.data.APIServicesNews
 import com.example.airobserver.data.APIServices
+import com.example.airobserver.data.APIServicesNews
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

@@ -23,6 +23,8 @@ import com.example.airobserver.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -44,8 +46,28 @@ class ProfileActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onStart() {
         super.onStart()
-        pref.getString("EMAIL","")?.let { viewModel.getProfile(it) }
+        pref.getString("EMAIL","")?.let { viewModel.getProfile(removeFirstAndLastChar(pref.getString("EMAIL",""))) }
         getProfileResponse()
+        binding.btnEdit.setOnClickListener {
+            if(checkValidation()){
+                viewModel.updateProfile(
+                    binding.edtFirstname.text.toString(),
+                    binding.edtLastname.text.toString(),
+                    binding.edtEmail.text.toString(),
+                    binding.edtPhone.text.toString(),
+                    binding.edtDate.text.toString(),
+                    binding.autoCompleteGender.text.toString()
+                )
+                getUpdateProfileResponse()
+                getProfileResponse()
+            }
+        }
+    }
+
+    private fun removeFirstAndLastChar(str: String?): String {
+        return if (str?.length!! <= 2) {"" } else {
+            str.substring(1, str.length - 1)
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -98,6 +120,95 @@ class ProfileActivity : AppCompatActivity() {
                 }
 
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun getUpdateProfileResponse() {
+        lifecycleScope.launch {
+            viewModel.updateProfileResponse.flowWithLifecycle(
+                lifecycle,
+                Lifecycle.State.STARTED
+            )
+                .collectLatest {
+                    when(it) {
+                        is ApiResponseStates.Success -> {
+                            showSnackbar("User information updated successfully and email was sent.",this@ProfileActivity)
+                        }
+                        else -> {}
+                    }
+                    dataResponseHandling(this@ProfileActivity,
+                        it,
+                        binding.progressBar.progressBar,
+                        {
+                        },
+                        { it1 ->
+                          showSnackbar("Lol!",this@ProfileActivity)
+                        })
+                }
+
+        }
+    }
+
+    private fun checkValidation(): Boolean {
+        binding.tilFirstname.error = null
+        binding.tilLastname.error = null
+        binding.tilEmail.error = null
+        binding.tilPhone.error = null
+        binding.tilDate.error = null
+        binding.tilGender.error = null
+        val firstName = binding.edtFirstname.text.toString()
+        val lastName = binding.edtLastname.text.toString()
+        val email = binding.edtEmail.text.toString()
+        val phone = binding.edtPhone.text.toString()
+        val date = binding.edtDate.text.toString()
+        val gender = binding.autoCompleteGender.text.toString()
+
+        if (firstName.length < 3) {
+            binding.tilFirstname.error = "Invalid first name"
+            return false
+        } else if (lastName.length < 3) {
+            binding.tilLastname.error = "Invalid last name"
+            return false
+        }
+        else if (!isValidEmail(email)) {
+            binding.tilEmail.error = "Enter a valid email"
+            return false
+        }
+        else if (!isValidPhoneNumber(phone)) {
+            binding.tilPhone.error = "Phone not correct"
+            return false
+        }
+        else if (!isValidDate(date)) {
+            binding.tilDate.error = "Not a valid date: 2000-05-01"
+            return false
+        }
+        return true
+    }
+
+    private fun isValidPhoneNumber(phoneNumber: String): Boolean {
+        val pattern = Regex("^(01)[0-9]{9}$")
+        return pattern.matches(phoneNumber)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun isValidDate(date: String): Boolean {
+        val regex = "^\\d{4}-\\d{2}-\\d{2}$"
+        if (!date.matches(regex.toRegex())) {
+            return false
+        }
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        sdf.isLenient = false
+        try {
+            sdf.parse(date)
+        } catch (e: ParseException) {
+            return false
+        }
+        return true
+    }
+
+    private fun isValidEmail(email: String): Boolean {
+        val regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\$"
+        return email.matches(regex.toRegex())
     }
 
     @RequiresApi(Build.VERSION_CODES.M)

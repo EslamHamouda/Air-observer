@@ -64,12 +64,11 @@ class AuthRepository @Inject constructor(
                               lname:String,
                               email:String,
                               phone:String,
-                              password:String,
                               gender:String,
                               birthdate:String) =
         withContext(Dispatchers.IO) {
             startApiCall {
-                services.updateProfile(fname,lname,email,phone,password,gender,birthdate)
+                services.updateProfile(fname,lname,email,phone,gender,birthdate)
             }
         }
 }

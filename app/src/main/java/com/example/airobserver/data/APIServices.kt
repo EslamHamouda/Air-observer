@@ -44,9 +44,7 @@ interface APIServices {
                               @Field("LastName") lname:String,
                               @Field("Email") email:String,
                               @Field("Phone") phone:String,
-                              @Field("Password") password:String,
                               @Field("Gender") gender:String,
                               @Field("Birthday") birthday:String): BaseResponse<String>
-
 
 }

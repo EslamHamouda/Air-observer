@@ -119,11 +119,10 @@ class AuthViewModel @Inject constructor(
                  lname:String,
                  email:String,
                  phone:String,
-                 password:String,
                  gender:String,
                  birthdate:String) {
         viewModelScope.launch {
-            repository.updateProfile(fname, lname, email, phone, password, gender, birthdate).collectLatest {
+            repository.updateProfile(fname, lname, email, phone, gender, birthdate).collectLatest {
                 _updateProfileResponse.value =
                     it as ApiResponseStates<BaseResponse<String>>
             }
