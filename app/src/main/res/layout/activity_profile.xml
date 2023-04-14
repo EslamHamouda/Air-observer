@@ -191,6 +191,7 @@ tools:context=".ui.home.profile_fragment.ProfileActivity">
         android:layout_marginHorizontal="@dimen/dimen_64dp"
         android:layout_marginTop="8dp"
         android:text="Edit"
+        android:visibility="invisible"
         android:textAppearance="@style/text_style_white_15sp"
         app:layout_constraintEnd_toEndOf="@+id/card_view"
         app:layout_constraintStart_toStartOf="@+id/card_view"

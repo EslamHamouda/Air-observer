@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.activity.viewModels
@@ -24,6 +25,8 @@ import com.example.airobserver.di.SharedPref
 import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.ui.viewmodel.AuthViewModel
 import com.example.airobserver.utils.*
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -51,31 +54,22 @@ class ProfileActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onStart() {
         super.onStart()
-        pref.getString("EMAIL","")?.let { viewModel.getProfile(removeFirstAndLastChar(pref.getString("EMAIL",""))) }
+
+        getProfile()
         getProfileResponse()
 
         binding.btnEdit.setOnClickListener {
-
-            if(binding.btnEdit.text.toString()=="Edit"){}
-            else {
                 if (checkValidation()) {
                     viewModel.updateProfile(
                         binding.edtFirstname.text.toString(),
                         binding.edtLastname.text.toString(),
                         binding.edtEmail.text.toString(),
                         binding.edtPhone.text.toString(),
+                        binding.autoCompleteGender.text.toString(),
                         binding.edtDate.text.toString(),
-                        binding.autoCompleteGender.text.toString()
                     )
                     getUpdateProfileResponse()
-                    getProfileResponse()
                 }
-                disableEditText(binding.edtFirstname)
-                disableEditText(binding.edtLastname)
-                disableEditText(binding.edtPhone)
-                disableEditText(binding.edtDate)
-                binding.btnEdit.setText("Edit").toString()
-            }
         }
     }
 
@@ -86,26 +80,21 @@ class ProfileActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.edit ->{
-                    enableEditText(binding.edtFirstname)
-                    enableEditText(binding.edtLastname)
-                    enableEditText(binding.edtDate)
-                    enableEditText(binding.edtPhone)
+                    binding.btnEdit.visibility = View.VISIBLE
+                    enableEditText(binding.tilFirstname)
+                    enableEditText(binding.tilLastname)
+                    enableEditText(binding.tilPhone)
                     binding.btnEdit.setText("Save").toString()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
-    private fun enableEditText(editText: EditText) {
-        editText.isFocusable = true
+    private fun enableEditText(editText: TextInputLayout) {
         editText.isEnabled = true
     }
-    private fun disableEditText(editText: EditText) {
-        editText.isFocusable = false
+    private fun disableEditText(editText: TextInputLayout) {
         editText.isEnabled = false
-        editText.isCursorVisible = false
-        editText.keyListener = null
-        editText.setBackgroundColor(Color.TRANSPARENT)
     }
     private fun removeFirstAndLastChar(str: String?): String {
         return if (str?.length!! <= 2) {"" } else {
@@ -176,6 +165,11 @@ class ProfileActivity : AppCompatActivity() {
                     when(it) {
                         is ApiResponseStates.Success -> {
                             showSnackbar("User information updated successfully and email was sent.",this@ProfileActivity)
+                            binding.btnEdit.visibility = View.INVISIBLE
+                            disableEditText(binding.tilFirstname)
+                            disableEditText(binding.tilLastname)
+                            disableEditText(binding.tilPhone)
+                            getProfile()
                         }
                         else -> {}
                     }
@@ -185,7 +179,7 @@ class ProfileActivity : AppCompatActivity() {
                         {
                         },
                         { it1 ->
-                          showSnackbar("Lol!",this@ProfileActivity)
+
                         })
                 }
 
@@ -204,7 +198,6 @@ class ProfileActivity : AppCompatActivity() {
         val email = binding.edtEmail.text.toString()
         val phone = binding.edtPhone.text.toString()
         val date = binding.edtDate.text.toString()
-        val gender = binding.autoCompleteGender.text.toString()
 
         if (firstName.length < 3) {
             binding.tilFirstname.error = "Invalid first name"
@@ -252,6 +245,10 @@ class ProfileActivity : AppCompatActivity() {
     private fun isValidEmail(email: String): Boolean {
         val regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\$"
         return email.matches(regex.toRegex())
+    }
+
+    private fun getProfile(){
+        pref.getString("EMAIL","")?.let { viewModel.getProfile(removeFirstAndLastChar(pref.getString("EMAIL",""))) }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
