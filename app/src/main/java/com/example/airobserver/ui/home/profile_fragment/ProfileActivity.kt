@@ -2,19 +2,23 @@ package com.example.airobserver.ui.home.profile_fragment
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.example.airobserver.databinding.ActivityHomeBinding
+import com.example.airobserver.R
 import com.example.airobserver.databinding.ActivityProfileBinding
 import com.example.airobserver.di.SharedPref
 import com.example.airobserver.domain.model.BaseResponse
@@ -26,6 +30,7 @@ import kotlinx.coroutines.launch
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class ProfileActivity : AppCompatActivity() {
@@ -48,22 +53,60 @@ class ProfileActivity : AppCompatActivity() {
         super.onStart()
         pref.getString("EMAIL","")?.let { viewModel.getProfile(removeFirstAndLastChar(pref.getString("EMAIL",""))) }
         getProfileResponse()
+
         binding.btnEdit.setOnClickListener {
-            if(checkValidation()){
-                viewModel.updateProfile(
-                    binding.edtFirstname.text.toString(),
-                    binding.edtLastname.text.toString(),
-                    binding.edtEmail.text.toString(),
-                    binding.edtPhone.text.toString(),
-                    binding.edtDate.text.toString(),
-                    binding.autoCompleteGender.text.toString()
-                )
-                getUpdateProfileResponse()
-                getProfileResponse()
+
+            if(binding.btnEdit.text.toString()=="Edit"){}
+            else {
+                if (checkValidation()) {
+                    viewModel.updateProfile(
+                        binding.edtFirstname.text.toString(),
+                        binding.edtLastname.text.toString(),
+                        binding.edtEmail.text.toString(),
+                        binding.edtPhone.text.toString(),
+                        binding.edtDate.text.toString(),
+                        binding.autoCompleteGender.text.toString()
+                    )
+                    getUpdateProfileResponse()
+                    getProfileResponse()
+                }
+                disableEditText(binding.edtFirstname)
+                disableEditText(binding.edtLastname)
+                disableEditText(binding.edtPhone)
+                disableEditText(binding.edtDate)
+                binding.btnEdit.setText("Edit").toString()
             }
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_edit, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.edit ->{
+                    enableEditText(binding.edtFirstname)
+                    enableEditText(binding.edtLastname)
+                    enableEditText(binding.edtDate)
+                    enableEditText(binding.edtPhone)
+                    binding.btnEdit.setText("Save").toString()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+    private fun enableEditText(editText: EditText) {
+        editText.isFocusable = true
+        editText.isEnabled = true
+    }
+    private fun disableEditText(editText: EditText) {
+        editText.isFocusable = false
+        editText.isEnabled = false
+        editText.isCursorVisible = false
+        editText.keyListener = null
+        editText.setBackgroundColor(Color.TRANSPARENT)
+    }
     private fun removeFirstAndLastChar(str: String?): String {
         return if (str?.length!! <= 2) {"" } else {
             str.substring(1, str.length - 1)

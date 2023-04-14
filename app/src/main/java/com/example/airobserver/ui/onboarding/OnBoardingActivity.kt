@@ -99,7 +99,7 @@ class OnBoardingActivity : AppCompatActivity() {
     private fun initViewPagerResources() {
         images = arrayListOf(
             R.drawable.undraw_environment,
-            R.drawable.undraw_flying_drone,
+            R.drawable.undraw_city_life_gnpr,
             R.drawable.undraw_qa_engineers
         )
         headings = arrayListOf(
