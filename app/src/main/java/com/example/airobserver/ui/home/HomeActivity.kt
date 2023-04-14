@@ -2,6 +2,7 @@ package com.example.airobserver.ui.home
 
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -15,15 +16,22 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.airobserver.R
 import com.example.airobserver.databinding.ActivityHomeBinding
+import com.example.airobserver.di.SharedPref
+import com.example.airobserver.ui.auth.AuthActivity
+import com.example.airobserver.ui.auth.LoginFragment
 import com.example.airobserver.ui.home.home_fragment.HomeFragmentDirections
 import com.example.airobserver.ui.home.profile_fragment.ProfileActivity
+import com.example.airobserver.utils.putData
 import com.example.airobserver.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     lateinit var binding:ActivityHomeBinding
+    @Inject
+    lateinit var pref: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityHomeBinding.inflate(layoutInflater)
@@ -57,6 +65,12 @@ class HomeActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.profile ->{
                 startActivity(Intent(this, ProfileActivity::class.java))
+                true
+            }
+            R.id.logout->{
+                //pref.edit().clear().apply()
+                pref.putData(SharedPref.IS_LOGIN,false)
+                startActivity(Intent(this, AuthActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 true
             }
             else -> super.onOptionsItemSelected(item)
