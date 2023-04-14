@@ -70,7 +70,8 @@ class HomeActivity : AppCompatActivity() {
             R.id.logout->{
                 //pref.edit().clear().apply()
                 pref.putData(SharedPref.IS_LOGIN,false)
-                startActivity(Intent(this, AuthActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                startActivity(Intent(this, AuthActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+                this.finish()
                 true
             }
             else -> super.onOptionsItemSelected(item)
