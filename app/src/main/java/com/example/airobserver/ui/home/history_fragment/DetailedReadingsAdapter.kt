@@ -1,21 +1,17 @@
 package com.example.airobserver.ui.home.history_fragment
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.airobserver.databinding.ListItemDetailedReadingsBinding
-import com.example.airobserver.databinding.ListItemGasBinding
-import com.example.airobserver.domain.model.gasmodel
-import com.example.airobserver.domain.model.response.AqiHistory
+import com.example.airobserver.domain.model.response.AqiHistoryResponse
 
 class DetailedReadingsAdapter(
-   private val list: List<AqiHistory>
+   private val list: List<AqiHistoryResponse>
 ) : RecyclerView.Adapter<DetailedReadingsAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ListItemDetailedReadingsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: AqiHistory) {
+        fun bind(item: AqiHistoryResponse) {
             binding.tvPm25.text = item.PM10
             binding.tvPm10.text = item.PM10
             binding.tvCo.text = item.CO

@@ -2,7 +2,7 @@ package com.example.airobserver.domain.model.response
 
 import com.google.gson.annotations.SerializedName
 
-data class AqiHistory(
+data class AqiHistoryResponse(
     @SerializedName("pollutant_date" ) var pollutantDate : String? = null,
     @SerializedName("PM10"           ) var PM10          : String? = null,
     @SerializedName("SO2"            ) var SO2           : String? = null,

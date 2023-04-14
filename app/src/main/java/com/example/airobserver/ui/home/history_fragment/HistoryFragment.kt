@@ -16,11 +16,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentHistoryBinding
 import com.example.airobserver.di.SharedPref
 import com.example.airobserver.ui.BaseFragment
 import com.example.airobserver.ui.auth.LoginFragmentDirections
+import com.example.airobserver.ui.onboarding.ViewPagerAdapter
 import com.example.airobserver.ui.viewmodel.AuthViewModel
 import com.example.airobserver.ui.viewmodel.HomeViewModel
 import com.example.airobserver.utils.ApiResponseStates
@@ -49,14 +51,44 @@ class HistoryFragment : BaseFragment() {
         binding=FragmentHistoryBinding.inflate(inflater)
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
         viewModel.aqiHistory()
+        viewModel.aqiGraphHistory()
         return binding.root
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupLineChartData()
+        //setupLineChartData()
         getAqiHistory()
+
+        getAqiGraphHistory()
+
+        binding.ivNext.setOnClickListener {
+            if (binding.viewPager2.currentItem >= 0) binding.viewPager2.setCurrentItem(
+                binding.viewPager2.currentItem + 1,
+                true
+            )
+        }
+        binding.ivBack.setOnClickListener {
+            if (binding.viewPager2.currentItem > 0) {
+                binding.viewPager2.setCurrentItem(binding.viewPager2.currentItem - 1, true)
+            }
+        }
+        binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                if (position == 0) {
+                    binding.ivBack.visibility = View.INVISIBLE
+                } else {
+                    binding.ivBack.visibility = View.VISIBLE
+                }
+                if (binding.viewPager2.adapter?.itemCount?.minus(1)==position) {
+                    binding.ivNext.visibility = View.INVISIBLE
+                } else {
+                    binding.ivNext.visibility = View.VISIBLE
+                }
+            }
+        })
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -81,7 +113,29 @@ class HistoryFragment : BaseFragment() {
         }
     }
 
-    private fun setupLineChartData() {
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun getAqiGraphHistory() {
+        lifecycleScope.launch {
+            viewModel.aqiGraphHistoryResponse.flowWithLifecycle(
+                lifecycle,
+                Lifecycle.State.STARTED
+            )
+                .collectLatest {
+                    dataResponseHandling(this@HistoryFragment.requireActivity(),
+                        it,
+                        binding.progressBar.progressBar,
+                        {
+                            viewModel.aqiGraphHistory()
+                        },
+                        { it1 ->
+                            binding.viewPager2.adapter = HistoryViewPagerAdapter(it1)
+                        })
+                }
+
+        }
+    }
+
+ /*   private fun setupLineChartData() {
         val points = ArrayList<Entry>()
         points.add(Entry(1f,  100f, "0"))
         points.add(Entry(2f,  50f, "1"))
@@ -124,8 +178,8 @@ class HistoryFragment : BaseFragment() {
         binding.lineChart.description.text = "Today Air Quality Index"
         binding.lineChart.legend.isEnabled = false
         binding.lineChart.setPinchZoom(true)
-        /* binding.lineChart.xAxis.enableGridDashedLine(5f, 5f, 0f)
-           binding.lineChart.axisLeft.enableGridDashedLine(5f, 5f, 0f)*/
+        *//* binding.lineChart.xAxis.enableGridDashedLine(5f, 5f, 0f)
+           binding.lineChart.axisLeft.enableGridDashedLine(5f, 5f, 0f)*//*
         binding.lineChart.xAxis.mAxisMinimum = 1f
         binding.lineChart.xAxis.mAxisMaximum = 31f
         binding.lineChart.axisLeft.axisMinimum = 0f
@@ -135,6 +189,6 @@ class HistoryFragment : BaseFragment() {
         //binding.lineChart.setDrawGridBackground(true)
         binding.lineChart.xAxis.labelCount = 10
         binding.lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
-    }
+    }*/
 
 }

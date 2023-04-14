@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
+import java.time.Month
 import java.time.format.DateTimeFormatter
 import java.util.*
 
@@ -32,4 +33,9 @@ fun convertTo12HourFormat(hour: Int): String {
     }
     val suffix = if (hour < 12) "AM" else "PM"
     return "$convertedHour$suffix"
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun getMonthName(monthNumber: Int): String {
+    return Month.of(monthNumber).name.lowercase().replaceFirstChar { it.uppercase() }
 }

@@ -1,10 +1,7 @@
 package com.example.airobserver.data
 
 import com.example.airobserver.domain.model.BaseResponse
-import com.example.airobserver.domain.model.response.AqiHistory
-import com.example.airobserver.domain.model.response.GetProfileResponse
-import com.example.airobserver.domain.model.response.LoginResponse
-import com.example.airobserver.domain.model.response.RegisterResponse
+import com.example.airobserver.domain.model.response.*
 import retrofit2.http.*
 
 interface APIServices {
@@ -49,6 +46,9 @@ interface APIServices {
                               @Field("Birthday") birthday:String): BaseResponse<String>
 
     @GET("apiDummyData.php")
-    suspend fun aqiHistory(): BaseResponse<ArrayList<AqiHistory>>
+    suspend fun aqiHistory(): BaseResponse<ArrayList<AqiHistoryResponse>>
+
+    @GET("aqiGraphHistory.php")
+    suspend fun aqiGraphHistory(): BaseResponse<ArrayList<AqiGraphHistoryResponse>>
 
 }
