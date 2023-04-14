@@ -3,6 +3,6 @@
 3    package="com.ekndev.gaugelibrary" >
 4
 5    <uses-sdk android:minSdkVersion="21" />
-5-->/home/eslam/AndroidStudioProjects/Air-observer/gaugelibrary/src/main/AndroidManifest.xml
+5-->C:\Users\DELL\AndroidStudioProjects\Air-observer2\gaugelibrary\src\main\AndroidManifest.xml
 6
 7</manifest>
