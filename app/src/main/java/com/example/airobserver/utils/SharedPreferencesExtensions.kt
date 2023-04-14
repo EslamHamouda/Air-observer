@@ -1,6 +1,7 @@
 package com.example.airobserver.utils
 
 import android.content.SharedPreferences
+import com.example.airobserver.di.SharedPref
 import com.google.gson.Gson
 
 
@@ -36,6 +37,7 @@ fun SharedPreferences.removeData(key: String) {
     edit()?.remove(key)?.apply()
 }
 
-/*fun SharedPreferences.removeAuthentication() = run {
-    removeData(SharedPref.TOKEN_KEY)
-}*/
+fun SharedPreferences.removeAuthentication() = run {
+    removeData(SharedPref.IS_LOGIN)
+    removeData(SharedPref.EMAIL)
+}

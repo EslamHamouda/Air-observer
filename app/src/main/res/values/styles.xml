@@ -232,4 +232,19 @@
         <item name="android:topRightRadius">@dimen/dimen_10dp</item>
         <item name="android:topLeftRadius">@dimen/dimen_10dp</item>
     </style>
+
+    <!--AlertDialog-->
+    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="dialogCornerRadius">@dimen/dimen_10dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+    </style>
+    <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

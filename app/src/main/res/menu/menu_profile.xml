@@ -4,4 +4,8 @@
         android:id="@+id/edit"
         android:title="Edit" />
 
+    <item
+        android:id="@+id/logout"
+        android:title="Logout" />
+
 </menu>

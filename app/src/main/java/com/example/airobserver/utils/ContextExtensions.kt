@@ -2,9 +2,13 @@ package com.example.airobserver.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
+import android.os.Build
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.example.airobserver.utils.showMessage
 
 
@@ -25,4 +29,10 @@ fun Context.showToast(msg: String) {
 
 fun Context.showToast(msgId: Int) {
     Toast(this).showMessage(this, msgId)
+}
+
+@RequiresApi(Build.VERSION_CODES.M)
+fun Context.logout(pref: SharedPreferences, activity: Activity) {
+    showSnackbar("Logout", activity)
+    pref.removeAuthentication()
 }

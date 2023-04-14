@@ -4,17 +4,17 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.EditText
+import android.view.WindowManager
 import android.widget.ProgressBar
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
@@ -23,9 +23,10 @@ import com.example.airobserver.R
 import com.example.airobserver.databinding.ActivityProfileBinding
 import com.example.airobserver.di.SharedPref
 import com.example.airobserver.domain.model.BaseResponse
+import com.example.airobserver.ui.auth.AuthActivity
+import com.example.airobserver.ui.home.HomeActivity
 import com.example.airobserver.ui.viewmodel.AuthViewModel
 import com.example.airobserver.utils.*
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -74,9 +75,10 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_edit, menu)
+        menuInflater.inflate(R.menu.menu_profile, menu)
         return true
     }
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.edit ->{
@@ -85,6 +87,10 @@ class ProfileActivity : AppCompatActivity() {
                     enableEditText(binding.tilLastname)
                     enableEditText(binding.tilPhone)
                     binding.btnEdit.setText("Save").toString()
+                true
+            }
+            R.id.logout -> {
+               showLogoutDialog()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -249,6 +255,24 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun getProfile(){
         pref.getString("EMAIL","")?.let { viewModel.getProfile(removeFirstAndLastChar(pref.getString("EMAIL",""))) }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun showLogoutDialog() {
+        val alert = AlertDialog.Builder(binding.root.context, R.style.AlertDialog)
+            .setTitle(getString(R.string.logout))
+            .setPositiveButton("Yes") { _, _ ->
+                logout(pref,this)
+                startActivity(Intent(this, AuthActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+
+            }
+            .setNegativeButton("No") { _, _ -> }
+            .create()
+        alert.show()
+        alert.window?.setLayout(
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
