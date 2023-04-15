@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.domain.model.response.AqiGraphHistoryResponse
+import com.example.airobserver.domain.model.response.AqiGraphLastHoursResponse
 import com.example.airobserver.domain.model.response.AqiHistoryResponse
 import com.example.airobserver.domain.model.response.AqiOfDayResponse
 import com.example.airobserver.domain.repo.HomeRepository
@@ -58,6 +59,20 @@ class HomeViewModel @Inject constructor(
             repository.aqiOfDay().collectLatest {
                 _aqiOfDayResponse.value =
                     it as ApiResponseStates<BaseResponse<AqiOfDayResponse>>
+            }
+        }
+    }
+
+    private val _aqiGraphLastHoursResponse: MutableStateFlow<ApiResponseStates<BaseResponse<ArrayList<AqiGraphLastHoursResponse>>>> =
+        MutableStateFlow(ApiResponseStates.Success(null))
+    val aqiGraphLastHoursResponse: StateFlow<ApiResponseStates<BaseResponse<ArrayList<AqiGraphLastHoursResponse>>>>
+        get() = _aqiGraphLastHoursResponse
+
+    fun aqiGraphLastHours() {
+        viewModelScope.launch {
+            repository.aqiGraphLastHours().collectLatest {
+                _aqiGraphLastHoursResponse.value =
+                    it as ApiResponseStates<BaseResponse<ArrayList<AqiGraphLastHoursResponse>>>
             }
         }
     }

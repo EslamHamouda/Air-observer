@@ -54,4 +54,7 @@ interface APIServices {
     @GET("aqiOfDay.php")
     suspend fun aqiOfDay(): BaseResponse<AqiOfDayResponse>
 
+    @GET("aqiGraphLastHours.php")
+    suspend fun aqiGraphLastHours(): BaseResponse<ArrayList<AqiGraphLastHoursResponse>>
+
 }

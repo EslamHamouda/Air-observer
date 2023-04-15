@@ -107,7 +107,7 @@
         style="@style/text_style_black_15sp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Today measurement:"
+        android:text="Last 24h measurements:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailed_aqi" />
 

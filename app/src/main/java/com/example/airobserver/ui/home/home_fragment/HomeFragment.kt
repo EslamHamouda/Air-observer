@@ -19,6 +19,7 @@ import androidx.lifecycle.lifecycleScope
 import com.ekndev.gaugelibrary.Range
 import com.example.airobserver.databinding.FragmentHomeBinding
 import com.example.airobserver.domain.model.BaseResponse
+import com.example.airobserver.domain.model.response.AqiGraphLastHoursResponse
 import com.example.airobserver.ui.home.history_fragment.HistoryViewPagerAdapter
 import com.example.airobserver.ui.viewmodel.HomeViewModel
 import com.example.airobserver.utils.*
@@ -45,6 +46,7 @@ class HomeFragment : Fragment() {
         binding=FragmentHomeBinding.inflate(inflater)
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
         viewModel.aqiOfDay()
+        viewModel.aqiGraphLastHours()
         return binding.root
     }
 
@@ -52,7 +54,7 @@ class HomeFragment : Fragment() {
     @SuppressLint("SetJavaScriptEnabled", "ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupLineChartData()
+        //setupLineChartData()
         /*binding.aqi.settings.javaScriptEnabled = true;
         binding.aqi.loadUrl("file:///android_asset/index.html")
         binding.aqi.setOnTouchListener { v, event ->
@@ -66,6 +68,7 @@ class HomeFragment : Fragment() {
         }*/
 
         getAqiOfDay()
+        getAqiGraphLastHours()
 
 
         /*val list = arrayListOf<gasmodel>()
@@ -102,6 +105,78 @@ class HomeFragment : Fragment() {
                             binding.detailedAqi.tvNo2.text = it1.NO2
                             binding.detailedAqi.tvSo2.text = it1.SO2
                             binding.detailedAqi.tvO3.text = it1.O3
+                        })
+                }
+
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun getAqiGraphLastHours() {
+        lifecycleScope.launch {
+            viewModel.aqiGraphLastHoursResponse.flowWithLifecycle(
+                lifecycle,
+                Lifecycle.State.STARTED
+            )
+                .collectLatest {
+                    dataResponseHandling(this@HomeFragment.requireActivity(),
+                        it,
+                        binding.progressBar.progressBar,
+                        {
+                            viewModel.aqiGraphLastHours()
+                        },
+                        { it1 ->
+                          it1.reverse()
+                            val points = ArrayList<Entry>()
+                            points.add(Entry(0f,  it1[0].MAX!!.toFloat()))
+                            points.add(Entry(4f,  it1[1].MAX!!.toFloat()))
+                            points.add(Entry(8f,  it1[2].MAX!!.toFloat()))
+                            points.add(Entry(12f,  it1[3].MAX!!.toFloat()))
+                            points.add(Entry(16f,  it1[4].MAX!!.toFloat()))
+                            points.add(Entry(20f, it1[5].MAX!!.toFloat()))
+                            val dataSet = LineDataSet(points, "DataSet")
+
+
+                            // dataSet.fillAlpha = 110
+                            // dataSet.setFillColor(Color.RED)
+                            // set the line to be drawn like this "- - - - - -"
+                            // dataSet.enableDashedLine(5f, 5f, 0f)
+                            // dataSet.enableDashedHighlightLine(10f, 5f, 0f)
+
+                            dataSet.color = Color.parseColor("#018ABE")
+                            dataSet.setCircleColor(Color.parseColor("#00658D"))
+                            dataSet.lineWidth = 1f
+                            dataSet.circleRadius = 3f
+                            dataSet.setDrawCircleHole(false)
+                            dataSet.valueTextSize = 10f
+                            //dataSet.setDrawFilled(true)
+
+                            val dataSets = ArrayList<ILineDataSet>()
+                            dataSets.add(dataSet)
+                            val data = LineData(dataSets)
+
+                            // set data
+                            binding.lineChart.data = data
+                            binding.lineChart.description.isEnabled = true
+                            binding.lineChart.description.text = "Daily"
+                            binding.lineChart.legend.isEnabled = false
+                            binding.lineChart.setPinchZoom(true)
+                            /* binding.lineChart.xAxis.enableGridDashedLine(5f, 5f, 0f)
+                               binding.lineChart.axisLeft.enableGridDashedLine(5f, 5f, 0f)*/
+                            binding.lineChart.xAxis.mAxisMinimum = 0f
+                            binding.lineChart.xAxis.mAxisMaximum = 24f
+                            binding.lineChart.axisLeft.axisMinimum = 0f
+                            binding.lineChart.axisLeft.axisMaximum = 500f
+                            binding.lineChart.axisRight.isEnabled = false
+                            binding.lineChart.xAxis.valueFormatter = object : ValueFormatter() {
+                                override fun getFormattedValue(value: Float): String {
+                                    return convertTo12HourFormat(value.toInt())
+                                }
+                            }
+                            //binding.lineChart.setDrawGridBackground(true)
+                            binding.lineChart.xAxis.labelCount = 5
+                            binding.lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+
                         })
                 }
 
@@ -156,7 +231,6 @@ class HomeFragment : Fragment() {
         points.add(Entry(12f,  500f, "3"))
         points.add(Entry(16f,  180f, "4"))
         points.add(Entry(20f, 140f, "5"))
-        points.add(Entry(24f, 130f, "6"))
         val dataSet = LineDataSet(points, "DataSet")
 
 
@@ -197,7 +271,7 @@ class HomeFragment : Fragment() {
             }
         }
         //binding.lineChart.setDrawGridBackground(true)
-        binding.lineChart.xAxis.labelCount = 6
+        binding.lineChart.xAxis.labelCount = 5
         binding.lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
     }
 
