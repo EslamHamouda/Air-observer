@@ -1,16 +1,27 @@
 package com.example.airobserver.ui.home.home_fragment
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.ekndev.gaugelibrary.Range
 import com.example.airobserver.databinding.FragmentHomeBinding
-import com.example.airobserver.utils.convertTo12HourFormat
+import com.example.airobserver.domain.model.BaseResponse
+import com.example.airobserver.ui.home.history_fragment.HistoryViewPagerAdapter
+import com.example.airobserver.ui.viewmodel.HomeViewModel
+import com.example.airobserver.utils.*
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -18,12 +29,14 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-
+    private val viewModel: HomeViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,9 +44,11 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding=FragmentHomeBinding.inflate(inflater)
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
+        viewModel.aqiOfDay()
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("SetJavaScriptEnabled", "ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,27 +64,9 @@ class HomeFragment : Fragment() {
                 view.evaluateJavascript("setDial(500)", null);
             }
         }*/
-        val range = Range()
-        range.color = Color.parseColor("#FF0000")
-        range.from = 0.0
-        range.to = 50.0
 
-        val range2 = Range()
-        range2.color = Color.parseColor("#018ABE")
-        range2.from = 50.0
-        range2.to = 100.0
+        getAqiOfDay()
 
-
-
-        //add color ranges to gauge
-        binding.gauge.addRange(range)
-        binding.gauge.addRange(range2)
-
-
-        //set min max and current value
-        binding.gauge.minValue = 0.0
-        binding.gauge.maxValue = 150.0
-        binding.gauge.value = 40.0
 
         /*val list = arrayListOf<gasmodel>()
         list.add(gasmodel("PMS2.5","Particulate Matter",22,"#FF0000","Good"))
@@ -80,6 +77,75 @@ class HomeFragment : Fragment() {
         list.add(gasmodel("O3","Ozone",10,"#ff7e00","Good"))
         binding.rvDetailedReadings.adapter=DetailedReadingsAdapter(list)*/
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun getAqiOfDay() {
+        lifecycleScope.launch {
+            viewModel.aqiOfDayResponse.flowWithLifecycle(
+                lifecycle,
+                Lifecycle.State.STARTED
+            )
+                .collectLatest {
+                    dataResponseHandling(this@HomeFragment.requireActivity(),
+                        it,
+                        binding.progressBar.progressBar,
+                        {
+                            viewModel.aqiGraphHistory()
+                        },
+                        { it1 ->
+                            setAQI(it1.MAX!!.toInt())
+                            binding.tvAqiFeedback.text = it1.Category
+                            binding.detailedAqi.tvPm10.text = it1.PM10
+                            binding.detailedAqi.tvPm25.text = it1.PM25
+                            binding.detailedAqi.tvCo.text = it1.CO
+                            binding.detailedAqi.tvNo2.text = it1.NO2
+                            binding.detailedAqi.tvSo2.text = it1.SO2
+                            binding.detailedAqi.tvO3.text = it1.O3
+                        })
+                }
+
+        }
+    }
+
+    private fun setAQI(value: Int) {
+        val range1 = Range()
+        range1.color = Color.parseColor("#00FF00")
+        range1.from = 0.0
+        range1.to = 50.0
+        val range2 = Range()
+        range2.color = Color.parseColor("#00FF00")
+        range2.from = 51.0
+        range2.to = 100.0
+        val range3 = Range()
+        range3.color = Color.parseColor("#FF7E00")
+        range3.from = 101.0
+        range3.to = 150.0
+        val range4 = Range()
+        range4.color = Color.parseColor("#FF0000")
+        range4.from = 151.0
+        range4.to = 200.0
+        val range5 = Range()
+        range5.color = Color.parseColor("#8F3F97")
+        range5.from = 201.0
+        range5.to = 300.0
+        val range6 = Range()
+        range6.color = Color.parseColor("#7E0023")
+        range6.from = 301.0
+        range6.to = 500.0
+
+        //add color ranges to gauge
+        binding.gauge.addRange(range1)
+        binding.gauge.addRange(range2)
+        binding.gauge.addRange(range3)
+        binding.gauge.addRange(range4)
+        binding.gauge.addRange(range5)
+        binding.gauge.addRange(range6)
+
+        //set min max and current value
+        binding.gauge.minValue = 0.0
+        binding.gauge.maxValue = 500.0
+        binding.gauge.value = value.toDouble()
     }
 
     private fun setupLineChartData() {
@@ -135,4 +201,30 @@ class HomeFragment : Fragment() {
         binding.lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun <B : BaseResponse<T>, T> dataResponseHandling(
+        activity: Activity,
+        it: ApiResponseStates<B>,
+        progressBar: ProgressBar?,
+        tryAgain: () -> Unit,
+        successFunc: (T) -> Unit,
+        errorCode: Int? = 0, handleError: (() -> Unit)? = null,
+    ) {
+        when (it) {
+            is ApiResponseStates.Success -> {
+                progressBar?.let { it1 -> hideProgress(it1) }
+                it.value?.let {
+                    (it as BaseResponse<T>).handle(activity, successFunc)
+                }
+            }
+            is ApiResponseStates.Loading -> {
+                progressBar?.let { it1 -> showProgress(it1) }
+            }
+            is ApiResponseStates.NetworkError -> {
+                progressBar?.let { it1 -> hideProgress(it1) }
+                showSnackbar(it.throwable.handling(activity), activity) { tryAgain() }
+
+            }
+        }
+    }
 }

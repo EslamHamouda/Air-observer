@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.domain.model.response.AqiGraphHistoryResponse
 import com.example.airobserver.domain.model.response.AqiHistoryResponse
+import com.example.airobserver.domain.model.response.AqiOfDayResponse
 import com.example.airobserver.domain.repo.HomeRepository
 import com.example.airobserver.utils.ApiResponseStates
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -43,6 +44,20 @@ class HomeViewModel @Inject constructor(
             repository.aqiGraphHistory().collectLatest {
                 _aqiGraphHistoryResponse.value =
                     it as ApiResponseStates<BaseResponse<ArrayList<AqiGraphHistoryResponse>>>
+            }
+        }
+    }
+
+    private val _aqiOfDayResponse: MutableStateFlow<ApiResponseStates<BaseResponse<AqiOfDayResponse>>> =
+        MutableStateFlow(ApiResponseStates.Success(null))
+    val aqiOfDayResponse: StateFlow<ApiResponseStates<BaseResponse<AqiOfDayResponse>>>
+        get() = _aqiOfDayResponse
+
+    fun aqiOfDay() {
+        viewModelScope.launch {
+            repository.aqiOfDay().collectLatest {
+                _aqiOfDayResponse.value =
+                    it as ApiResponseStates<BaseResponse<AqiOfDayResponse>>
             }
         }
     }

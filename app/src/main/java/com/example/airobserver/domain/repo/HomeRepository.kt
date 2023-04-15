@@ -24,4 +24,11 @@ class HomeRepository @Inject constructor(
                 services.aqiGraphHistory()
             }
         }
+
+    suspend fun aqiOfDay() =
+        withContext(Dispatchers.IO) {
+            startApiCall {
+                services.aqiOfDay()
+            }
+        }
 }

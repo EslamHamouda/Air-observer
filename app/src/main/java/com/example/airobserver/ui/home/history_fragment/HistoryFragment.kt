@@ -58,9 +58,8 @@ class HistoryFragment : BaseFragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //setupLineChartData()
-        getAqiHistory()
 
+        getAqiHistory()
         getAqiGraphHistory()
 
         binding.ivNext.setOnClickListener {
