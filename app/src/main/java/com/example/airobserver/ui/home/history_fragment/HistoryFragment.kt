@@ -20,6 +20,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentHistoryBinding
 import com.example.airobserver.di.SharedPref
+import com.example.airobserver.domain.model.response.DaysDetails
 import com.example.airobserver.ui.BaseFragment
 import com.example.airobserver.ui.auth.LoginFragmentDirections
 import com.example.airobserver.ui.onboarding.ViewPagerAdapter
@@ -38,6 +39,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import retrofit2.http.Field
 
 @AndroidEntryPoint
 class HistoryFragment : BaseFragment() {
@@ -50,7 +52,6 @@ class HistoryFragment : BaseFragment() {
         // Inflate the layout for this fragment
         binding=FragmentHistoryBinding.inflate(inflater)
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
-        viewModel.aqiHistory()
         viewModel.aqiGraphHistory()
         return binding.root
     }
@@ -76,6 +77,7 @@ class HistoryFragment : BaseFragment() {
         binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
+                viewModel.aqiHistory(position+1)
                 if (position == 0) {
                     binding.ivBack.visibility = View.INVISIBLE
                 } else {
@@ -88,6 +90,7 @@ class HistoryFragment : BaseFragment() {
                 }
             }
         })
+        binding.viewPager2.offscreenPageLimit = 12
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -102,10 +105,9 @@ class HistoryFragment : BaseFragment() {
                         it,
                         binding.progressBar.progressBar,
                         {
-                            viewModel.aqiHistory()
                         },
                         { it1 ->
-                            binding.rvDetailedReadings.adapter = DetailedReadingsAdapter(it1)
+                            binding.rvDetailedReadings.adapter = DetailedReadingsAdapter(it1.daysDetails)
                         })
                 }
 

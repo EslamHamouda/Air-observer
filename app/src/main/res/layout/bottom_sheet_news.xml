@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dimen_8dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="@dimen/dimen_0dp">
+
+        <ImageView
+            android:id="@+id/iv_news"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_250dp"
+            android:contentDescription="@string/news"
+            android:scaleType="fitXY"
+            android:src="@drawable/undraw_city_life_gnpr" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tv_news"
+        style="@style/text_style_primary_16sp_bold"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/news"
+        app:layout_constraintEnd_toEndOf="@+id/card_view"
+        app:layout_constraintStart_toStartOf="@+id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/card_view" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_details"
+        style="@style/button_style_margin_horizontal_64dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:text="@string/view_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_news" />
+</androidx.constraintlayout.widget.ConstraintLayout>

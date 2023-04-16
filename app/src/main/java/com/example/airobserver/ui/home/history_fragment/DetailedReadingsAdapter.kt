@@ -4,14 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.airobserver.databinding.ListItemDetailedReadingsBinding
+import com.example.airobserver.domain.model.response.AqiHistoryDetailsResponse
 import com.example.airobserver.domain.model.response.AqiHistoryResponse
+import com.example.airobserver.domain.model.response.DaysDetails
 
 class DetailedReadingsAdapter(
-   private val list: List<AqiHistoryResponse>
+   private val list: List<AqiHistoryDetailsResponse>
 ) : RecyclerView.Adapter<DetailedReadingsAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ListItemDetailedReadingsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: AqiHistoryResponse) {
+        fun bind(item: AqiHistoryDetailsResponse) {
             binding.tvPm25.text = item.PM10
             binding.tvPm10.text = item.PM10
             binding.tvCo.text = item.CO

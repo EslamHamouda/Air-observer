@@ -22,6 +22,7 @@ import com.example.airobserver.domain.model.response.Articles
 import com.example.airobserver.domain.model.response.NewsResponse
 import com.example.airobserver.ui.viewmodel.NewsViewModel
 import com.example.airobserver.utils.*
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -70,7 +71,12 @@ class NewsFragment : Fragment() {
                                 //binding.emptyLayout.tvEmpty.visibility = View.VISIBLE
                             } else {
                                 //binding.emptyLayout.tvEmpty.visibility = View.GONE
-                                binding.rvNews.adapter = NewsAdapter(it1)
+                                binding.rvNews.adapter = NewsAdapter(it1,object:NewsAdapter.OnItemClickListener{
+                                    override fun onItemClick(item: Articles) {
+                                        val bottomSheet = BottomSheetNews.newInstance(item)
+                                        bottomSheet.show(requireActivity().supportFragmentManager, "BottomSheetDialog")
+                                    }
+                                })
                             }
                         })
                 }

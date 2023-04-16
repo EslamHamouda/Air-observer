@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.time.Month
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,16 +22,16 @@ class HomeViewModel @Inject constructor(
     private val repository: HomeRepository
 ) : ViewModel() {
 
-    private val _aqiHistoryResponse: MutableStateFlow<ApiResponseStates<BaseResponse<ArrayList<AqiHistoryResponse>>>> =
+    private val _aqiHistoryResponse: MutableStateFlow<ApiResponseStates<BaseResponse<AqiHistoryResponse>>> =
         MutableStateFlow(ApiResponseStates.Success(null))
-    val aqiHistoryResponse: StateFlow<ApiResponseStates<BaseResponse<ArrayList<AqiHistoryResponse>>>>
+    val aqiHistoryResponse: StateFlow<ApiResponseStates<BaseResponse<AqiHistoryResponse>>>
         get() = _aqiHistoryResponse
 
-    fun aqiHistory() {
+    fun aqiHistory(month: Int) {
         viewModelScope.launch {
-            repository.aqiHistory().collectLatest {
+            repository.aqiHistory(month).collectLatest {
                 _aqiHistoryResponse.value =
-                    it as ApiResponseStates<BaseResponse<ArrayList<AqiHistoryResponse>>>
+                    it as ApiResponseStates<BaseResponse<AqiHistoryResponse>>
             }
         }
     }

@@ -19,7 +19,9 @@ import com.example.airobserver.utils.convertTo12HourAndDateFormat
 import com.example.airobserver.utils.dateFormat
 
 class NewsAdapter(
-   private val list: List<Articles>
+   private val list: List<Articles>,
+   private val listener: OnItemClickListener
+
 ) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ListItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -35,7 +37,8 @@ class NewsAdapter(
             binding.tvSourceName.text=item.source?.name
             binding.tvTime.text= convertTo12HourAndDateFormat(item.publishedAt)
             binding.root.setOnClickListener {
-                it.findNavController().navigate(NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(item.url!!))
+                listener.onItemClick(item)
+                //it.findNavController().navigate(NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(item.url!!))
             }
         }
     }
@@ -55,4 +58,7 @@ class NewsAdapter(
         return list.size
     }
 
+    interface OnItemClickListener {
+        fun onItemClick(item: Articles)
+    }
 }

@@ -78,6 +78,7 @@
     <string name="not_authorized">Authorization has been denied for this request.</string>
     <string name="choose_your_profile_photo">Choose your profile photo</string>
     <string name="edit_your_profile">Edit</string>
+    <string name="view_details">View Details</string>
     <string-array name="spinner_items">
         <item>Cairo</item>
         <item>Giza</item>

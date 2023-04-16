@@ -3,6 +3,9 @@ package com.example.airobserver.domain.model.response
 import com.google.gson.annotations.SerializedName
 
 data class AqiHistoryResponse(
+    @SerializedName("daysDetails" ) var daysDetails : ArrayList<AqiHistoryDetailsResponse> = arrayListOf()
+)
+data class AqiHistoryDetailsResponse(
     @SerializedName("pollutant_date" ) var pollutantDate : String? = null,
     @SerializedName("PM10"           ) var PM10          : String? = null,
     @SerializedName("SO2"            ) var SO2           : String? = null,
@@ -13,3 +16,4 @@ data class AqiHistoryResponse(
     @SerializedName("Critical"       ) var Critical      : String? = null,
     @SerializedName("Category"       ) var Category      : String? = null
 )
+

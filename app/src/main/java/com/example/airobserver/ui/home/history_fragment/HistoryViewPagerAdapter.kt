@@ -11,6 +11,7 @@ import com.example.airobserver.databinding.ItemGraphHistoryBinding
 import com.example.airobserver.databinding.ItemOnboardingSliderBinding
 import com.example.airobserver.domain.model.response.AqiGraphHistoryResponse
 import com.example.airobserver.domain.model.response.AqiHistoryResponse
+import com.example.airobserver.domain.model.response.DaysDetails
 import com.example.airobserver.utils.getMonthName
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -23,11 +24,11 @@ class HistoryViewPagerAdapter(
     private val list:List<AqiGraphHistoryResponse>
 ) : RecyclerView.Adapter<HistoryViewPagerAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: ItemGraphHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemGraphHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(item:AqiGraphHistoryResponse) {
            binding.tvTitle.text= getMonthName(item.month!!.toInt())
-
+            //listener.onItemChanged(item.daysDetails)
             val points = ArrayList<Entry>()
             for (i in item.days) {
                 points.add(Entry(i.day!!.toFloat(), i.MAX!!.toFloat()))
@@ -83,5 +84,9 @@ class HistoryViewPagerAdapter(
 
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    interface OnItemChangedListener {
+        fun onItemChanged(days: ArrayList<DaysDetails>)
     }
 }

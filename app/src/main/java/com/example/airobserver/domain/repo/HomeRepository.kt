@@ -4,6 +4,7 @@ import com.example.airobserver.data.APIServices
 import com.example.airobserver.utils.startApiCall
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.time.Month
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -11,10 +12,10 @@ import javax.inject.Singleton
 class HomeRepository @Inject constructor(
     private val services: APIServices
 ) {
-    suspend fun aqiHistory() =
+    suspend fun aqiHistory(month: Int) =
         withContext(Dispatchers.IO) {
             startApiCall {
-                services.aqiHistory()
+                services.aqiHistory(month)
             }
         }
 

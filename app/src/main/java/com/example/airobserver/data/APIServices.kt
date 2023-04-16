@@ -46,7 +46,7 @@ interface APIServices {
                               @Field("Birthday") birthday:String): BaseResponse<String>
 
     @GET("apiDummyData.php")
-    suspend fun aqiHistory(): BaseResponse<ArrayList<AqiHistoryResponse>>
+    suspend fun aqiHistory(@Query("month") month:Int): BaseResponse<AqiHistoryResponse>
 
     @GET("aqiGraphHistory.php")
     suspend fun aqiGraphHistory(): BaseResponse<ArrayList<AqiGraphHistoryResponse>>
