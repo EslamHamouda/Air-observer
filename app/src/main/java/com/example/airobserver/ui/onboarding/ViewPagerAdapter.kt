@@ -14,7 +14,9 @@ class ViewPagerAdapter(
 
     class ViewHolder(private val binding: ItemOnboardingSliderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(imageItem:Int, headingItem:Int,descriptionItem:Int) {
-            binding.ivSlider.setImageResource(imageItem)
+            binding.ivSlider.setAnimation(imageItem) // set animation
+            binding.ivSlider.playAnimation()        // play it
+
             binding.tvTitle.setText(headingItem)
             binding.tvDescription.setText(descriptionItem)
         }

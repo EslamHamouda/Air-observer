@@ -98,9 +98,9 @@ class OnBoardingActivity : AppCompatActivity() {
 
     private fun initViewPagerResources() {
         images = arrayListOf(
-            R.drawable.undraw_environment,
-            R.drawable.undraw_city_life_gnpr,
-            R.drawable.undraw_qa_engineers
+            R.raw.environment_air_quality,
+            R.raw.city,
+            R.raw.statistics_2
         )
         headings = arrayListOf(
             R.string.head_title_AirQuality,
