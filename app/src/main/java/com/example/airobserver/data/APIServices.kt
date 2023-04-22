@@ -5,11 +5,11 @@ import com.example.airobserver.domain.model.response.*
 import retrofit2.http.*
 
 interface APIServices {
-    @POST("userinfo.php")
+    @POST("apiregisteracademy/userinfo.php")
     @FormUrlEncoded
     suspend fun login(@Field("Email") email:String,@Field("Password") password:String): BaseResponse<LoginResponse>
 
-    @POST("SignUp.php")
+    @POST("apiregisteracademy/SignUp.php")
     @FormUrlEncoded
     suspend fun register(@Field("FirstName") fname:String,
                          @Field("LastName") lname:String,
@@ -20,19 +20,19 @@ interface APIServices {
                          @Field("Gender") gender:String
     ): BaseResponse<String>
 
-    @POST("Forgetten.php")
+    @POST("apiregisteracademy/Forgetten.php")
     @FormUrlEncoded
     suspend fun getOTP(@Field("Email") email:String): BaseResponse<String>
 
-    @POST("OTP.php")
+    @POST("apiregisteracademy/OTP.php")
     @FormUrlEncoded
     suspend fun checkOTP(@Field("Email") email:String, @Field("VerifyCode") otp:Int): BaseResponse<String>
 
-    @POST("ChangePass.php")
+    @POST("apiregisteracademy/ChangePass.php")
     @FormUrlEncoded
     suspend fun newPassword(@Field("Email") email:String, @Field("Password") password:String): BaseResponse<GetProfileResponse>
 
-    @POST("datainfo.php")
+    @POST("apiregisteracademy/datainfo.php")
     @FormUrlEncoded
     suspend fun getProfile(@Field("Email") email:String): BaseResponse<GetProfileResponse>
 
@@ -45,16 +45,16 @@ interface APIServices {
                               @Field("Gender") gender:String,
                               @Field("Birthday") birthday:String): BaseResponse<String>
 
-    @GET("apiDummyData.php")
+    @GET("APIofSensors/apiDummyData.php")
     suspend fun aqiHistory(@Query("month") month:Int): BaseResponse<AqiHistoryResponse>
 
-    @GET("aqiGraphHistory.php")
+    @GET("APIofSensors/aqiGraphHistory.php")
     suspend fun aqiGraphHistory(): BaseResponse<ArrayList<AqiGraphHistoryResponse>>
 
-    @GET("aqiOfDay.php")
+    @GET("APIofSensors/aqiOfDay.php")
     suspend fun aqiOfDay(): BaseResponse<AqiOfDayResponse>
 
-    @GET("aqiGraphLastHours.php")
+    @GET("APIofSensors/aqiGraphLastHours.php")
     suspend fun aqiGraphLastHours(): BaseResponse<ArrayList<AqiGraphLastHoursResponse>>
 
 }
