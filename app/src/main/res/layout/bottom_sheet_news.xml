@@ -39,6 +39,17 @@
         app:layout_constraintStart_toStartOf="@+id/card_view"
         app:layout_constraintTop_toBottomOf="@+id/card_view" />
 
+    <TextView
+        android:id="@+id/tv_details"
+        style="@style/text_style_primary_16sp"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/news"
+        app:layout_constraintEnd_toEndOf="@+id/card_view"
+        app:layout_constraintStart_toStartOf="@+id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/tv_news" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_details"
         style="@style/button_style_margin_horizontal_64dp"
@@ -46,5 +57,5 @@
         android:text="@string/view_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_news" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_details" />
 </androidx.constraintlayout.widget.ConstraintLayout>

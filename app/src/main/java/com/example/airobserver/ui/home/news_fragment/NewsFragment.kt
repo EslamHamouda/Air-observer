@@ -1,6 +1,8 @@
 package com.example.airobserver.ui.home.news_fragment
 
 import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -75,6 +77,13 @@ class NewsFragment : Fragment() {
                                     override fun onItemClick(item: Articles) {
                                         val bottomSheet = BottomSheetNews.newInstance(item)
                                         bottomSheet.show(requireActivity().supportFragmentManager, "BottomSheetDialog")
+                                    }
+                                    override fun onItemClickShare(item: Articles) {
+                                        val intent = Intent(Intent.ACTION_SEND)
+                                        intent.type = "text/plain"
+                                        val message = "Check out this article: ${item.url}"
+                                        intent.putExtra(Intent.EXTRA_TEXT, message)
+                                        startActivity(Intent.createChooser(intent, "Share article with..."))
                                     }
                                 })
                             }

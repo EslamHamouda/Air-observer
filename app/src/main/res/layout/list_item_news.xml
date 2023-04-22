@@ -2,94 +2,76 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:strokeWidth="@dimen/dimen_0dp"
-    app:cardElevation="@dimen/dimen_1dp"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="@dimen/dimen_10dp">
+    android:layout_margin="@dimen/dimen_8dp"
+    app:cardCornerRadius="@dimen/dimen_10dp"
+    app:strokeColor="@android:color/transparent"
+    app:cardElevation="@dimen/dimen_1dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:strokeWidth="@dimen/dimen_0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/iv_news"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_250dp"
-                android:contentDescription="@string/news"
-                android:scaleType="fitXY"
-                tools:srcCompat="@tools:sample/avatars" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_photo"
-            android:layout_width="@dimen/dimen_15dp"
-            android:layout_height="@dimen/dimen_15dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="8dp"
-            android:src="@color/md_theme_light_primary"
-            app:layout_constraintStart_toStartOf="@+id/tv_news"
-            app:layout_constraintTop_toBottomOf="@+id/tv_news"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
-
-        <TextView
-            android:id="@+id/tv_source_name"
-            style="@style/text_style_14sp"
-            android:layout_width="@dimen/dimen_0dp"
-            android:gravity="center"
-            android:text="@string/news"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
-            app:layout_constraintStart_toEndOf="@+id/iv_photo"
-            app:layout_constraintTop_toTopOf="@+id/iv_photo" />
+        android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/iv_news_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:id="@+id/iv_news"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_220dp"
             android:contentDescription="@string/news"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_time"
-            app:layout_constraintStart_toEndOf="@+id/tv_source_name"
+            android:src="@drawable/pollution"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_news"
+            style="@style/text_style_black_18sp"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:padding="@dimen/dimen_0dp"
+            android:text="@string/news"
+            app:layout_constraintEnd_toStartOf="@+id/iv_share"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_news" />
+
+        <TextView
+            android:id="@+id/tv_details"
+            style="@style/text_style_14sp"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:padding="@dimen/dimen_0dp"
+            android:text="@string/news"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintEnd_toStartOf="@+id/iv_share"
+            app:layout_constraintStart_toStartOf="@+id/tv_news"
             app:layout_constraintTop_toBottomOf="@+id/tv_news" />
+
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_8dp"
+            android:src="@drawable/baseline_share_24"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_details"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_news" />
 
         <TextView
             android:id="@+id/tv_time"
             style="@style/text_style_14sp"
             android:layout_width="@dimen/dimen_0dp"
+            android:drawablePadding="@dimen/dimen_4dp"
             android:gravity="center"
-            android:text="@string/news"
             android:paddingVertical="@dimen/dimen_8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_news_time"
-            app:layout_constraintStart_toEndOf="@+id/iv_news_time"
-            app:layout_constraintTop_toTopOf="@+id/iv_news_time" />
-
-        <TextView
-            android:id="@+id/tv_news"
-            style="@style/text_style_primary_16sp_bold"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="1"
-            android:padding="@dimen/dimen_0dp"
             android:text="@string/news"
-            app:layout_constraintEnd_toEndOf="@+id/card_view"
-            app:layout_constraintStart_toStartOf="@+id/card_view"
-            app:layout_constraintTop_toBottomOf="@+id/card_view" />
+            app:drawableStartCompat="@drawable/ic_time"
+            app:layout_constraintEnd_toEndOf="@+id/iv_share"
+            app:layout_constraintTop_toBottomOf="@+id/tv_details" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>

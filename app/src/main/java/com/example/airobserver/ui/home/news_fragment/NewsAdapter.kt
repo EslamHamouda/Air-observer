@@ -34,11 +34,14 @@ class NewsAdapter(
                 .error(R.drawable.ic_news)
                 .into(binding.ivNews)
             binding.tvNews.text=item.title
-            binding.tvSourceName.text=item.source?.name
+            binding.tvDetails.text=item.description
             binding.tvTime.text= convertTo12HourAndDateFormat(item.publishedAt)
             binding.root.setOnClickListener {
                 listener.onItemClick(item)
                 //it.findNavController().navigate(NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(item.url!!))
+            }
+            binding.ivShare.setOnClickListener {
+                listener.onItemClickShare(item)
             }
         }
     }
@@ -60,5 +63,6 @@ class NewsAdapter(
 
     interface OnItemClickListener {
         fun onItemClick(item: Articles)
+        fun onItemClickShare(item: Articles)
     }
 }

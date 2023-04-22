@@ -35,6 +35,7 @@ class BottomSheetNews : BottomSheetDialogFragment(){
             .error(R.drawable.ic_news)
             .into(binding.ivNews)
         binding.tvNews.text=args?.title
+        binding.tvDetails.text=args?.description
         binding.btnDetails.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(args?.url)
