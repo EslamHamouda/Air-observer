@@ -20,7 +20,7 @@
         <ImageView
             android:id="@+id/iv_news"
             android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="120dp"
+            android:layout_height="150dp"
             android:contentDescription="@string/news"
             android:scaleType="fitXY"
             android:src="@drawable/pollution"
