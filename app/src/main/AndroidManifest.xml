@@ -18,9 +18,18 @@
         tools:replace="android:supportsRtl"
         tools:targetApi="31">
         <activity
-            android:name=".ui.home.profile_fragment.ProfileActivity"
-            android:parentActivityName=".ui.home.HomeActivity"
+            android:name=".PollutionsDetailsActivity"
             android:exported="false" />
+        <activity
+            android:name=".PollutionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pollutionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.profile_fragment.ProfileActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.home.HomeActivity" />
         <activity
             android:name=".ui.onboarding.OnBoardingActivity"
             android:exported="true">
