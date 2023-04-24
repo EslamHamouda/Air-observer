@@ -47,7 +47,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:src="@drawable/baseline_arrow_forward_ios_24"
+                android:src="@drawable/ic_arrow_forward"
                 app:layout_constraintBottom_toBottomOf="@+id/AQI_pollution_txt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/AQI_pollution_txt" />
@@ -94,7 +94,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:src="@drawable/baseline_arrow_forward_ios_24"
+                android:src="@drawable/ic_arrow_forward"
                 app:layout_constraintBottom_toBottomOf="@+id/PM_pollution_txt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/PM_pollution_txt" />
@@ -141,7 +141,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:src="@drawable/baseline_arrow_forward_ios_24"
+                android:src="@drawable/ic_arrow_forward"
                 app:layout_constraintBottom_toBottomOf="@+id/CO_pollution_txt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/CO_pollution_txt" />
@@ -188,7 +188,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:src="@drawable/baseline_arrow_forward_ios_24"
+                android:src="@drawable/ic_arrow_forward"
                 app:layout_constraintBottom_toBottomOf="@+id/NO2_pollution_txt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/NO2_pollution_txt" />
@@ -235,7 +235,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:src="@drawable/baseline_arrow_forward_ios_24"
+                android:src="@drawable/ic_arrow_forward"
                 app:layout_constraintBottom_toBottomOf="@+id/SO2_pollution_txt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/SO2_pollution_txt" />
@@ -282,7 +282,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:src="@drawable/baseline_arrow_forward_ios_24"
+                android:src="@drawable/ic_arrow_forward"
                 app:layout_constraintBottom_toBottomOf="@+id/O3_pollution_txt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/O3_pollution_txt" />

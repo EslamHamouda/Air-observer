@@ -75,6 +75,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="text_style_black_16sp" parent="text_style_black">
+        <item name="android:textSize">@dimen/dimen_16sp</item>
+    </style>
+
     <style name="text_style_black_18sp" parent="text_style_black">
         <item name="android:textSize">@dimen/dimen_18sp</item>
     </style>

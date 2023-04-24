@@ -30,7 +30,7 @@
 
         <TextView
             android:id="@+id/tv_news"
-            style="@style/text_style_black_18sp"
+            style="@style/text_style_black_16sp"
             android:layout_width="@dimen/dimen_0dp"
             android:layout_marginStart="@dimen/dimen_10dp"
             android:layout_marginTop="@dimen/dimen_10dp"
