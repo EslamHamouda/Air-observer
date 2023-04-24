@@ -5,10 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/dimen_8dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="@dimen/dimen_8dp"
+    android:layout_marginBottom="@dimen/dimen_8dp"
     app:cardCornerRadius="@dimen/dimen_10dp"
     app:strokeColor="@android:color/transparent"
-    app:cardElevation="@dimen/dimen_1dp">
+    app:cardElevation="@dimen/dimen_2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +20,7 @@
         <ImageView
             android:id="@+id/iv_news"
             android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="@dimen/dimen_220dp"
+            android:layout_height="120dp"
             android:contentDescription="@string/news"
             android:scaleType="fitXY"
             android:src="@drawable/pollution"
@@ -55,6 +58,7 @@
             android:id="@+id/iv_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_4dp"
             android:padding="@dimen/dimen_8dp"
             android:src="@drawable/baseline_share_24"
             app:layout_constraintBottom_toBottomOf="@+id/tv_details"

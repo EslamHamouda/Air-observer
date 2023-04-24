@@ -75,4 +75,5 @@
     <dimen name="dimen_250dp">250dp</dimen>
     <dimen name="dimen_210dp">210dp</dimen>
     <dimen name="dimen_220dp">220dp</dimen>
+    <dimen name="dimen_3dp">3dp</dimen>
 </resources>
