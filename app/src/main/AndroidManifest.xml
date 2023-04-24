@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,23 +16,20 @@
         android:theme="@style/Theme.AirObserver"
         android:usesCleartextTraffic="true"
         tools:replace="android:supportsRtl"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
-            android:name=".PollutionsDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PollutionsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".pollutionsActivity"
-            android:exported="false" />
+            android:name=".ui.home.learn_fragment.PollutionsDetailsActivity"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_pollutions_details"/>
+
         <activity
             android:name=".ui.home.profile_fragment.ProfileActivity"
             android:exported="false"
             android:parentActivityName=".ui.home.HomeActivity" />
         <activity
             android:name=".ui.onboarding.OnBoardingActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,14 +42,14 @@
         </activity>
         <activity
             android:name=".ui.auth.AuthActivity"
-            android:exported="false">
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.home.HomeActivity"
-            android:exported="false">
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

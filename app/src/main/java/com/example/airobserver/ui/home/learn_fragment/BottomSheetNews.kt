@@ -1,4 +1,4 @@
-package com.example.airobserver.ui.home.news_fragment
+package com.example.airobserver.ui.home.learn_fragment
 
 import android.content.Intent
 import android.net.Uri

@@ -15,9 +15,9 @@
         android:enabled="true"
         />
     <item
-        android:id="@+id/newsFragment"
+        android:id="@+id/learnFragment"
         android:icon="@drawable/ic_news"
-        android:contentDescription="@string/news"
+        android:contentDescription="@string/learn"
         android:enabled="true"
         />
    <!-- <item

@@ -1,22 +1,15 @@
-package com.example.airobserver.ui.home.news_fragment
+package com.example.airobserver.ui.home.learn_fragment
 
-import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.airobserver.R
-import com.example.airobserver.databinding.ListItemGasBinding
 import com.example.airobserver.databinding.ListItemNewsBinding
-import com.example.airobserver.domain.model.gasmodel
 import com.example.airobserver.domain.model.response.Articles
 import com.example.airobserver.utils.convertTo12HourAndDateFormat
-import com.example.airobserver.utils.dateFormat
 
 class NewsAdapter(
    private val list: List<Articles>,

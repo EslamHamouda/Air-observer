@@ -23,27 +23,30 @@
             android:id="@+id/action_historyFragment_to_profileActivity"
             app:destination="@id/profileActivity" />
     </fragment>
-    <fragment
-        android:id="@+id/newsFragment"
-        android:name="com.example.airobserver.ui.home.news_fragment.NewsFragment"
-        android:label="fragment_news"
-        tools:layout="@layout/fragment_news" >
-        <action
-            android:id="@+id/action_newsFragment_to_newsDetailFragment"
-            app:destination="@id/newsDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/newsDetailFragment"
-        android:name="com.example.airobserver.ui.home.news_fragment.NewsDetailFragment"
-        android:label="fragment_news_detail"
-        tools:layout="@layout/fragment_news_detail" >
-        <argument
-            android:name="url"
-            app:argType="string" />
-    </fragment>
     <activity
         android:id="@+id/profileActivity"
         android:name="com.example.airobserver.ui.home.profile_fragment.ProfileActivity"
         android:label="activity_profile"
         tools:layout="@layout/activity_profile" />
+    <fragment
+        android:id="@+id/learnFragment"
+        android:name="com.example.airobserver.ui.home.learn_fragment.LearnFragment"
+        android:label="fragment_learn"
+        tools:layout="@layout/fragment_learn" >
+        <action
+            android:id="@+id/action_learnFragment_to_pollutionsDetailsActivity"
+            app:destination="@id/pollutionsDetailsActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/pollutionsDetailsActivity"
+        android:name="com.example.airobserver.ui.home.learn_fragment.PollutionsDetailsActivity"
+        android:label="PollutionsDetailsActivity"
+        tools:layout="@layout/activity_pollutions_details">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+    </activity>
 </navigation>
