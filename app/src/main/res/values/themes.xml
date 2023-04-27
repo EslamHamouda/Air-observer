@@ -51,6 +51,7 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
     <item name="textAllCaps">false</item>
+    <item name="fontFamily">@font/shoika_regular</item>
 </style>
     <style name="Theme.AirObserver.NoActionBar">
         <item name="windowActionBar">false</item>
