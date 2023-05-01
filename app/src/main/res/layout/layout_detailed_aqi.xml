@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:strokeColor="@color/seed"
+    app:strokeColor="#00000000"
     app:strokeWidth="@dimen/dimen_1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +14,8 @@
 
         <TextView
             android:id="@+id/tv_co_text"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_width="@dimen/dimen_0dp"
             app:layout_constraintHorizontal_weight="1"
             android:gravity="center"
@@ -27,11 +28,12 @@
 
         <TextView
             android:id="@+id/tv_co"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/seed"
+            android:backgroundTint="@color/white"
             android:gravity="center"
             android:text="27"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +43,8 @@
 
         <TextView
             android:id="@+id/tv_so2_text"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_width="@dimen/dimen_0dp"
             app:layout_constraintHorizontal_weight="1"
             android:gravity="center"
@@ -54,11 +57,12 @@
 
         <TextView
             android:id="@+id/tv_so2"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/seed"
+            android:backgroundTint="@color/white"
             android:gravity="center"
             android:text="25"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +72,8 @@
 
         <TextView
             android:id="@+id/tv_no2_text"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_width="@dimen/dimen_0dp"
             app:layout_constraintHorizontal_weight="1"
             android:gravity="center"
@@ -81,11 +86,12 @@
 
         <TextView
             android:id="@+id/tv_no2"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/seed"
+            android:backgroundTint="@color/white"
             android:gravity="center"
             android:text="20"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -95,11 +101,12 @@
 
         <TextView
             android:id="@+id/tv_o3"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/seed"
+            android:backgroundTint="@color/white"
             android:gravity="center"
             android:text="26"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -109,7 +116,8 @@
 
         <TextView
             android:id="@+id/tv_o3_text"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_width="@dimen/dimen_0dp"
             app:layout_constraintHorizontal_weight="1"
             android:gravity="center"
@@ -124,7 +132,8 @@
 
         <TextView
             android:id="@+id/tv_pm10_text"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_width="@dimen/dimen_0dp"
             app:layout_constraintHorizontal_weight="1.20"
             android:gravity="center"
@@ -137,11 +146,12 @@
 
         <TextView
             android:id="@+id/tv_pm10"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/seed"
+            android:backgroundTint="@color/white"
             android:gravity="center"
             android:text="28"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -159,7 +169,8 @@
 
         <TextView
             android:id="@+id/tv_pm2.5_text"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_width="@dimen/dimen_0dp"
             app:layout_constraintHorizontal_weight="1.20"
             android:gravity="center"
@@ -172,11 +183,12 @@
 
         <TextView
             android:id="@+id/tv_pm2.5"
-            style="@style/text_style_black_15sp"
+            style="@style/text_style_black_12sp"
+            android:fontFamily="@font/shoika_regular"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/seed"
+            android:backgroundTint="@color/white"
             android:gravity="center"
             android:text="23"
             app:layout_constraintBottom_toBottomOf="parent"
