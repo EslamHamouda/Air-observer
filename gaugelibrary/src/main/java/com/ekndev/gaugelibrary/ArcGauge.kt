@@ -38,9 +38,9 @@ class ArcGauge : FullGauge {
     private fun init() {
         gaugeBackGroundPaint?.strokeWidth = gaugeBGWidth
         gaugeBackGroundPaint?.strokeCap = Paint.Cap.ROUND
-        gaugeBackGroundPaint?.color = Color.parseColor("#F1F1F1")
+        gaugeBackGroundPaint?.color = Color.parseColor("#40F1F1F1")
         textPaints?.textSize = 35f
-        textPaints?.color = Color.parseColor("#018ABE")
+        textPaints?.color = Color.parseColor("#FFFFFF")
         padding = 20f
     }
 

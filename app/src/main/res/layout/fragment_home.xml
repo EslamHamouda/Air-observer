@@ -9,8 +9,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_theme_light_surface"
-    >
+    android:background="@color/md_theme_light_surface">
     <!--<WebView
         android:id="@+id/aqi"
         android:layout_width="@dimen/dimen_0dp"
@@ -30,13 +29,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/seed"
-        app:strokeWidth="@dimen/dimen_1dp">
+        app:cardCornerRadius="@dimen/dimen_20dp"
+        app:strokeColor="#00000000"
+        app:cardElevation="@dimen/dimen_8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="@dimen/dimen_20dp">
+            android:background="@drawable/gradient_green">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/dimen_0dp"
+                android:src="@drawable/cloudsbg"
+                android:scaleType="centerCrop"
+                android:alpha="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.ekndev.gaugelibrary.ArcGauge
                 android:id="@+id/gauge"
@@ -52,6 +63,7 @@
                 style="@style/text_style_black_20sp_bold"
                 android:layout_marginTop="@dimen/dimen_50dp"
                 android:text="AQI"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/gauge"
                 app:layout_constraintTop_toTopOf="@+id/gauge" />
@@ -64,6 +76,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:textColor="@color/white"
                 android:text="The air quality is generally acceptable for most people, but some individuals who suffer from allergies."
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +88,7 @@
                 style="@style/text_style_blue_20sp_bold"
                 android:layout_marginTop="32dp"
                 android:text="Good"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/gauge"
                 app:layout_constraintStart_toStartOf="@+id/gauge"
                 app:layout_constraintTop_toBottomOf="@+id/tv_aqi_text" />

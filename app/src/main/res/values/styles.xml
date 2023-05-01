@@ -71,6 +71,10 @@
         <item name="android:textSize">@dimen/dimen_15sp</item>
     </style>
 
+    <style name="text_style_black_12sp" parent="text_style_black">
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="text_style_black_15sp_bold" parent="text_style_black_15sp">
         <item name="android:textStyle">bold</item>
     </style>
@@ -255,4 +259,9 @@
     <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="MyAppFontStyle">
+        <item name="android:fontFamily">@font/plus_jakarta_sans_regular</item>
+    </style>
+
 </resources>

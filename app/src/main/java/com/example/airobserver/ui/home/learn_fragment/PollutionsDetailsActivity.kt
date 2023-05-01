@@ -1,5 +1,7 @@
 package com.example.airobserver.ui.home.learn_fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +34,15 @@ class PollutionsDetailsActivity : AppCompatActivity() {
 
         binding.titlePollution.text = args.title
         binding.describePollution.text = args.description
+
+        binding.urlPollution.setOnClickListener {
+            val url = "https://www.epa.gov"
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
+
+
     }
 
 }
