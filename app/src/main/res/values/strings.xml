@@ -41,12 +41,12 @@
     <string name="string_logout">LogOut</string>
     <string name="Button_start">START</string>
     <string name="Button_start_observe">Start Observe Air</string>
-    <string name="CO_text">CO\nppm</string>
-    <string name="SO2_text">SO2\nppm</string>
-    <string name="O3_text">O3\nppm</string>
-    <string name="PMS10_text">PMS10\nppm</string>
-    <string name="PMS2.5_text">PMS2.5\nppm</string>
-    <string name="NO2_text">NO2\nppm</string>
+    <string name="CO_text">CO\n<font size='10'>ppm</font></string>
+    <string name="SO2_text">SO2\n<font size='10'>ppm</font></string>
+    <string name="O3_text">O3\n<font size='10'>ppm</font></string>
+    <string name="PMS10_text">PMS10\n<font size='10'>ppm</font></string>
+    <string name="PMS2.5_text">PMS2.5\n<font size='10'>ppm</font></string>
+    <string name="NO2_text">NO2\n<font size='10'>ppm</font></string>
     <string name="normal_percentage">Normal Percentage</string>
     <string name="recent_percentage">Recent Percentage</string>
     <string name="predict_illnesses">Predict Illnesses for this percentages:</string>
