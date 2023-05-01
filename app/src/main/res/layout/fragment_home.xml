@@ -23,9 +23,9 @@
         android:id="@+id/card_view"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:layout_marginEnd="@dimen/dimen_8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,7 +36,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingVertical="@dimen/dimen_16dp"
             android:background="@drawable/gradient_green">
 
             <ImageView
@@ -79,7 +78,7 @@
                 android:gravity="center"
                 android:fontFamily="@font/plus_jakarta_sans_regular"
                 android:textColor="@color/white"
-                android:text="The air quality is generally acceptable for most people, but some individuals who suffer from allergies."
+                android:text="The air quality is generally acceptable for most people, but some individuals who suffer from allergies.\n"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_aqi_feedback" />
