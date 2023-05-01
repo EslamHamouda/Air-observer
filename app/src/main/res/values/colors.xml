@@ -43,7 +43,7 @@
     <color name="md_theme_light_onErrorContainer">#410002</color>
     <color name="md_theme_light_background">#FBFCFF</color>
     <color name="md_theme_light_onBackground">#191C1E</color>
-    <color name="md_theme_light_surface">#FBFCFF</color>
+    <color name="md_theme_light_surface">#f7f7f7</color>
     <color name="md_theme_light_onSurface">#191C1E</color>
     <color name="md_theme_light_surfaceVariant">#DDE3EA</color>
     <color name="md_theme_light_onSurfaceVariant">#41484D</color>
@@ -86,4 +86,11 @@
     <color name="md_theme_dark_outlineVariant">#41484D</color>
     <color name="md_theme_dark_scrim">#000000</color>
 
+    <!-- colors of pollutants numbers-->
+    <color name="gas_green">#488A5A</color>
+    <color name="gas_yellow">#ddad25</color>
+    <color name="gas_orange">#fc5b00</color>
+    <color name="gas_red">#c72c2c</color>
+    <color name="gas_purple">#6A359C</color>
+    <color name="gas_maroon">#800000</color>
 </resources>

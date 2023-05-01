@@ -41,12 +41,12 @@
     <string name="string_logout">LogOut</string>
     <string name="Button_start">START</string>
     <string name="Button_start_observe">Start Observe Air</string>
-    <string name="CO_text">CO</string>
-    <string name="SO2_text">SO2</string>
-    <string name="O3_text">O3</string>
-    <string name="PMS10_text">PMS10</string>
-    <string name="PMS2.5_text">PMS2.5</string>
-    <string name="NO2_text">NO2</string>
+    <string name="CO_text">CO\nppm</string>
+    <string name="SO2_text">SO2\nppm</string>
+    <string name="O3_text">O3\nppm</string>
+    <string name="PMS10_text">PMS10\nppm</string>
+    <string name="PMS2.5_text">PMS2.5\nppm</string>
+    <string name="NO2_text">NO2\nppm</string>
     <string name="normal_percentage">Normal Percentage</string>
     <string name="recent_percentage">Recent Percentage</string>
     <string name="predict_illnesses">Predict Illnesses for this percentages:</string>
@@ -87,7 +87,7 @@
     <string name="title_AQI">AQI- Air Quality Index</string>
     <string name="description_AQI">AQI stands for Air Quality Index. It is a number that is used as an aggregate of Multiple pollutants, to help the user know if the air is good or bad without needing to look at each pollutant separately.\n\nIf just one pollutant\'s concentration is high, then the AQI for that location will be high, regardless that other pollutants are low.\n\nAQI is Measured on a scale from 0 to 500, and takes into account both PM10 and PM2.5 pollutant readings from one location. A AQI under 50 is considered normal, up to 100- Moderate, up to 300- unhealthy, and over 300 - dangerous.</string>
 
-    <string name="title_CO">CO-Carbon Monoxide</string>
+    <string name="title_CO">CO - Carbon Monoxide</string>
     <string name="description_CO">CO is a colorless, odorless gas that can be harmful when inhaled in large amounts. CO is released when something is burned. The greatest sources of CO to outdoor air are cars, trucks and other vehicles or Machinery that burn fossil fuels. A variety of items in your home such as unvented kerosene and gas space heaters, leaking chimneys and furnaces, and gas stoves also release CO and can affect air quality indoors.</string>
 
     <string name="title_PM">PM 1O &amp; PM 2.5 - Particulate Matter</string>
@@ -104,7 +104,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="learn">Learn</string>
-    <string name="co_carbon_monoxide">CO-Carbon Monoxide</string>
+    <string name="co_carbon_monoxide">CO - Carbon Monoxide</string>
     <string name="co_is_a_colorless_odorless_gas_that_can_be_harmful_when_inhaled_in_large_amounts_co_is_released_when_something_is_burned_the_greatest_sources_of_co_to_outdoor_air_are_cars_trucks_and_other_vehicles_or_machinery_that_burn_fossil_fuels_a_variety_of_items_in_your_home_such_as_unvented_kerosene_and_gas_space_heaters_leaking_chimneys_and_furnaces_and_gas_stoves_also_release_co_and_can_affect_air_quality_indoors"><![CDATA[CO is a colorless, odorless gas that can be harmful when inhaled in large amounts. CO is released when something is burned. The greatest sources of CO to outdoor air are cars, trucks and other vehicles or Machinery that burn fossil fuels. A variety of items in your home such as unvented kerosene and gas space heaters, leaking chimneys and furnaces, and gas stoves also release CO and can affect air quality indoors.]]></string>
     <string name="learn_more_www_epa_gov">Learn more: www.epa.gov</string>
     <string name="aoi_air_quality_index">AOI - Air Quality Index</string>

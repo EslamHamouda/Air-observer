@@ -20,6 +20,9 @@
 </resources>-->
 <resources xmlns:tools="http://schemas.android.com/tools">
 <style name="Theme.AirObserver" parent="Theme.Material3.Light.NoActionBar">
+
+    <item name="android:textAppearance">@style/MyAppFontStyle</item>
+
     <item name="colorPrimary">@color/md_theme_light_primary</item>
     <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
     <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>

@@ -9,14 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.ekndev.gaugelibrary.Range
+import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentHomeBinding
 import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.domain.model.response.AqiGraphLastHoursResponse
@@ -99,11 +102,17 @@ class HomeFragment : Fragment() {
                         { it1 ->
                             setAQI(it1.MAX!!.toInt())
                             binding.tvAqiFeedback.text = it1.Category
+                            setDetailedAqi(it1.PM10!!.toDouble(),binding.detailedAqi.tvPm10) // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvPm10.text = it1.PM10
+                            setDetailedAqi(it1.PM25!!.toDouble(),binding.detailedAqi.tvPm25) // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvPm25.text = it1.PM25
+                            setDetailedAqi(it1.CO!!.toDouble(),binding.detailedAqi.tvCo) // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvCo.text = it1.CO
+                            setDetailedAqi(it1.NO2!!.toDouble(),binding.detailedAqi.tvNo2) // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvNo2.text = it1.NO2
+                            setDetailedAqi(it1.SO2!!.toDouble(),binding.detailedAqi.tvSo2) // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvSo2.text = it1.SO2
+                            setDetailedAqi(it1.O3!!.toDouble(),binding.detailedAqi.tvO3) // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvO3.text = it1.O3
                         })
                 }
@@ -183,25 +192,36 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun setDetailedAqi(value: Double, txt:TextView) {
+        when (value) {
+            in 0.0 .. 50.0 -> txt.setTextColor(Color.parseColor("#488A5A"))
+            in 51.0 .. 100.0 -> txt.setTextColor(Color.parseColor("#ddad25"))
+            in 101.0 .. 150.0 -> txt.setTextColor(Color.parseColor("#fc5b00"))
+            in 151.0 .. 200.0 -> txt.setTextColor(Color.parseColor("#c72c2c"))
+            in 201.0 .. 300.0 -> txt.setTextColor(Color.parseColor("#6A359C"))
+            in 301.0 .. 500.0 -> txt.setTextColor(Color.parseColor("#800000"))
+        }
+    }
+
     private fun setAQI(value: Int) {
         val range1 = Range()
-        range1.color = Color.parseColor("#00FF00")
+        range1.color = Color.parseColor("#4ba162")
         range1.from = 0.0
         range1.to = 50.0
         val range2 = Range()
-        range2.color = Color.parseColor("#00FF00")
+        range2.color = Color.parseColor("#d9a52d")
         range2.from = 51.0
         range2.to = 100.0
         val range3 = Range()
-        range3.color = Color.parseColor("#FF7E00")
+        range3.color = Color.parseColor("#FF4500")
         range3.from = 101.0
         range3.to = 150.0
         val range4 = Range()
-        range4.color = Color.parseColor("#FF0000")
+        range4.color = Color.parseColor("#ba3030")
         range4.from = 151.0
         range4.to = 200.0
         val range5 = Range()
-        range5.color = Color.parseColor("#8F3F97")
+        range5.color = Color.parseColor("#552586")
         range5.from = 201.0
         range5.to = 300.0
         val range6 = Range()

@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/dimen_4dp"
             android:padding="@dimen/dimen_8dp"
-            android:src="@drawable/baseline_share_24"
+            android:src="@drawable/share_24"
             app:layout_constraintBottom_toBottomOf="@+id/tv_details"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_news" />
