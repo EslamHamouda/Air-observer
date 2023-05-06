@@ -2,7 +2,6 @@ package com.example.airobserver.ui.auth
 
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +12,6 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.airobserver.R
-import com.example.airobserver.databinding.FragmentRegisterBinding
 import com.example.airobserver.databinding.FragmentResetPasswordBinding
 import com.example.airobserver.di.SharedPref
 import com.example.airobserver.ui.BaseFragment

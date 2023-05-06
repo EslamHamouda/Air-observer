@@ -15,6 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.airbnb.lottie.LottieAnimationView
 import com.example.airobserver.databinding.FragmentNewsBinding
 import com.example.airobserver.domain.model.response.Articles
 import com.example.airobserver.domain.model.response.NewsResponse
@@ -92,7 +93,7 @@ class NewsFragment : Fragment() {
     private fun dataResponseHandling(
         activity: Activity,
         it: ApiResponseStates<NewsResponse>,
-        progressBar: ProgressBar?,
+        progressBar: LottieAnimationView?,
         tryAgain: () -> Unit,
         successFunc: (ArrayList<Articles>) -> Unit,
         errorCode: Int? = 0, handleError: (() -> Unit)? = null,

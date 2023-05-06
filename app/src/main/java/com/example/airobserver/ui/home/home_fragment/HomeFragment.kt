@@ -8,22 +8,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.airbnb.lottie.LottieAnimationView
 import com.ekndev.gaugelibrary.Range
-import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentHomeBinding
 import com.example.airobserver.domain.model.BaseResponse
-import com.example.airobserver.domain.model.response.AqiGraphLastHoursResponse
-import com.example.airobserver.ui.home.history_fragment.HistoryViewPagerAdapter
 import com.example.airobserver.ui.viewmodel.HomeViewModel
 import com.example.airobserver.utils.*
 import com.github.mikephil.charting.components.XAxis
@@ -299,7 +295,7 @@ class HomeFragment : Fragment() {
     private fun <B : BaseResponse<T>, T> dataResponseHandling(
         activity: Activity,
         it: ApiResponseStates<B>,
-        progressBar: ProgressBar?,
+        progressBar: LottieAnimationView,
         tryAgain: () -> Unit,
         successFunc: (T) -> Unit,
         errorCode: Int? = 0, handleError: (() -> Unit)? = null,

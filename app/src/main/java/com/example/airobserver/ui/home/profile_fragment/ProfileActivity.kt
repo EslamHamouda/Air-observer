@@ -11,7 +11,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
-import android.widget.ProgressBar
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
@@ -19,12 +18,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.airbnb.lottie.LottieAnimationView
 import com.example.airobserver.R
 import com.example.airobserver.databinding.ActivityProfileBinding
 import com.example.airobserver.di.SharedPref
 import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.ui.auth.AuthActivity
-import com.example.airobserver.ui.home.HomeActivity
 import com.example.airobserver.ui.viewmodel.AuthViewModel
 import com.example.airobserver.utils.*
 import com.google.android.material.textfield.TextInputLayout
@@ -279,7 +278,7 @@ class ProfileActivity : AppCompatActivity() {
     private fun <B : BaseResponse<T>, T> dataResponseHandling(
         activity: Activity,
         it: ApiResponseStates<B>,
-        progressBar: ProgressBar?,
+        progressBar: LottieAnimationView,
         tryAgain: () -> Unit,
         successFunc: (T) -> Unit,
         errorCode: Int? = 0, handleError: (() -> Unit)? = null,

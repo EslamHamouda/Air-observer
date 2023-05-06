@@ -1,45 +1,23 @@
 package com.example.airobserver.ui.home.history_fragment
 
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentHistoryBinding
-import com.example.airobserver.di.SharedPref
-import com.example.airobserver.domain.model.response.DaysDetails
 import com.example.airobserver.ui.BaseFragment
-import com.example.airobserver.ui.auth.LoginFragmentDirections
-import com.example.airobserver.ui.onboarding.ViewPagerAdapter
-import com.example.airobserver.ui.viewmodel.AuthViewModel
 import com.example.airobserver.ui.viewmodel.HomeViewModel
-import com.example.airobserver.utils.ApiResponseStates
-import com.example.airobserver.utils.convertTo12HourFormat
-import com.example.airobserver.utils.putData
-import com.example.airobserver.utils.showSnackbar
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import retrofit2.http.Field
 
 @AndroidEntryPoint
 class HistoryFragment : BaseFragment() {
