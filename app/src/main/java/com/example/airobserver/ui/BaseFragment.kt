@@ -2,9 +2,9 @@ package com.example.airobserver.ui
 
 import android.app.Activity
 import android.os.Build
-import android.widget.ProgressBar
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import com.airbnb.lottie.LottieAnimationView
 import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.utils.*
 
@@ -14,7 +14,7 @@ open class BaseFragment: Fragment() {
     open fun <B : BaseResponse<T>, T> dataResponseHandling(
         activity: Activity,
         it: ApiResponseStates<B>,
-        progressBar: ProgressBar?,
+        progressBar: LottieAnimationView,
         tryAgain: () -> Unit,
         successFunc: (T) -> Unit,
         errorCode: Int? = 0, handleError: (() -> Unit)? = null,

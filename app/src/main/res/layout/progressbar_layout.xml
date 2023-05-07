@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ProgressBar android:id="@+id/progressBar"
+<com.airbnb.lottie.LottieAnimationView
+    android:id="@+id/progressBar"
     style="?android:attr/progressBarStyle"
     android:visibility="gone"
-    android:elevation="@dimen/dimen_50dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android" />
+    android:elevation="@dimen/dimen_50dp"
+    app:lottie_rawRes="@raw/cloud_progress"
+    app:lottie_autoPlay="true"
+    app:lottie_loop="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" />

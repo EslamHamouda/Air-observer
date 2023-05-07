@@ -2,21 +2,20 @@ package com.example.airobserver.utils
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.example.airobserver.utils.showMessage
+import com.airbnb.lottie.LottieAnimationView
 
 
-fun showProgress(progressBar: ProgressBar) {
+fun showProgress(progressBar: LottieAnimationView) {
     progressBar.visibility = View.VISIBLE
 }
 
-fun hideProgress(progressBar: ProgressBar) {
+fun hideProgress(progressBar: LottieAnimationView) {
     progressBar.visibility = View.GONE
 }
 
