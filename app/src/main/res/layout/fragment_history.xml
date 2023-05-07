@@ -41,7 +41,6 @@
         android:id="@+id/tv_detailed_text_text"
         style="@style/text_style_black_15sp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:text="Detailed readings:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_pager2" />

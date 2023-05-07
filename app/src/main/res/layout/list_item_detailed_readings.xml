@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dimen_10dp"
-    app:strokeColor="@color/seed"
+    android:backgroundTint="#f0f0f0"
+    app:cardElevation="@dimen/dimen_8dp"
+    app:strokeColor="#00000000"
     app:strokeWidth="@dimen/dimen_1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
