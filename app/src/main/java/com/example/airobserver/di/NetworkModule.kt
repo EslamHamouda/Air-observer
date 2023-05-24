@@ -18,7 +18,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    private const val BASE_URL = "http://airobserver4-001-site1.htempurl.com"
+    private const val BASE_URL = "http://airobserver5-001-site1.btempurl.com"
     @Provides
     @Singleton
     @Named("RetrofitObject")
