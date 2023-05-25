@@ -18,6 +18,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.airbnb.lottie.LottieAnimationView
 import com.ekndev.gaugelibrary.Range
+import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentHomeBinding
 import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.ui.viewmodel.HomeViewModel
@@ -190,12 +191,30 @@ class HomeFragment : Fragment() {
 
     private fun setDetailedAqi(value: Double, txt:TextView) {
         when (value) {
-            in 0.0 .. 50.0 -> txt.setTextColor(Color.parseColor("#488A5A"))
-            in 51.0 .. 100.0 -> txt.setTextColor(Color.parseColor("#ddad25"))
-            in 101.0 .. 150.0 -> txt.setTextColor(Color.parseColor("#fc5b00"))
-            in 151.0 .. 200.0 -> txt.setTextColor(Color.parseColor("#c72c2c"))
-            in 201.0 .. 300.0 -> txt.setTextColor(Color.parseColor("#6A359C"))
-            in 301.0 .. 500.0 -> txt.setTextColor(Color.parseColor("#800000"))
+            in 0.0 .. 50.0 -> {
+                txt.setTextColor(Color.parseColor("#488A5A"))
+                txt.setBackgroundResource(R.drawable.circle_background_green)
+            }
+            in 51.0 .. 100.0 -> {
+                txt.setTextColor(Color.parseColor("#ddad25"))
+                txt.setBackgroundResource(R.drawable.circle_background_yellow)
+            }
+            in 101.0 .. 150.0 -> {
+                txt.setTextColor(Color.parseColor("#fc5b00"))
+                txt.setBackgroundResource(R.drawable.circle_background_orange)
+            }
+            in 151.0 .. 200.0 -> {
+                txt.setTextColor(Color.parseColor("#c72c2c"))
+                txt.setBackgroundResource(R.drawable.circle_background_red)
+            }
+            in 201.0 .. 300.0 -> {
+                txt.setTextColor(Color.parseColor("#6A359C"))
+                txt.setBackgroundResource(R.drawable.circle_background_purple)
+            }
+            in 301.0 .. 500.0 -> {
+                txt.setTextColor(Color.parseColor("#800000"))
+                txt.setBackgroundResource(R.drawable.circle_background_maroon)
+            }
         }
     }
 
