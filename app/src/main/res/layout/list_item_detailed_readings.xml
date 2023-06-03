@@ -32,7 +32,7 @@
             style="@style/text_style_black_12sp"
             android:layout_marginTop="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/white"
+            
             android:fontFamily="@font/shoika_regular"
             android:gravity="center"
             android:text="27"
@@ -59,7 +59,7 @@
             style="@style/text_style_black_12sp"
             android:layout_marginTop="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/white"
+            
             android:fontFamily="@font/shoika_regular"
             android:gravity="center"
             android:text="25"
@@ -86,7 +86,7 @@
             style="@style/text_style_black_12sp"
             android:layout_marginTop="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/white"
+            
             android:fontFamily="@font/shoika_regular"
             android:gravity="center"
             android:text="20"
@@ -99,7 +99,7 @@
             style="@style/text_style_black_12sp"
             android:layout_marginTop="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/white"
+            
             android:fontFamily="@font/shoika_regular"
             android:gravity="center"
             android:text="26"
@@ -142,7 +142,7 @@
             style="@style/text_style_black_12sp"
             android:layout_marginTop="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/white"
+            
             android:fontFamily="@font/shoika_regular"
             android:gravity="center"
             android:text="28"
@@ -177,7 +177,7 @@
             style="@style/text_style_black_12sp"
             android:layout_marginTop="8dp"
             android:background="@drawable/circle_background"
-            android:backgroundTint="@color/white"
+            
             android:fontFamily="@font/shoika_regular"
             android:gravity="center"
             android:text="23"
@@ -214,6 +214,7 @@
             android:layout_width="@dimen/dimen_0dp"
             android:gravity="center"
             android:paddingVertical="@dimen/dimen_8dp"
+            android:backgroundTint="#00000000"
             android:text="AQI: 26 | Good"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tv_co"

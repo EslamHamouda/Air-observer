@@ -4,13 +4,13 @@
 
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/home_24"
+        android:icon="@drawable/home_24_selected"
         android:contentDescription="@string/home"
         android:enabled="true"
         />
     <item
         android:id="@+id/historyFragment"
-        android:icon="@drawable/time_past_24"
+        android:icon="@drawable/time_past_24_selected"
         android:contentDescription="@string/history"
         android:enabled="true"
         />
