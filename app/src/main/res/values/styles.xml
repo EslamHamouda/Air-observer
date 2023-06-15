@@ -14,6 +14,9 @@
     <style name="text_style_15sp" parent="text_style">
         <item name="android:textSize">@dimen/dimen_15sp</item>
     </style>
+    <style name="text_style_13sp" parent="text_style">
+        <item name="android:textSize">13sp</item>
+    </style>
     <style name="text_style_primary" parent="text_style">
         <item name="android:textColor">@color/md_theme_light_primary</item>
     </style>
