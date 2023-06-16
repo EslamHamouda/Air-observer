@@ -19,10 +19,10 @@
     <TextView
         android:id="@+id/tv_login"
         style="@style/text_style_primary_30sp_bold"
-        android:gravity="center"
+        android:gravity="left"
         android:layout_width="@dimen/dimen_0dp"
-        android:layout_marginHorizontal="@dimen/dimen_32dp"
         android:layout_marginTop="@dimen/dimen_16dp"
+        android:layout_marginLeft="@dimen/dimen_50dp"
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.055"
@@ -33,20 +33,19 @@
         android:id="@+id/card_view"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginVertical="@dimen/dimen_16dp"
+        android:layout_marginHorizontal="@dimen/dimen_50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_login"
-        app:strokeColor="@color/md_theme_light_primary"
-        app:strokeWidth="@dimen/dimen_1dp">
+        app:cardElevation="@dimen/dimen_2dp"
+        app:strokeWidth="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingHorizontal="@dimen/dimen_8dp"
-            android:paddingBottom="@dimen/dimen_20dp">
+            android:paddingBottom="@dimen/dimen_10dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_email"
@@ -62,7 +61,8 @@
                     style="@style/edit_text_input_style"
                     android:drawableEnd="@drawable/ic_alternate_email"
                     android:hint="@string/email"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:background="#00000000"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -80,7 +80,8 @@
                     android:id="@+id/edt_password"
                     style="@style/edit_text_input_style"
                     android:hint="@string/password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:background="#00000000"/>
 
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -89,7 +90,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
         style="@style/button_style_margin_horizontal_64dp"
-        android:layout_marginTop="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/dimen_36dp"
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
