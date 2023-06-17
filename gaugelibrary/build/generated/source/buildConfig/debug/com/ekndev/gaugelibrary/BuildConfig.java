@@ -4,7 +4,7 @@
 package com.ekndev.gaugelibrary;
 
 public final class BuildConfig {
-  public static final boolean DEBUG = Boolean.parseBoolean("true");
+  public static final boolean DEBUG = false;
   public static final String LIBRARY_PACKAGE_NAME = "com.ekndev.gaugelibrary";
   public static final String BUILD_TYPE = "debug";
 }
