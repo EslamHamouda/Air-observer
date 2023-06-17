@@ -69,6 +69,14 @@ class HistoryFragment : BaseFragment() {
             }
         })
         binding.viewPager2.offscreenPageLimit = 12
+
+        binding.swipeRefresh.setOnRefreshListener {
+            // update data
+            getAqiHistory()
+            getAqiGraphHistory()
+            // stop refreshing when task is completed
+            binding.swipeRefresh.isRefreshing = false
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)

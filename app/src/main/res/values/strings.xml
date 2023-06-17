@@ -42,11 +42,11 @@
     <string name="Button_start">START</string>
     <string name="Button_start_observe">Start Observe Air</string>
     <string name="CO_text">CO\n<font size='10'>ppm</font></string>
-    <string name="SO2_text">SO2\n<font size='10'>ppm</font></string>
+    <string name="SO2_text">SO2\n<font size='10'>ppb</font></string>
     <string name="O3_text">O3\n<font size='10'>ppm</font></string>
-    <string name="PMS10_text">PMS10\n<font size='10'>ppm</font></string>
-    <string name="PMS2.5_text">PMS2.5\n<font size='10'>ppm</font></string>
-    <string name="NO2_text">NO2\n<font size='10'>ppm</font></string>
+    <string name="PMS10_text">PM 10\n<font size='10'>μg/m³</font></string>
+    <string name="PMS2.5_text">PM 2.5\n<font size='10'>μg/m³</font></string>
+    <string name="NO2_text">NO2\n<font size='10'>ppb</font></string>
     <string name="normal_percentage">Normal Percentage</string>
     <string name="recent_percentage">Recent Percentage</string>
     <string name="predict_illnesses">Predict Illnesses for this percentages:</string>
@@ -85,13 +85,13 @@
     </string-array>
 
     <string name="title_AQI">AQI- Air Quality Index</string>
-    <string name="description_AQI">AQI stands for Air Quality Index. It is a number that is used as an aggregate of Multiple pollutants, to help the user know if the air is good or bad without needing to look at each pollutant separately.\n\nIf just one pollutant\'s concentration is high, then the AQI for that location will be high, regardless that other pollutants are low.\n\nAQI is Measured on a scale from 0 to 500, and takes into account both PM10 and PM2.5 pollutant readings from one location. A AQI under 50 is considered normal, up to 100- Moderate, up to 300- unhealthy, and over 300 - dangerous.</string>
+    <string name="description_AQI">AQI stands for Air Quality Index. It is a number that is used as an aggregate of Multiple pollutants, to help the user know if the air is good or bad without needing to look at each pollutant separately.\n\nIf just one pollutant\'s concentration is high, then the AQI for that location will be high, regardless that other pollutants are low.\n\nAQI is Measured on a scale from 0 to 500, and takes into account both PM10 and PM2.5 pollutant readings from one location. A AQI under 50 is considered normal, up to 100 - Moderate, up to 300 - unhealthy, and over 300 - dangerous.</string>
 
     <string name="title_CO">CO - Carbon Monoxide</string>
     <string name="description_CO">CO is a colorless, odorless gas that can be harmful when inhaled in large amounts. CO is released when something is burned. The greatest sources of CO to outdoor air are cars, trucks and other vehicles or Machinery that burn fossil fuels. A variety of items in your home such as unvented kerosene and gas space heaters, leaking chimneys and furnaces, and gas stoves also release CO and can affect air quality indoors.</string>
 
     <string name="title_PM">PM 1O &amp; PM 2.5 - Particulate Matter</string>
-    <string name="description_PM">PM stands for particulate matter (also called particle pollution): the term for a mixture of solid particles and liquid droplets found in the air. Some particles, such as dust, dirt, soot, or Smoke, are large or dark enough to be seen with the naked eye. Others are so small they can only be detected using an electron Microscope.\n\nParticle pollution includes:\n\n- PMIO: inhalable particles, with diameters that are generally 10 Micrometers and smaller.\n\n- PM2.5 fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller.\n\nHow small is 2.5 Micrometers? Think about a single hair from your head. The average human hair is about 70 micrometers in diameter making it 30 times larger than the largest fine particle.</string>
+    <string name="description_PM">PM stands for particulate matter (also called particle pollution): the term for a mixture of solid particles and liquid droplets found in the air. Some particles, such as dust, dirt, soot, or Smoke, are large or dark enough to be seen with the naked eye. Others are so small they can only be detected using an electron Microscope.\n\nParticle pollution includes:\n\n- PM 10: inhalable particles, with diameters that are generally 10 Micrometers and smaller.\n\n- PM 2.5 fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller.\n\nHow small is 2.5 Micrometers? Think about a single hair from your head. The average human hair is about 70 micrometers in diameter making it 30 times larger than the largest fine particle.</string>
 
     <string name="title_NO2">NO₂ - Nitrogen Dioxide</string>
     <string name="description_NO2">Nitrogen Dioxide (NO2) is one of a group of highly reactive gases known as oxides of nitrogen or nitrogen oxides (NOx). Other nitrogen oxides include nitrous acid and nitric acid. NO2 is used as the indicator for the larger group of nitrogen oxides.\n\nNO2 primarily gets in the air from the burning of fuel. NO2 forms from emissions from cars, trucks and buses, power plants, and off-road equipment.</string>
@@ -100,7 +100,7 @@
     <string name="description_SO2">EPA\'s national ambient air quality standards for S02 are designed to protect against exposure to the entire group of sulfur oxides (SOX). SO2 is the component of greatest concern and is used as the indicator for the larger group of gaseous sulfur oxides (SOX). Other gaseous SOx (such as S03) are found in the atmosphere at concentrations much lower than S02.\n\nControl Measures that reduce S02 can generally be expected to reduce people\'s exposures to all gaseous SOx. This may have the important co-benefit of reducing the formation of particulate sulfur pollutants, such as fine sulfate particles.\n\nEmissions that lead to high concentrations of SO2 generally also lead to the formation of other SOx. The largest sources of S02 emissions are from fossil fuel combustion at power plants and other industrial facilities.</string>
 
     <string name="title_O3">O₃ - Ozone</string>
-    <string name="description_O3">Ozone is a gas composed of three atoms of oxygen. Ozone occurs both in the Earth\'s upper atmosphere and at ground level. Ozone can be good or bad, depending on where it is found.\n\nCalled stratospheric ozone, good ozone Occurs naturally in the upper atmosphere, where it forms a protective layer that shields us from the sun\'s harmful ultraviolet rays. This beneficial ozone has been partially destroyed by Manmade chemicals, causing what is Sometimes called a "hole in the ozone." The good news is, this hole is diminishing. Learn More about stratospheric, or "good" ozone.\n\nOzone at ground level is a harmful air pollutant, because of its effects on people and the environment, and it is the main ingredient in "smog."</string>
+    <string name="description_O3">Ozone is a gas composed of three atoms of oxygen. Ozone occurs both in the Earth\'s upper atmosphere and at ground level. Ozone can be good or bad, depending on where it is found.\n\nCalled stratospheric ozone, good ozone Occurs naturally in the upper atmosphere, where it forms a protective layer that shields us from the sun\'s harmful ultraviolet rays. This beneficial ozone has been partially destroyed by Man-made chemicals, causing what is Sometimes called a "hole in the ozone." The good news is, this hole is diminishing. Learn More about stratospheric, or "good" ozone.\n\nOzone at ground level is a harmful air pollutant, because of its effects on people and the environment, and it is the main ingredient in "smog."</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="learn">Learn</string>
