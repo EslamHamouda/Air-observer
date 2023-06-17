@@ -39,7 +39,7 @@ class VerificationFragment : BaseFragment() {
     ): View {
         // Inflate the layout for this fragment
         binding=FragmentVerificationBinding.inflate(inflater)
-        viewModel.getOTP(args.email)
+        //viewModel.getOTP(args.email)
         return binding.root
     }
 

@@ -82,8 +82,8 @@ class HomeFragment : Fragment() {
 
         binding.swipeRefresh.setOnRefreshListener {
             // update data
-            getAqiOfDay()
-            getAqiGraphLastHours()
+            viewModel.aqiOfDay()
+            viewModel.aqiGraphLastHours()
             // stop refreshing when task is completed
             binding.swipeRefresh.isRefreshing = false
         }
