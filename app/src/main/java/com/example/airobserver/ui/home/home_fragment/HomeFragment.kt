@@ -80,6 +80,13 @@ class HomeFragment : Fragment() {
         list.add(gasmodel("O3","Ozone",10,"#ff7e00","Good"))
         binding.rvDetailedReadings.adapter=DetailedReadingsAdapter(list)*/
 
+        binding.swipeRefresh.setOnRefreshListener {
+            // update data
+            getAqiOfDay()
+            getAqiGraphLastHours()
+            // stop refreshing when task is completed
+            binding.swipeRefresh.isRefreshing = false
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)

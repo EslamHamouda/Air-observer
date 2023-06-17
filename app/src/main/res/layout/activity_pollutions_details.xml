@@ -63,6 +63,7 @@
                 android:layout_marginBottom="10dp"
                 android:padding="0dp"
                 android:text="@string/co_is_a_colorless_odorless_gas_that_can_be_harmful_when_inhaled_in_large_amounts_co_is_released_when_something_is_burned_the_greatest_sources_of_co_to_outdoor_air_are_cars_trucks_and_other_vehicles_or_machinery_that_burn_fossil_fuels_a_variety_of_items_in_your_home_such_as_unvented_kerosene_and_gas_space_heaters_leaking_chimneys_and_furnaces_and_gas_stoves_also_release_co_and_can_affect_air_quality_indoors"
+                android:lineSpacingExtra="5dp"
                 app:layout_constraintBottom_toTopOf="@id/url_pollution"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
