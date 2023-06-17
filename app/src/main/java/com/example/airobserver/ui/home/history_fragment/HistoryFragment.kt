@@ -72,8 +72,9 @@ class HistoryFragment : BaseFragment() {
 
         binding.swipeRefresh.setOnRefreshListener {
             // update data
-            getAqiHistory()
-            getAqiGraphHistory()
+            viewModel.aqiGraphHistory()
+            //getAqiHistory()
+            //getAqiGraphHistory()
             // stop refreshing when task is completed
             binding.swipeRefresh.isRefreshing = false
         }
