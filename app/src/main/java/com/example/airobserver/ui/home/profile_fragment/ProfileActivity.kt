@@ -42,6 +42,7 @@ class ProfileActivity : AppCompatActivity() {
     @Inject
     lateinit var pref: SharedPreferences
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityProfileBinding.inflate(layoutInflater)
@@ -49,6 +50,14 @@ class ProfileActivity : AppCompatActivity() {
         setSupportActionBar(binding.materialToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        binding.swipeRefresh.setOnRefreshListener {
+            // update data
+            getProfile()
+            getProfileResponse()
+            // stop refreshing when task is completed
+            binding.swipeRefresh.isRefreshing = false
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
