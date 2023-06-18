@@ -124,7 +124,7 @@ class ProfileActivity : AppCompatActivity() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    when(it) {
+                   /* when(it) {
                         is ApiResponseStates.Success -> {
                             showSnackbar("Authorization has been accepted for this request.",this@ProfileActivity)
                             binding.edtFirstname.setText(it.value?.data?.firstname.toString())
@@ -135,7 +135,7 @@ class ProfileActivity : AppCompatActivity() {
                             binding.autoCompleteGender.setText(it.value?.data?.gender.toString())
                         }
                         else -> {}
-                    }
+                    }*/
                     dataResponseHandling(this@ProfileActivity,
                         it,
                         binding.progressBar.progressBar,
@@ -176,7 +176,7 @@ class ProfileActivity : AppCompatActivity() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    when(it) {
+                  /*  when(it) {
                         is ApiResponseStates.Success -> {
                             showSnackbar("User information updated successfully and email was sent.",this@ProfileActivity)
                             binding.btnEdit.visibility = View.INVISIBLE
@@ -186,14 +186,38 @@ class ProfileActivity : AppCompatActivity() {
                             getProfile()
                         }
                         else -> {}
-                    }
+                    }*/
                     dataResponseHandling(this@ProfileActivity,
                         it,
                         binding.progressBar.progressBar,
                         {
+                            try {
+                                it as ApiResponseStates.Success
+                                it.value?.message?.let { it1 ->
+                                    showSnackbar(
+                                        it1,this@ProfileActivity
+                                    ) {
+                                        viewModel.getProfile(
+                                            pref.getString(SharedPref.EMAIL, "").toString()
+                                        )
+                                    }
+                                }
+                                binding.btnEdit.visibility = View.INVISIBLE
+                                disableEditText(binding.tilFirstname)
+                                disableEditText(binding.tilLastname)
+                                disableEditText(binding.tilPhone)
+                                getProfile()
+                            }catch (e:Exception){
+                                Log.d("mm",e.message.toString())
+                            }
                         },
                         { it1 ->
-
+                            showSnackbar("User information updated successfully and email was sent.",this@ProfileActivity)
+                            binding.btnEdit.visibility = View.INVISIBLE
+                            disableEditText(binding.tilFirstname)
+                            disableEditText(binding.tilLastname)
+                            disableEditText(binding.tilPhone)
+                            getProfile()
                         })
                 }
 

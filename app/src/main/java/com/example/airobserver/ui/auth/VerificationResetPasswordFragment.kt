@@ -60,13 +60,13 @@ class VerificationResetPasswordFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    when(it) {
+                   /* when(it) {
                         is ApiResponseStates.Success -> {
                             showSnackbar("Your email is active.",requireActivity())
                             findNavController().navigate(VerificationResetPasswordFragmentDirections.actionVerificationResetPasswordFragmentToResetPasswordFragment(args.email))
                         }
                         else -> {}
-                    }
+                    }*/
                     dataResponseHandling(this@VerificationResetPasswordFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,

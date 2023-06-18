@@ -3,6 +3,8 @@ package com.example.airobserver.ui.auth
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,13 +73,13 @@ class RegisterFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    when(it) {
+                   /* when(it) {
                         is ApiResponseStates.Success -> {
                             showSnackbar("An signup was succeed and message was sent.",requireActivity())
                             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment(binding.edtEmail.text.toString()))
                         }
                         else -> {}
-                    }
+                    }*/
                     dataResponseHandling(this@RegisterFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
