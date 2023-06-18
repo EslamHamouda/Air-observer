@@ -54,7 +54,6 @@ class ProfileActivity : AppCompatActivity() {
         binding.swipeRefresh.setOnRefreshListener {
             // update data
             getProfile()
-            getProfileResponse()
             // stop refreshing when task is completed
             binding.swipeRefresh.isRefreshing = false
         }
@@ -159,7 +158,11 @@ class ProfileActivity : AppCompatActivity() {
                             binding.edtFirstname.setText(it1.firstname.toString())
                             binding.edtLastname.setText(it1.lastname.toString())
                             binding.edtEmail.setText(it1.email.toString())
-                            binding.edtPhone.setText(it1.phone.toString())
+                            if(it1.phone.toString().length!=11){
+                                binding.edtPhone.setText("0".plus(it1.phone.toString()))
+                            }else{
+                                binding.edtPhone.setText(it1.phone.toString())
+                            }
                             binding.edtDate.setText(it1.Birthday)
                             binding.autoCompleteGender.setText(it1.gender.toString())
                         })
@@ -197,22 +200,26 @@ class ProfileActivity : AppCompatActivity() {
                                     showSnackbar(
                                         it1,this@ProfileActivity
                                     ) {
-                                        viewModel.getProfile(
-                                            pref.getString(SharedPref.EMAIL, "").toString()
-                                        )
+                                        if (checkValidation()) {
+                                            viewModel.updateProfile(
+                                                binding.edtFirstname.text.toString(),
+                                                binding.edtLastname.text.toString(),
+                                                binding.edtEmail.text.toString(),
+                                                binding.edtPhone.text.toString(),
+                                                binding.autoCompleteGender.text.toString(),
+                                                binding.edtDate.text.toString(),
+                                            )
+                                            getUpdateProfileResponse()
+                                        }
                                     }
                                 }
-                                binding.btnEdit.visibility = View.INVISIBLE
-                                disableEditText(binding.tilFirstname)
-                                disableEditText(binding.tilLastname)
-                                disableEditText(binding.tilPhone)
-                                getProfile()
                             }catch (e:Exception){
-                                Log.d("mm",e.message.toString())
+                               e.message
                             }
                         },
                         { it1 ->
-                            showSnackbar("User information updated successfully and email was sent.",this@ProfileActivity)
+                            it as ApiResponseStates.Success
+                            showSnackbar(it.value?.message.toString(),this@ProfileActivity)
                             binding.btnEdit.visibility = View.INVISIBLE
                             disableEditText(binding.tilFirstname)
                             disableEditText(binding.tilLastname)

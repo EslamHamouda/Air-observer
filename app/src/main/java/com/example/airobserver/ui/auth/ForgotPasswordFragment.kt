@@ -18,6 +18,7 @@ import com.example.airobserver.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 @AndroidEntryPoint
 class ForgotPasswordFragment : BaseFragment() {
@@ -67,9 +68,13 @@ class ForgotPasswordFragment : BaseFragment() {
                             viewModel.getOTP(binding.edtEmail.text.toString())
                         },
                         { it1 ->
-                            it as ApiResponseStates.Success
-                            showSnackbar(it.value?.message.toString(),requireActivity())
-                            findNavController().navigate(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToVerificationResetPasswordFragment(binding.edtEmail.text.toString()))
+                            try {
+                                it as ApiResponseStates.Success
+                                showSnackbar(it.value?.message.toString(),requireActivity())
+                                findNavController().navigate(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToVerificationResetPasswordFragment(binding.edtEmail.text.toString()))
+                            }catch (e:Exception){
+                               e.message
+                            }
                         })
                 }
 

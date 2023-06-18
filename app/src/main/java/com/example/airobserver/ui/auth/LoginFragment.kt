@@ -48,10 +48,18 @@ class LoginFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvRegister.setOnClickListener {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
+            try {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
+            }catch (e:Exception){
+                e.message
+            }
         }
         binding.tvForgotpassword.setOnClickListener {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment())
+            try{
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment())
+            }catch (e:Exception){
+                e.message
+            }
         }
         binding.btnLogin.setOnClickListener{
             if(checkValidation()){
@@ -76,12 +84,16 @@ class LoginFragment : BaseFragment() {
                             viewModel.login(binding.edtEmail.text.toString(),binding.edtPassword.text.toString())
                         },
                         { it1 ->
-                            it as ApiResponseStates.Success
-                            showSnackbar(it.value?.message.toString(),requireActivity())
-                            pref.putData(SharedPref.IS_LOGIN,true)
-                            pref.putData(SharedPref.EMAIL,it1.email)
-                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeActivity())
-                            requireActivity().finish()
+                            try{
+                                it as ApiResponseStates.Success
+                                showSnackbar(it.value?.message.toString(),requireActivity())
+                                pref.putData(SharedPref.IS_LOGIN,true)
+                                pref.putData(SharedPref.EMAIL,it1.email)
+                                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeActivity())
+                                requireActivity().finish()
+                            }catch (e:Exception){
+                                e.message
+                            }
                         })
                 }
 

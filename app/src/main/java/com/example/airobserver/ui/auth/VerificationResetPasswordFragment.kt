@@ -2,6 +2,7 @@ package com.example.airobserver.ui.auth
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentRegisterBinding
 import com.example.airobserver.databinding.FragmentVerificationBinding
 import com.example.airobserver.databinding.FragmentVerificationResetPasswordBinding
+import com.example.airobserver.di.SharedPref
 import com.example.airobserver.ui.BaseFragment
 import com.example.airobserver.ui.viewmodel.AuthViewModel
 import com.example.airobserver.utils.ApiResponseStates
@@ -74,9 +76,13 @@ class VerificationResetPasswordFragment : BaseFragment() {
                             viewModel.checkOTP(args.email,binding.edtCode.text.toString().toInt())
                         },
                         { it1 ->
-                            it as ApiResponseStates.Success
-                            showSnackbar(it.value?.message.toString(),requireActivity())
-                            findNavController().navigate(VerificationResetPasswordFragmentDirections.actionVerificationResetPasswordFragmentToResetPasswordFragment(args.email))
+                            try {
+                                it as ApiResponseStates.Success
+                                showSnackbar(it.value?.message.toString(),requireActivity())
+                                findNavController().navigate(VerificationResetPasswordFragmentDirections.actionVerificationResetPasswordFragmentToResetPasswordFragment(args.email))
+                            }catch (e:Exception){
+                                Log.d("mm",e.message.toString())
+                            }
                         })
                 }
 
