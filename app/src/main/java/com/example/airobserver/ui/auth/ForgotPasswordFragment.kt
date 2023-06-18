@@ -53,13 +53,13 @@ class ForgotPasswordFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    when(it){
+                   /* when(it){
                         is ApiResponseStates.Success->{
                             showSnackbar("A new OTP was sent.",requireActivity())
                             findNavController().navigate(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToVerificationResetPasswordFragment(binding.edtEmail.text.toString()))
                         }
                         else -> {}
-                    }
+                    }*/
                     dataResponseHandling(this@ForgotPasswordFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
