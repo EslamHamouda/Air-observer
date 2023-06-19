@@ -22,6 +22,7 @@ import com.example.airobserver.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 @AndroidEntryPoint
 class ResetPasswordFragment : BaseFragment() {
@@ -71,9 +72,13 @@ class ResetPasswordFragment : BaseFragment() {
                             viewModel.newPassword(args.email,binding.edtConfirmPassword.text.toString())
                         },
                         { it1 ->
-                            it as ApiResponseStates.Success
-                            showSnackbar(it.value?.message.toString(),requireActivity())
-                            findNavController().navigate(ResetPasswordFragmentDirections.actionResetPasswordFragmentToLoginFragment())
+                            try {
+                                it as ApiResponseStates.Success
+                                showSnackbar(it.value?.message.toString(),requireActivity())
+                                findNavController().navigate(ResetPasswordFragmentDirections.actionResetPasswordFragmentToLoginFragment())
+                            }catch (e:Exception){
+                                e.message
+                            }
                         })
                 }
 

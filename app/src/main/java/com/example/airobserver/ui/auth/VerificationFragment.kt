@@ -62,13 +62,13 @@ class VerificationFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    when(it) {
+                   /* when(it) {
                         is ApiResponseStates.Success -> {
                             showSnackbar("Your email is active.",requireActivity())
                             findNavController().navigate(VerificationFragmentDirections.actionVerificationFragmentToLoginFragment())
                         }
                         else -> {}
-                    }
+                    }*/
                     dataResponseHandling(this@VerificationFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
@@ -76,9 +76,13 @@ class VerificationFragment : BaseFragment() {
                             viewModel.checkOTP(args.email,binding.edtCode.text.toString().toInt())
                         },
                         { it1 ->
-                            it as ApiResponseStates.Success
-                            showSnackbar(it.value?.message.toString(),requireActivity())
-                            findNavController().navigate(VerificationFragmentDirections.actionVerificationFragmentToLoginFragment())
+                            try {
+                                it as ApiResponseStates.Success
+                                showSnackbar(it.value?.message.toString(),requireActivity())
+                                findNavController().navigate(VerificationFragmentDirections.actionVerificationFragmentToLoginFragment())
+                            }catch (e:Exception){
+                                e.message
+                            }
                         })
                 }
 

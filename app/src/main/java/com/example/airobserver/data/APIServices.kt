@@ -30,13 +30,13 @@ interface APIServices {
 
     @POST("apiregisteracademy/ChangePass.php")
     @FormUrlEncoded
-    suspend fun newPassword(@Field("Email") email:String, @Field("Password") password:String): BaseResponse<GetProfileResponse>
+    suspend fun newPassword(@Field("Email") email:String, @Field("Password") password:String): BaseResponse<String>
 
     @POST("apiregisteracademy/datainfo.php")
     @FormUrlEncoded
     suspend fun getProfile(@Field("Email") email:String): BaseResponse<GetProfileResponse>
 
-    @POST("newda.php")
+    @POST("apiregisteracademy/newda.php")
     @FormUrlEncoded
     suspend fun updateProfile(@Field("FirstName") fname:String,
                               @Field("LastName") lname:String,

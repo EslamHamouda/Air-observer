@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -93,9 +94,13 @@ class RegisterFragment : BaseFragment() {
                                 binding.autoCompleteGender.text.toString())
                         },
                         { it1 ->
-                            it as ApiResponseStates.Success
-                            showSnackbar(it.value?.message.toString(),requireActivity())
-                            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment(binding.edtEmail.text.toString()))
+                            try {
+                                it as ApiResponseStates.Success
+                                showSnackbar(it.value?.message.toString(),requireActivity())
+                                findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment(binding.edtEmail.text.toString()))
+                            }catch (e:Exception){
+                                e.message
+                            }
                         })
                 }
 

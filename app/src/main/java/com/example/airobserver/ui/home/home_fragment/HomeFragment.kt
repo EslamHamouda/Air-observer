@@ -104,19 +104,20 @@ class HomeFragment : Fragment() {
                             viewModel.aqiGraphHistory()
                         },
                         { it1 ->
-                            setAQI(it1.MAX!!.toInt())
+                            it1.Max?.let { it2 -> setAQI(it2.toInt()) }
                             binding.tvAqiFeedback.text = it1.Category
-                            setDetailedAqi(it1.PM10!!.toDouble(),binding.detailedAqi.tvPm10) // setTextColor and it depends on the value that is retrieved from database
+                            binding.tvNote.text = it1.Note
+                            it1.PM10?.let { it2 -> setDetailedAqi(it2.toDouble(),binding.detailedAqi.tvPm10) } // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvPm10.text = it1.PM10
-                            setDetailedAqi(it1.PM25!!.toDouble(),binding.detailedAqi.tvPm25) // setTextColor and it depends on the value that is retrieved from database
+                            it1.PM25?.let { it2 -> setDetailedAqi(it2.toDouble(),binding.detailedAqi.tvPm25) } // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvPm25.text = it1.PM25
-                            setDetailedAqi(it1.CO!!.toDouble(),binding.detailedAqi.tvCo) // setTextColor and it depends on the value that is retrieved from database
+                            it1.CO?.let { it2 -> setDetailedAqi(it2.toDouble(),binding.detailedAqi.tvCo) } // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvCo.text = it1.CO
-                            setDetailedAqi(it1.NO2!!.toDouble(),binding.detailedAqi.tvNo2) // setTextColor and it depends on the value that is retrieved from database
+                            it1.NO2?.let { it2 -> setDetailedAqi(it2.toDouble(),binding.detailedAqi.tvNo2) } // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvNo2.text = it1.NO2
-                            setDetailedAqi(it1.SO2!!.toDouble(),binding.detailedAqi.tvSo2) // setTextColor and it depends on the value that is retrieved from database
+                            it1.SO2?.let { it2 -> setDetailedAqi(it2.toDouble(),binding.detailedAqi.tvSo2) } // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvSo2.text = it1.SO2
-                            setDetailedAqi(it1.O3!!.toDouble(),binding.detailedAqi.tvO3) // setTextColor and it depends on the value that is retrieved from database
+                            it1.O3?.let { it2 -> setDetailedAqi(it2.toDouble(),binding.detailedAqi.tvO3) } // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvO3.text = it1.O3
                         })
                 }
