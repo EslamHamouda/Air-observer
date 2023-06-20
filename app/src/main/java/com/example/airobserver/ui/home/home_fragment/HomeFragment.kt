@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -106,7 +107,7 @@ class HomeFragment : Fragment() {
                         { it1 ->
                             it1.Max?.let { it2 -> setAQI(it2.toInt()) }
                             binding.tvAqiFeedback.text = it1.Category
-                            binding.tvNote.text = it1.Note
+                            binding.tvNote.text = it1.Note+"\n"
                             it1.PM10?.let { it2 -> setDetailedAqi(it2.toDouble(),binding.detailedAqi.tvPm10) } // setTextColor and it depends on the value that is retrieved from database
                             binding.detailedAqi.tvPm10.text = it1.PM10
                             it1.PM25?.let { it2 -> setDetailedAqi(it2.toDouble(),binding.detailedAqi.tvPm25) } // setTextColor and it depends on the value that is retrieved from database
@@ -251,6 +252,31 @@ class HomeFragment : Fragment() {
         range6.color = Color.parseColor("#7E0023")
         range6.from = 301.0
         range6.to = 500.0
+
+        when (value) {
+            in 0 .. 50 -> {
+                binding.cardAQI.setBackgroundResource(R.drawable.gradient_green)
+            }
+            in 51 .. 100 -> {
+                binding.cardAQI.setBackgroundResource(R.drawable.gradient_yellow)
+            }
+            in 101 .. 150 -> {
+                binding.cardAQI.setBackgroundResource(R.drawable.gradient_orange)
+                binding.cloudImg.alpha = 0.6f
+            }
+            in 151 .. 200 -> {
+                binding.cardAQI.setBackgroundResource(R.drawable.gradient_red)
+                binding.cloudImg.alpha = 0.4f
+            }
+            in 201 .. 300 -> {
+                binding.cardAQI.setBackgroundResource(R.drawable.gradient_purple)
+                binding.cloudImg.alpha = 0.3f
+            }
+            in 301 .. 500 -> {
+                binding.cardAQI.setBackgroundResource(R.drawable.gradient_maroon)
+                binding.cloudImg.alpha = 0.4f
+            }
+        }
 
         //add color ranges to gauge
         binding.gauge.addRange(range1)
