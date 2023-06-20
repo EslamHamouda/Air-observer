@@ -40,11 +40,13 @@
                 app:cardElevation="@dimen/dimen_8dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/card_AQI"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/gradient_green">
 
                     <ImageView
+                        android:id="@+id/cloud_img"
                         android:layout_width="@dimen/dimen_0dp"
                         android:layout_height="@dimen/dimen_0dp"
                         android:src="@drawable/cloudsbg"
@@ -76,12 +78,13 @@
 
                     <TextView
                         android:id="@+id/tv_note"
-                        style="@style/text_style_blue_15sp"
+                        style="@style/text_style_blue_13sp"
                         android:layout_width="@dimen/dimen_0dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginEnd="10dp"
                         android:gravity="center"
+                        android:lineSpacingExtra="3dp"
                         android:fontFamily="@font/plus_jakarta_sans_regular"
                         android:textColor="@color/white"
                         android:text="The air quality is generally acceptable for most people, but some individuals who suffer from allergies.\n"
@@ -91,12 +94,13 @@
 
                     <TextView
                         android:id="@+id/tv_aqi_feedback"
-                        style="@style/text_style_blue_18sp_bold"
-                        android:layout_marginTop="32dp"
+                        style="@style/text_style_blue_15sp_bold"
+                        android:layout_marginTop="40dp"
                         android:text="The air quality is generally acceptable"
                         android:layout_width="@dimen/dimen_220dp"
                         android:gravity="center"
                         android:textColor="@color/white"
+                        android:lineSpacingExtra="5dp"
                         app:layout_constraintEnd_toEndOf="@+id/tv_note"
                         app:layout_constraintStart_toStartOf="@+id/tv_note"
                         app:layout_constraintTop_toBottomOf="@+id/tv_aqi_text" />

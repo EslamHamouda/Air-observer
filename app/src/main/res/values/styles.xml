@@ -150,11 +150,27 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="text_style_blue_13sp" parent="text_style_blue">
+        <item name="android:textSize">@dimen/dimen_13sp</item>
+    </style>
+
+    <style name="text_style_blue_13sp_bold" parent="text_style_blue_13sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="text_style_blue_18sp" parent="text_style_blue">
         <item name="android:textSize">@dimen/dimen_18sp</item>
     </style>
 
     <style name="text_style_blue_18sp_bold" parent="text_style_blue_18sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_style_blue_12sp" parent="text_style_blue">
+        <item name="android:textSize">@dimen/dimen_12sp</item>
+    </style>
+
+    <style name="text_style_blue_12sp_bold" parent="text_style_blue_12sp">
         <item name="android:textStyle">bold</item>
     </style>
 
