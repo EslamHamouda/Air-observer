@@ -212,12 +212,13 @@
             android:id="@+id/tv_aqi"
             style="@style/text_style_14sp"
             android:layout_width="@dimen/dimen_0dp"
-            android:gravity="center"
-            android:paddingVertical="@dimen/dimen_8dp"
             android:backgroundTint="#00000000"
+            android:gravity="end"
+            android:paddingVertical="@dimen/dimen_8dp"
             android:text="AQI: 26 | Good"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tv_co"
+            app:layout_constraintStart_toEndOf="@+id/tv_time"
             app:layout_constraintTop_toBottomOf="@+id/tv_co" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

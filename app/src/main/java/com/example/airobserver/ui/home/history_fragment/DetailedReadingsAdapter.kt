@@ -21,10 +21,10 @@ class DetailedReadingsAdapter(
             binding.tvTime.text = item.pollutantDate
             binding.tvAqi.text = "AQI: ${item.MAX} | ${item.Category}"
 
-            binding.tvPm25.text = item.PM10
-            setDetailedAqi(item.PM10!!.toDouble(),binding.tvPm25) // setTextColor and it depends on the value that is retrieved from database
+            binding.tvPm25.text = item.PM25
+            setDetailedAqi(item.PM25!!.toDouble(),binding.tvPm25) // setTextColor and it depends on the value that is retrieved from database
 
-            binding.tvPm25.text = item.PM10
+            binding.tvPm10.text = item.PM10
             setDetailedAqi(item.PM10!!.toDouble(),binding.tvPm10) // setTextColor and it depends on the value that is retrieved from database
 
             binding.tvCo.text = item.CO
