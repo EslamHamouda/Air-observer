@@ -87,7 +87,7 @@
                         android:lineSpacingExtra="3dp"
                         android:fontFamily="@font/plus_jakarta_sans_regular"
                         android:textColor="@color/white"
-                        android:text="The air quality is generally acceptable for most people, but some individuals who suffer from allergies.\n"
+                        android:text="report...\n"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_aqi_feedback" />
@@ -96,7 +96,7 @@
                         android:id="@+id/tv_aqi_feedback"
                         style="@style/text_style_blue_15sp_bold"
                         android:layout_marginTop="40dp"
-                        android:text="The air quality is generally acceptable"
+                        android:text="descriptor...."
                         android:layout_width="@dimen/dimen_220dp"
                         android:gravity="center"
                         android:textColor="@color/white"
