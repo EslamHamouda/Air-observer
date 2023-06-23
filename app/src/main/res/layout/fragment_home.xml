@@ -96,7 +96,7 @@
                         android:id="@+id/tv_aqi_feedback"
                         style="@style/text_style_blue_15sp_bold"
                         android:layout_marginTop="40dp"
-                        android:text="descriptor..."
+                        android:text="descriptor...."
                         android:layout_width="@dimen/dimen_220dp"
                         android:gravity="center"
                         android:textColor="@color/white"

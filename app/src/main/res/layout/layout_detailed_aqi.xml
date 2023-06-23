@@ -189,6 +189,5 @@
             app:layout_constraintEnd_toEndOf="@+id/tv_pm2.5_text"
             app:layout_constraintStart_toStartOf="@+id/tv_pm2.5_text"
             app:layout_constraintTop_toBottomOf="@+id/tv_pm2.5_text" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
