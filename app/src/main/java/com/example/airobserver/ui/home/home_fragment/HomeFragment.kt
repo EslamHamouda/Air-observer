@@ -141,14 +141,16 @@ class HomeFragment : Fragment() {
                             viewModel.aqiGraphLastHours()
                         },
                         { it1 ->
-                          it1.reverse()
                             val points = ArrayList<Entry>()
-                            points.add(Entry(0f,  it1[0].MAX!!.toFloat()))
+                            for (i in it1){
+                                points.add(Entry(i.Time!!.subSequence(0..1).toString().toFloat(),  i.AQI!!.toFloat()))
+                            }
+                          /*  points.add(Entry(0f,  it1[0].MAX!!.toFloat()))
                             points.add(Entry(4f,  it1[1].MAX!!.toFloat()))
                             points.add(Entry(8f,  it1[2].MAX!!.toFloat()))
                             points.add(Entry(12f,  it1[3].MAX!!.toFloat()))
                             points.add(Entry(16f,  it1[4].MAX!!.toFloat()))
-                            points.add(Entry(20f, it1[5].MAX!!.toFloat()))
+                            points.add(Entry(20f, it1[5].MAX!!.toFloat()))*/
                             val dataSet = LineDataSet(points, "DataSet")
 
 
@@ -163,7 +165,7 @@ class HomeFragment : Fragment() {
                             dataSet.lineWidth = 1f
                             dataSet.circleRadius = 3f
                             dataSet.setDrawCircleHole(false)
-                            dataSet.valueTextSize = 10f
+                            //dataSet.valueTextSize = 10f
                             //dataSet.setDrawFilled(true)
 
                             val dataSets = ArrayList<ILineDataSet>()
@@ -189,6 +191,8 @@ class HomeFragment : Fragment() {
                                 }
                             }
                             //binding.lineChart.setDrawGridBackground(true)
+
+                            binding.lineChart.xAxis.setCenterAxisLabels(true)
                             binding.lineChart.xAxis.labelCount = 5
                             binding.lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
 
