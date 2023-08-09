@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#1d2027"
-    tools:context=".ui.onboarding.SplashActivity">
+    tools:context=".presentation.onboarding.SplashActivity">
 
 
     <ImageView

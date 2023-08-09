@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/md_theme_light_surface"
-    tools:context=".ui.home.learn_fragment.NewsFragment">
+    tools:context=".presentation.home.learn_fragment.NewsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_news"

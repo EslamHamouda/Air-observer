@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.airobserver.ui.home.home_fragment.HomeFragment"
+        android:name="com.example.airobserver.presentation.home.home_fragment.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.airobserver.ui.home.history_fragment.HistoryFragment"
+        android:name="com.example.airobserver.presentation.home.history_fragment.HistoryFragment"
         android:label="HistoryFragment"
         tools:layout="@layout/fragment_history">
         <action
@@ -25,12 +25,12 @@
     </fragment>
     <activity
         android:id="@+id/profileActivity"
-        android:name="com.example.airobserver.ui.home.profile_fragment.ProfileActivity"
+        android:name="com.example.airobserver.presentation.home.profile_fragment.ProfileActivity"
         android:label="activity_profile"
         tools:layout="@layout/activity_profile" />
     <fragment
         android:id="@+id/learnFragment"
-        android:name="com.example.airobserver.ui.home.learn_fragment.LearnFragment"
+        android:name="com.example.airobserver.presentation.home.learn_fragment.LearnFragment"
         android:label="fragment_learn"
         tools:layout="@layout/fragment_learn" >
         <action
@@ -39,7 +39,7 @@
     </fragment>
     <activity
         android:id="@+id/pollutionsDetailsActivity"
-        android:name="com.example.airobserver.ui.home.learn_fragment.PollutionsDetailsActivity"
+        android:name="com.example.airobserver.presentation.home.learn_fragment.PollutionsDetailsActivity"
         android:label="PollutionsDetailsActivity"
         tools:layout="@layout/activity_pollutions_details">
         <argument

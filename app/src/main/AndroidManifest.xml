@@ -18,7 +18,7 @@
         tools:replace="android:supportsRtl"
         tools:targetApi="31">
         <activity
-            android:name=".ui.onboarding.SplashActivity"
+            android:name=".presentation.onboarding.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,16 +30,16 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.home.learn_fragment.PollutionsDetailsActivity"
+            android:name=".presentation.home.learn_fragment.PollutionsDetailsActivity"
             android:exported="false"
             android:label="@string/title_activity_pollutions_details"
-            android:parentActivityName=".ui.home.HomeActivity" />
+            android:parentActivityName=".presentation.home.HomeActivity" />
         <activity
-            android:name=".ui.home.profile_fragment.ProfileActivity"
+            android:name=".presentation.home.profile_fragment.ProfileActivity"
             android:exported="false"
-            android:parentActivityName=".ui.home.HomeActivity" />
+            android:parentActivityName=".presentation.home.HomeActivity" />
         <activity
-            android:name=".ui.onboarding.OnBoardingActivity"
+            android:name=".presentation.onboarding.OnBoardingActivity"
             android:exported="false">
 
 
@@ -48,14 +48,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.auth.AuthActivity"
+            android:name=".presentation.auth.AuthActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".presentation.home.HomeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

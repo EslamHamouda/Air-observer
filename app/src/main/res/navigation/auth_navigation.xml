@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.airobserver.ui.auth.LoginFragment"
+        android:name="com.example.airobserver.presentation.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.airobserver.ui.auth.RegisterFragment"
+        android:name="com.example.airobserver.presentation.auth.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.example.airobserver.ui.auth.ForgotPasswordFragment"
+        android:name="com.example.airobserver.presentation.auth.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action
@@ -62,7 +62,7 @@
     </fragment>
     <fragment
         android:id="@+id/verificationFragment"
-        android:name="com.example.airobserver.ui.auth.VerificationFragment"
+        android:name="com.example.airobserver.presentation.auth.VerificationFragment"
         android:label="fragment_verification"
         tools:layout="@layout/fragment_verification" >
         <argument
@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
-        android:name="com.example.airobserver.ui.auth.ResetPasswordFragment"
+        android:name="com.example.airobserver.presentation.auth.ResetPasswordFragment"
         android:label="fragment_reset_password"
         tools:layout="@layout/fragment_reset_password" >
         <action
@@ -90,12 +90,12 @@
     </fragment>
     <activity
         android:id="@+id/homeActivity"
-        android:name="com.example.airobserver.ui.home.HomeActivity"
+        android:name="com.example.airobserver.presentation.home.HomeActivity"
         android:label="activity_home"
         tools:layout="@layout/activity_home" />
     <fragment
         android:id="@+id/verificationResetPasswordFragment"
-        android:name="com.example.airobserver.ui.auth.VerificationResetPasswordFragment"
+        android:name="com.example.airobserver.presentation.auth.VerificationResetPasswordFragment"
         android:label="VerificationResetPasswordFragment"
         tools:layout="@layout/fragment_verification_reset_password">
         <action
