@@ -1,4 +1,4 @@
-package com.example.airobserver.data
+package com.example.airobserver.data.remote
 
 import com.example.airobserver.domain.model.response.NewsResponse
 import retrofit2.http.*

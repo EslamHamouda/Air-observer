@@ -1,42 +1,19 @@
 package com.example.airobserver.domain.repo
 
-import com.example.airobserver.data.APIServices
-import com.example.airobserver.utils.startApiCall
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import java.time.Month
-import javax.inject.Inject
-import javax.inject.Singleton
+import com.example.airobserver.domain.model.BaseResponse
+import com.example.airobserver.domain.model.response.AqiGraphHistoryResponse
+import com.example.airobserver.domain.model.response.AqiGraphLastHoursResponse
+import com.example.airobserver.domain.model.response.AqiHistoryResponse
+import com.example.airobserver.domain.model.response.AqiOfDayResponse
+import com.example.airobserver.utils.ApiResponseStates
+import kotlinx.coroutines.flow.Flow
 
-@Singleton
-class HomeRepository @Inject constructor(
-    private val services: APIServices
-) {
-    suspend fun aqiHistory(month: Int) =
-        withContext(Dispatchers.IO) {
-            startApiCall {
-                services.aqiHistory(month)
-            }
-        }
+interface HomeRepository {
+    suspend fun aqiHistory(month: Int): Flow<ApiResponseStates<BaseResponse<AqiHistoryResponse>>>
 
-    suspend fun aqiGraphHistory() =
-        withContext(Dispatchers.IO) {
-            startApiCall {
-                services.aqiGraphHistory()
-            }
-        }
+    suspend fun aqiGraphHistory(): Flow<ApiResponseStates<BaseResponse<ArrayList<AqiGraphHistoryResponse>>>>
 
-    suspend fun aqiOfDay() =
-        withContext(Dispatchers.IO) {
-            startApiCall {
-                services.aqiOfDay()
-            }
-        }
+    suspend fun aqiOfDay(): Flow<ApiResponseStates<BaseResponse<AqiOfDayResponse>>>
 
-    suspend fun aqiGraphLastHours() =
-        withContext(Dispatchers.IO) {
-            startApiCall {
-                services.aqiGraphLastHours()
-            }
-        }
+    suspend fun aqiGraphLastHours(): Flow<ApiResponseStates<BaseResponse<ArrayList<AqiGraphLastHoursResponse>>>>
 }

@@ -1,23 +1,25 @@
 package com.example.airobserver.di
 
-import com.example.airobserver.data.APIServices
-import com.example.airobserver.data.APIServicesNews
+import com.example.airobserver.data.remote.APIServices
+import com.example.airobserver.data.remote.APIServicesNews
+import com.example.airobserver.data.repo.AuthRepositoryImpl
+import com.example.airobserver.data.repo.HomeRepositoryImpl
+import com.example.airobserver.data.repo.NewsRepositoryImpl
+import com.example.airobserver.domain.repo.AuthRepository
+import com.example.airobserver.domain.repo.HomeRepository
+import com.example.airobserver.domain.repo.NewsRepository
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.ConnectionPool
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Protocol
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
-import javax.net.ssl.HostnameVerifier
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -90,4 +92,19 @@ object NetworkModule {
         retrofit: Retrofit
     ): APIServicesNews =
         retrofit.create(APIServicesNews::class.java)
+
+    @Provides
+    fun provideAuthRepository(services: APIServices): AuthRepository {
+        return AuthRepositoryImpl(services)
+    }
+
+    @Provides
+    fun provideHomeRepository(services: APIServices): HomeRepository {
+        return HomeRepositoryImpl(services)
+    }
+
+    @Provides
+    fun provideNewsRepository(services: APIServicesNews): NewsRepository {
+        return NewsRepositoryImpl(services)
+    }
 }
