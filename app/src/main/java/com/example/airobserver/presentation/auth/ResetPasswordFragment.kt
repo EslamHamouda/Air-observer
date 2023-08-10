@@ -6,16 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentResetPasswordBinding
-import com.example.airobserver.presentation.BaseFragment
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.ApiResponseStates
+import com.example.airobserver.utils.dataResponseHandling
 import com.example.airobserver.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -23,7 +25,7 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 @AndroidEntryPoint
-class ResetPasswordFragment : BaseFragment() {
+class ResetPasswordFragment : Fragment() {
     lateinit var binding: FragmentResetPasswordBinding
     private val viewModel: AuthViewModel by viewModels()
     private val args:VerificationFragmentArgs by navArgs()
@@ -55,14 +57,6 @@ class ResetPasswordFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                   /* when(it) {
-                        is ApiResponseStates.Success -> {
-                            showSnackbar("Change password is success and message was sent",requireActivity())
-                            this@ResetPasswordFragment.
-                            findNavController().navigate(ResetPasswordFragmentDirections.actionResetPasswordFragmentToLoginFragment())
-                        }
-                        else -> {}
-                    }*/
                     dataResponseHandling(this@ResetPasswordFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
@@ -90,15 +84,15 @@ class ResetPasswordFragment : BaseFragment() {
         val confirmPassword = binding.edtConfirmPassword.text.toString()
 
         if (password.length<8) {
-            binding.tilPassword.error = "Password should be 8 or more"
+            binding.tilPassword.error = getString(R.string.password_should_be_8_or_more)
             return false
         }
         else if (confirmPassword.length<8) {
-            binding.tilConfirmPassword.error = "Password should be 8 or more"
+            binding.tilConfirmPassword.error = getString(R.string.password_should_be_8_or_more)
             return false
         }
-        else if (!password.equals(confirmPassword)) {
-            binding.tilConfirmPassword.error = "Not matched"
+        else if (password != confirmPassword) {
+            binding.tilConfirmPassword.error = getString(R.string.not_matched)
             return false
         }
         return true

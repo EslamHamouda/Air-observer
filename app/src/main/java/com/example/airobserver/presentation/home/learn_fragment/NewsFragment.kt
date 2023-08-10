@@ -15,6 +15,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.airbnb.lottie.LottieAnimationView
+import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentNewsBinding
 import com.example.airobserver.domain.model.response.Articles
 import com.example.airobserver.domain.model.response.NewsResponse
@@ -78,7 +79,8 @@ class NewsFragment : Fragment() {
                                         intent.type = "text/plain"
                                         val message = "Check out this article: ${item.url}"
                                         intent.putExtra(Intent.EXTRA_TEXT, message)
-                                        startActivity(Intent.createChooser(intent, "Share article with..."))
+                                        startActivity(Intent.createChooser(intent,
+                                            getString(R.string.share_article_with)))
                                     }
                                 })
                             }

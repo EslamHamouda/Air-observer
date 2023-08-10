@@ -6,6 +6,14 @@ import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.domain.model.response.GetProfileResponse
 import com.example.airobserver.domain.model.response.LoginResponse
 import com.example.airobserver.domain.repo.AuthRepository
+import com.example.airobserver.useCase.CheckOTPUseCase
+import com.example.airobserver.useCase.GetAqiHistoryUseCase
+import com.example.airobserver.useCase.GetOTPUseCase
+import com.example.airobserver.useCase.GetProfileUseCase
+import com.example.airobserver.useCase.LoginUseCase
+import com.example.airobserver.useCase.NewPasswordUseCase
+import com.example.airobserver.useCase.RegisterUseCase
+import com.example.airobserver.useCase.UpdateProfileUseCase
 import com.example.airobserver.utils.ApiResponseStates
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +24,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val repository: AuthRepository
+    private val loginUseCase: LoginUseCase,
+    private val registerUseCase: RegisterUseCase,
+    private val getOTPUseCase: GetOTPUseCase,
+    private val checkOTPUseCase: CheckOTPUseCase,
+    private val newPasswordUseCase: NewPasswordUseCase,
+    private val getProfileUseCase: GetProfileUseCase,
+    private val updateProfileUseCase: UpdateProfileUseCase
 ) : ViewModel() {
 
     private val _loginResponse: MutableStateFlow<ApiResponseStates<BaseResponse<LoginResponse>>> =
@@ -26,7 +40,7 @@ class AuthViewModel @Inject constructor(
 
     fun login(email:String,password:String) {
         viewModelScope.launch {
-            repository.login(email, password).collectLatest {
+            loginUseCase(email, password).collectLatest {
                 _loginResponse.value =
                     it
             }
@@ -46,7 +60,7 @@ class AuthViewModel @Inject constructor(
                  birthdate: String,
                  gender:String) {
         viewModelScope.launch {
-            repository.register(fname, lname, email, phone, password,birthdate, gender).collectLatest {
+            registerUseCase(fname, lname, email, phone, password,birthdate, gender).collectLatest {
                 _registerResponse.value =
                     it as ApiResponseStates<BaseResponse<String>>
             }
@@ -60,7 +74,7 @@ class AuthViewModel @Inject constructor(
 
     fun getOTP(email:String) {
         viewModelScope.launch {
-            repository.getOTP(email).collectLatest {
+            getOTPUseCase(email).collectLatest {
                 _getOTPResponse.value =
                     it
             }
@@ -74,7 +88,7 @@ class AuthViewModel @Inject constructor(
 
     fun checkOTP(email:String,otp:Int) {
         viewModelScope.launch {
-            repository.checkOTP(email, otp).collectLatest {
+            checkOTPUseCase(email, otp).collectLatest {
                 _checkOTPResponse.value =
                     it as ApiResponseStates<BaseResponse<String>>
             }
@@ -88,7 +102,7 @@ class AuthViewModel @Inject constructor(
 
     fun newPassword(email:String,password:String) {
         viewModelScope.launch {
-            repository.newPassword(email, password).collectLatest {
+            newPasswordUseCase(email, password).collectLatest {
                 _newPasswordResponse.value =
                     it as ApiResponseStates<BaseResponse<String>>
             }
@@ -102,7 +116,7 @@ class AuthViewModel @Inject constructor(
 
     fun getProfile(email:String) {
         viewModelScope.launch {
-            repository.getProfile(email).collectLatest {
+            getProfileUseCase(email).collectLatest {
                 _getProfileResponse.value =
                     it as ApiResponseStates<BaseResponse<GetProfileResponse>>
             }
@@ -121,7 +135,7 @@ class AuthViewModel @Inject constructor(
                  gender:String,
                  birthdate:String) {
         viewModelScope.launch {
-            repository.updateProfile(fname, lname, email, phone, gender, birthdate).collectLatest {
+            updateProfileUseCase(fname, lname, email, phone, gender, birthdate).collectLatest {
                 _updateProfileResponse.value =
                     it as ApiResponseStates<BaseResponse<String>>
             }

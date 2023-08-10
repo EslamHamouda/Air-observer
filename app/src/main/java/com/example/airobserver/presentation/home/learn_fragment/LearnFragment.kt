@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentLearnBinding
 import com.example.airobserver.utils.*
 import com.google.android.material.tabs.TabLayoutMediator
@@ -39,8 +40,8 @@ class LearnFragment : Fragment() {
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
             when (position) {
-                0 -> tab.text = "News"
-                1 -> tab.text = "Pollutions"
+                0 -> tab.text = getString(R.string.news)
+                1 -> tab.text = getString(R.string.pollutions)
             }
         }.attach()
 }}

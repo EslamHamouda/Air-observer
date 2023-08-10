@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentForgotPasswordBinding
-import com.example.airobserver.presentation.BaseFragment
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +22,7 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 @AndroidEntryPoint
-class ForgotPasswordFragment : BaseFragment() {
+class ForgotPasswordFragment : Fragment() {
     lateinit var binding: FragmentForgotPasswordBinding
     private val viewModel: AuthViewModel by viewModels()
     override fun onCreateView(
@@ -54,13 +55,6 @@ class ForgotPasswordFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                   /* when(it){
-                        is ApiResponseStates.Success->{
-                            showSnackbar("A new OTP was sent.",requireActivity())
-                            findNavController().navigate(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToVerificationResetPasswordFragment(binding.edtEmail.text.toString()))
-                        }
-                        else -> {}
-                    }*/
                     dataResponseHandling(this@ForgotPasswordFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
@@ -79,7 +73,6 @@ class ForgotPasswordFragment : BaseFragment() {
                 }
 
         }
-        //findNavController().navigate(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToVerificationResetPasswordFragment(binding.edtEmail.text.toString()))
     }
 
     private fun checkValidation(): Boolean {
@@ -87,7 +80,7 @@ class ForgotPasswordFragment : BaseFragment() {
         val email = binding.edtEmail.text.toString()
 
         if (!isValidEmail(email)) {
-            binding.tilEmail.error = "Enter a valid email"
+            binding.tilEmail.error = getString(R.string.enter_a_valid_email)
             return false
         }
         return true

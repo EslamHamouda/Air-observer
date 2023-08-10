@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
@@ -14,9 +15,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.airobserver.databinding.FragmentVerificationBinding
-import com.example.airobserver.presentation.BaseFragment
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.ApiResponseStates
+import com.example.airobserver.utils.dataResponseHandling
 import com.example.airobserver.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -24,7 +25,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class VerificationFragment : BaseFragment() {
+class VerificationFragment : Fragment() {
     lateinit var binding: FragmentVerificationBinding
     private val viewModel: AuthViewModel by viewModels()
     private val args:VerificationFragmentArgs by navArgs()
@@ -59,13 +60,6 @@ class VerificationFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                   /* when(it) {
-                        is ApiResponseStates.Success -> {
-                            showSnackbar("Your email is active.",requireActivity())
-                            findNavController().navigate(VerificationFragmentDirections.actionVerificationFragmentToLoginFragment())
-                        }
-                        else -> {}
-                    }*/
                     dataResponseHandling(this@VerificationFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,

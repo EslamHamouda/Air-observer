@@ -8,13 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentRegisterBinding
-import com.example.airobserver.presentation.BaseFragment
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +25,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 
 @AndroidEntryPoint
-class RegisterFragment : BaseFragment() {
+class RegisterFragment : Fragment() {
     lateinit var binding: FragmentRegisterBinding
     private val viewModel: AuthViewModel by viewModels()
 
@@ -42,7 +43,7 @@ class RegisterFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter=ArrayAdapter(requireContext(),android.R.layout.simple_dropdown_item_1line,
-            arrayOf("Male","Female"))
+            arrayOf(getString(R.string.male), getString(R.string.female)))
         binding.autoCompleteGender.setAdapter(adapter)
 
         binding.tvOrLogin.setOnClickListener {
@@ -71,13 +72,6 @@ class RegisterFragment : BaseFragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                   /* when(it) {
-                        is ApiResponseStates.Success -> {
-                            showSnackbar("An signup was succeed and message was sent.",requireActivity())
-                            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment(binding.edtEmail.text.toString()))
-                        }
-                        else -> {}
-                    }*/
                     dataResponseHandling(this@RegisterFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
@@ -121,30 +115,30 @@ class RegisterFragment : BaseFragment() {
         val password = binding.edtPassword.text.toString()
 
         if (firstName.length < 3) {
-            binding.tilFirstname.error = "Invalid first name"
+            binding.tilFirstname.error = getString(R.string.invalid_first_name)
             return false
         } else if (lastName.length < 3) {
-            binding.tilLastname.error = "Invalid last name"
+            binding.tilLastname.error = getString(R.string.invalid_last_name)
             return false
         }
         else if (!isValidEmail(email)) {
-            binding.tilEmail.error = "Enter a valid email"
+            binding.tilEmail.error = getString(R.string.enter_a_valid_email)
             return false
         }
         else if (!isValidPhoneNumber(phone)) {
-            binding.tilPhone.error = "Phone not correct"
+            binding.tilPhone.error = getString(R.string.phone_not_correct)
             return false
         }
         else if (!isValidDate(date)) {
-            binding.tilDate.error = "Not a valid date: 2000-05-01"
+            binding.tilDate.error = getString(R.string.not_a_valid_date_2000_05_01)
             return false
         }
-        else if (gender=="Gender") {
-            binding.tilGender.error = "Please choose your gender"
+        else if (gender==getString(R.string.gender)) {
+            binding.tilGender.error = getString(R.string.please_choose_your_gender)
             return false
         }
         else if (password.length<8) {
-            binding.tilPassword.error = "Password should be 8 or more"
+            binding.tilPassword.error = getString(R.string.password_should_be_8_or_more)
             return false
         }
         return true

@@ -7,16 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentLoginBinding
 import com.example.airobserver.di.SharedPref
-import com.example.airobserver.presentation.BaseFragment
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.ApiResponseStates
+import com.example.airobserver.utils.dataResponseHandling
 import com.example.airobserver.utils.putData
 import com.example.airobserver.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +27,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment() {
+class LoginFragment : Fragment() {
     lateinit var binding: FragmentLoginBinding
     private val viewModel: AuthViewModel by viewModels()
     @Inject
@@ -107,11 +109,11 @@ class LoginFragment : BaseFragment() {
         val password = binding.edtPassword.text.toString()
 
        if (!isValidEmail(email)) {
-            binding.tilEmail.error = "Enter a valid email"
+            binding.tilEmail.error = getString(R.string.enter_a_valid_email)
             return false
         }
         else if (password.length<8) {
-            binding.tilPassword.error = "Password should be 8 or more"
+            binding.tilPassword.error = getString(R.string.password_should_be_8_or_more)
             return false
         }
         return true

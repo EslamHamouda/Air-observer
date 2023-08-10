@@ -8,6 +8,18 @@ import com.example.airobserver.data.repo.NewsRepositoryImpl
 import com.example.airobserver.domain.repo.AuthRepository
 import com.example.airobserver.domain.repo.HomeRepository
 import com.example.airobserver.domain.repo.NewsRepository
+import com.example.airobserver.useCase.CheckOTPUseCase
+import com.example.airobserver.useCase.GetAqiGraphHistoryUseCase
+import com.example.airobserver.useCase.GetAqiGraphLastHoursUseCase
+import com.example.airobserver.useCase.GetAqiHistoryUseCase
+import com.example.airobserver.useCase.GetAqiOfDayUseCase
+import com.example.airobserver.useCase.GetNewsUseCase
+import com.example.airobserver.useCase.GetOTPUseCase
+import com.example.airobserver.useCase.GetProfileUseCase
+import com.example.airobserver.useCase.LoginUseCase
+import com.example.airobserver.useCase.NewPasswordUseCase
+import com.example.airobserver.useCase.RegisterUseCase
+import com.example.airobserver.useCase.UpdateProfileUseCase
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -106,5 +118,65 @@ object NetworkModule {
     @Provides
     fun provideNewsRepository(services: APIServicesNews): NewsRepository {
         return NewsRepositoryImpl(services)
+    }
+
+    @Provides
+    fun provideGetAqiHistoryUseCase(repository: HomeRepository): GetAqiHistoryUseCase {
+        return GetAqiHistoryUseCase(repository)
+    }
+
+    @Provides
+    fun provideGetAqiGraphHistoryUseCase(repository: HomeRepository): GetAqiGraphHistoryUseCase {
+        return GetAqiGraphHistoryUseCase(repository)
+    }
+
+    @Provides
+    fun provideGetAqiOfDayUseCase(repository: HomeRepository): GetAqiOfDayUseCase {
+        return GetAqiOfDayUseCase(repository)
+    }
+
+    @Provides
+    fun provideGetAqiGraphLastHoursUseCase(repository: HomeRepository): GetAqiGraphLastHoursUseCase {
+        return GetAqiGraphLastHoursUseCase(repository)
+    }
+
+    @Provides
+    fun provideGetNewsUseCase(repository: NewsRepository): GetNewsUseCase {
+        return GetNewsUseCase(repository)
+    }
+
+    @Provides
+    fun provideLoginUseCase(repository: AuthRepository): LoginUseCase {
+        return LoginUseCase(repository)
+    }
+
+    @Provides
+    fun provideRegisterUseCase(repository: AuthRepository): RegisterUseCase {
+        return RegisterUseCase(repository)
+    }
+
+    @Provides
+    fun provideGetOTPUseCase(repository: AuthRepository): GetOTPUseCase {
+        return GetOTPUseCase(repository)
+    }
+
+    @Provides
+    fun provideCheckOTPUseCase(repository: AuthRepository): CheckOTPUseCase {
+        return CheckOTPUseCase(repository)
+    }
+
+    @Provides
+    fun provideNewPasswordUseCase(repository: AuthRepository): NewPasswordUseCase {
+        return NewPasswordUseCase(repository)
+    }
+
+    @Provides
+    fun provideGetProfileUseCase(repository: AuthRepository): GetProfileUseCase {
+        return GetProfileUseCase(repository)
+    }
+
+    @Provides
+    fun provideUpdateProfileUseCase(repository: AuthRepository): UpdateProfileUseCase {
+        return UpdateProfileUseCase(repository)
     }
 }

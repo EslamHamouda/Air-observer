@@ -8,6 +8,10 @@ import com.example.airobserver.domain.model.response.AqiGraphLastHoursResponse
 import com.example.airobserver.domain.model.response.AqiHistoryResponse
 import com.example.airobserver.domain.model.response.AqiOfDayResponse
 import com.example.airobserver.domain.repo.HomeRepository
+import com.example.airobserver.useCase.GetAqiGraphHistoryUseCase
+import com.example.airobserver.useCase.GetAqiGraphLastHoursUseCase
+import com.example.airobserver.useCase.GetAqiHistoryUseCase
+import com.example.airobserver.useCase.GetAqiOfDayUseCase
 import com.example.airobserver.utils.ApiResponseStates
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +22,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: HomeRepository
+    private val getAqiHistoryUseCase: GetAqiHistoryUseCase,
+    private val getAqiGraphHistoryUseCase: GetAqiGraphHistoryUseCase,
+    private val getAqiOfDayUseCase: GetAqiOfDayUseCase,
+    private val getAqiGraphLastHoursUseCase: GetAqiGraphLastHoursUseCase
+
 ) : ViewModel() {
 
     private val _aqiHistoryResponse: MutableStateFlow<ApiResponseStates<BaseResponse<AqiHistoryResponse>>> =
@@ -28,9 +36,9 @@ class HomeViewModel @Inject constructor(
 
     fun aqiHistory(month: Int) {
         viewModelScope.launch {
-            repository.aqiHistory(month).collectLatest {
+            getAqiHistoryUseCase(month).collectLatest {
                 _aqiHistoryResponse.value =
-                    it as ApiResponseStates<BaseResponse<AqiHistoryResponse>>
+                    it
             }
         }
     }
@@ -42,7 +50,7 @@ class HomeViewModel @Inject constructor(
 
     fun aqiGraphHistory() {
         viewModelScope.launch {
-            repository.aqiGraphHistory().collectLatest {
+            getAqiGraphHistoryUseCase().collectLatest {
                 _aqiGraphHistoryResponse.value =
                     it as ApiResponseStates<BaseResponse<ArrayList<AqiGraphHistoryResponse>>>
             }
@@ -56,7 +64,7 @@ class HomeViewModel @Inject constructor(
 
     fun aqiOfDay() {
         viewModelScope.launch {
-            repository.aqiOfDay().collectLatest {
+            getAqiOfDayUseCase().collectLatest {
                 _aqiOfDayResponse.value =
                     it as ApiResponseStates<BaseResponse<AqiOfDayResponse>>
             }
@@ -70,7 +78,7 @@ class HomeViewModel @Inject constructor(
 
     fun aqiGraphLastHours() {
         viewModelScope.launch {
-            repository.aqiGraphLastHours().collectLatest {
+            getAqiGraphLastHoursUseCase().collectLatest {
                 _aqiGraphLastHoursResponse.value =
                     it as ApiResponseStates<BaseResponse<ArrayList<AqiGraphLastHoursResponse>>>
             }

@@ -119,4 +119,16 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="enter_a_valid_email">Enter a valid email</string>
+    <string name="password_should_be_8_or_more">Password should be 8 or more</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="invalid_first_name">Invalid first name</string>
+    <string name="invalid_last_name">Invalid last name</string>
+    <string name="phone_not_correct">Phone not correct</string>
+    <string name="not_a_valid_date_2000_05_01">Not a valid date: 2000-05-01</string>
+    <string name="please_choose_your_gender">Please choose your gender</string>
+    <string name="not_matched">Not matched</string>
+    <string name="pollutions">Pollutions</string>
+    <string name="share_article_with">Share article with...</string>
 </resources>

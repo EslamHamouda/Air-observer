@@ -123,18 +123,7 @@ class ProfileActivity : AppCompatActivity() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                   /* when(it) {
-                        is ApiResponseStates.Success -> {
-                            showSnackbar("Authorization has been accepted for this request.",this@ProfileActivity)
-                            binding.edtFirstname.setText(it.value?.data?.firstname.toString())
-                            binding.edtLastname.setText(it.value?.data?.lastname.toString())
-                            binding.edtEmail.setText(it.value?.data?.email.toString())
-                            binding.edtPhone.setText(it.value?.data?.phone.toString())
-                            binding.edtDate.setText(it.value?.data?.Birthday)
-                            binding.autoCompleteGender.setText(it.value?.data?.gender.toString())
-                        }
-                        else -> {}
-                    }*/
+
                     dataResponseHandling(this@ProfileActivity,
                         it,
                         binding.progressBar.progressBar,
@@ -179,17 +168,7 @@ class ProfileActivity : AppCompatActivity() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                  /*  when(it) {
-                        is ApiResponseStates.Success -> {
-                            showSnackbar("User information updated successfully and email was sent.",this@ProfileActivity)
-                            binding.btnEdit.visibility = View.INVISIBLE
-                            disableEditText(binding.tilFirstname)
-                            disableEditText(binding.tilLastname)
-                            disableEditText(binding.tilPhone)
-                            getProfile()
-                        }
-                        else -> {}
-                    }*/
+
                     dataResponseHandling(this@ProfileActivity,
                         it,
                         binding.progressBar.progressBar,
@@ -245,22 +224,22 @@ class ProfileActivity : AppCompatActivity() {
         val date = binding.edtDate.text.toString()
 
         if (firstName.length < 3) {
-            binding.tilFirstname.error = "Invalid first name"
+            binding.tilFirstname.error = getString(R.string.invalid_first_name)
             return false
         } else if (lastName.length < 3) {
-            binding.tilLastname.error = "Invalid last name"
+            binding.tilLastname.error = getString(R.string.invalid_last_name)
             return false
         }
         else if (!isValidEmail(email)) {
-            binding.tilEmail.error = "Enter a valid email"
+            binding.tilEmail.error = getString(R.string.enter_a_valid_email)
             return false
         }
         else if (!isValidPhoneNumber(phone)) {
-            binding.tilPhone.error = "Phone not correct"
+            binding.tilPhone.error = getString(R.string.phone_not_correct)
             return false
         }
         else if (!isValidDate(date)) {
-            binding.tilDate.error = "Not a valid date: 2000-05-01"
+            binding.tilDate.error = getString(R.string.not_a_valid_date_2000_05_01)
             return false
         }
         return true

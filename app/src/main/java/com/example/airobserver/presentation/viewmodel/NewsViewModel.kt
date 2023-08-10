@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.airobserver.domain.model.response.NewsResponse
 import com.example.airobserver.domain.repo.NewsRepository
+import com.example.airobserver.useCase.GetAqiOfDayUseCase
+import com.example.airobserver.useCase.GetNewsUseCase
 import com.example.airobserver.utils.ApiResponseStates
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewsViewModel @Inject constructor(
-    private val repository: NewsRepository
+    private val getNewsUseCase: GetNewsUseCase
 ) : ViewModel() {
 
     private val _newsResponse: MutableStateFlow<ApiResponseStates<NewsResponse>> =
@@ -24,7 +26,7 @@ class NewsViewModel @Inject constructor(
 
     fun getNews() {
         viewModelScope.launch {
-            repository.getNews().collectLatest {
+           getNewsUseCase().collectLatest {
                 _newsResponse.value =
                     it
             }
