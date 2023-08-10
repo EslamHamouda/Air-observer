@@ -19,6 +19,7 @@ import com.example.airobserver.di.SharedPref
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.ApiResponseStates
 import com.example.airobserver.utils.dataResponseHandling
+import com.example.airobserver.utils.isValidEmail
 import com.example.airobserver.utils.putData
 import com.example.airobserver.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -117,10 +118,6 @@ class LoginFragment : Fragment() {
             return false
         }
         return true
-    }
-    private fun isValidEmail(email: String): Boolean {
-        val regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\$"
-        return email.matches(regex.toRegex())
     }
 
 }

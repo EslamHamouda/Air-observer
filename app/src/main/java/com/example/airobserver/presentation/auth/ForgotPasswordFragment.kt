@@ -85,9 +85,5 @@ class ForgotPasswordFragment : Fragment() {
         }
         return true
     }
-    private fun isValidEmail(email: String): Boolean {
-        val regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\$"
-        return email.matches(regex.toRegex())
-    }
 
 }
