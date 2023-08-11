@@ -19,6 +19,14 @@ fun hideProgress(progressBar: LottieAnimationView) {
     progressBar.visibility = View.GONE
 }
 
+fun LottieAnimationView.hideProgressBar() {
+    this.visibility = View.GONE
+}
+
+fun LottieAnimationView.showProgressBar() {
+    this.visibility = View.VISIBLE
+}
+
 fun Activity.view(): View? =
     findViewById(android.R.id.content)
 

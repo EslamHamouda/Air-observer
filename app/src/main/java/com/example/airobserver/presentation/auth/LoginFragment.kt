@@ -18,9 +18,10 @@ import com.example.airobserver.databinding.FragmentLoginBinding
 import com.example.airobserver.di.SharedPref
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.ApiResponseStates
-import com.example.airobserver.utils.dataResponseHandling
+import com.example.airobserver.utils.hideProgressBar
 import com.example.airobserver.utils.isValidEmail
 import com.example.airobserver.utils.putData
+import com.example.airobserver.utils.showProgressBar
 import com.example.airobserver.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -65,10 +66,10 @@ class LoginFragment : Fragment() {
             }
         }
         binding.btnLogin.setOnClickListener{
-            if(checkValidation()){
+            //if(checkValidation()){
                 viewModel.login(binding.edtEmail.text.toString(),binding.edtPassword.text.toString())
                 getLoginResponse()
-            }
+            //}
         }
     }
 
@@ -80,7 +81,26 @@ class LoginFragment : Fragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    dataResponseHandling(this@LoginFragment.requireActivity(),
+                    when (it) {
+                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Success -> {
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.value?.message.toString(),requireActivity())
+                            pref.putData(SharedPref.IS_LOGIN,true)
+                            pref.putData(SharedPref.EMAIL,it.value?.data?.email)
+                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeActivity())
+                            requireActivity().finish()
+                        }
+                        is ApiResponseStates.ValidationFailure -> {
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(getString(it.message.toInt()), requireActivity())
+                        }
+                        is ApiResponseStates.Failure -> {
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.throwable.message.toString(), requireActivity())
+                        }
+                    }
+                    /*dataResponseHandling(this@LoginFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
                         {
@@ -97,7 +117,7 @@ class LoginFragment : Fragment() {
                             }catch (e:Exception){
                                 e.message
                             }
-                        })
+                        })*/
                 }
 
         }

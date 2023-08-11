@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentRegisterBinding
+import com.example.airobserver.di.SharedPref
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,7 +52,7 @@ class RegisterFragment : Fragment() {
         }
         binding.btnRegister.setOnClickListener {
             //findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment("eslam.ee600@gmail.com"))
-            if (checkValidation()) {
+            //if (checkValidation()) {
                 viewModel.register(binding.edtFirstname.text.toString(),
                 binding.edtLastname.text.toString(),
                 binding.edtEmail.text.toString(),
@@ -60,7 +61,7 @@ class RegisterFragment : Fragment() {
                 binding.edtDate.text.toString(),
                 binding.autoCompleteGender.text.toString())
                 getRegisterResponse()
-            }
+            //}
         }
     }
 
@@ -72,7 +73,24 @@ class RegisterFragment : Fragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    dataResponseHandling(this@RegisterFragment.requireActivity(),
+                    when (it) {
+                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Success -> {
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.value?.message.toString(),requireActivity())
+                            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment(binding.edtEmail.text.toString()))
+                        }
+                        is ApiResponseStates.ValidationFailure -> {
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(getString(it.message.toInt()), requireActivity())
+                        }
+                        is ApiResponseStates.Failure -> {
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.throwable.message.toString(), requireActivity())
+                        }
+                    }
+
+                    /*dataResponseHandling(this@RegisterFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
                         {
@@ -92,7 +110,7 @@ class RegisterFragment : Fragment() {
                             }catch (e:Exception){
                                 e.message
                             }
-                        })
+                        })*/
                 }
 
         }

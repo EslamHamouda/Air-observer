@@ -1,4 +1,4 @@
-package com.example.airobserver.useCase
+package com.example.airobserver.domain.useCase.home
 
 import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.domain.model.response.AqiGraphLastHoursResponse

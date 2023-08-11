@@ -29,3 +29,11 @@ fun isValidEmail(email: String): Boolean {
     val regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\$"
     return email.matches(regex.toRegex())
 }
+
+fun isValidPassword(password: String): Boolean {
+    return password.length >= 8
+}
+
+fun isValidName(name: String): Boolean {
+    return name.length >= 3
+}

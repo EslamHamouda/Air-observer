@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentForgotPasswordBinding
+import com.example.airobserver.di.SharedPref
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,10 +40,10 @@ class ForgotPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnSubmit.setOnClickListener {
-            if(checkValidation()){
+            //if(checkValidation()){
                 viewModel.getOTP(binding.edtEmail.text.toString())
                 getOTPResponse()
-            }
+            //}
         }
     }
 
@@ -55,7 +56,23 @@ class ForgotPasswordFragment : Fragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    dataResponseHandling(this@ForgotPasswordFragment.requireActivity(),
+                    when (it) {
+                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Success -> {
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.value?.message.toString(),requireActivity())
+                            findNavController().navigate(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToVerificationResetPasswordFragment(binding.edtEmail.text.toString()))
+                        }
+                        is ApiResponseStates.ValidationFailure -> {
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(getString(it.message.toInt()), requireActivity())
+                        }
+                        is ApiResponseStates.Failure -> {
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.throwable.message.toString(), requireActivity())
+                        }
+                    }
+                    /*dataResponseHandling(this@ForgotPasswordFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
                         {
@@ -69,7 +86,7 @@ class ForgotPasswordFragment : Fragment() {
                             }catch (e:Exception){
                                e.message
                             }
-                        })
+                        })*/
                 }
 
         }

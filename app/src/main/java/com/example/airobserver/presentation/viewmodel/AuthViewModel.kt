@@ -5,17 +5,16 @@ import androidx.lifecycle.viewModelScope
 import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.domain.model.response.GetProfileResponse
 import com.example.airobserver.domain.model.response.LoginResponse
-import com.example.airobserver.domain.repo.AuthRepository
-import com.example.airobserver.useCase.CheckOTPUseCase
-import com.example.airobserver.useCase.GetAqiHistoryUseCase
-import com.example.airobserver.useCase.GetOTPUseCase
-import com.example.airobserver.useCase.GetProfileUseCase
-import com.example.airobserver.useCase.LoginUseCase
-import com.example.airobserver.useCase.NewPasswordUseCase
-import com.example.airobserver.useCase.RegisterUseCase
-import com.example.airobserver.useCase.UpdateProfileUseCase
+import com.example.airobserver.domain.useCase.auth.CheckOTPUseCase
+import com.example.airobserver.domain.useCase.auth.GetOTPUseCase
+import com.example.airobserver.domain.useCase.auth.GetProfileUseCase
+import com.example.airobserver.domain.useCase.auth.LoginUseCase
+import com.example.airobserver.domain.useCase.auth.NewPasswordUseCase
+import com.example.airobserver.domain.useCase.auth.RegisterUseCase
+import com.example.airobserver.domain.useCase.auth.UpdateProfileUseCase
 import com.example.airobserver.utils.ApiResponseStates
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -39,10 +38,13 @@ class AuthViewModel @Inject constructor(
         get() = _loginResponse
 
     fun login(email:String,password:String) {
+        _loginResponse.value=ApiResponseStates.Loading
         viewModelScope.launch {
-            loginUseCase(email, password).collectLatest {
-                _loginResponse.value =
-                    it
+            when (val result = loginUseCase(email, password)) {
+                    is ApiResponseStates.Success -> _loginResponse.value = ApiResponseStates.Success(result.value)
+                    is ApiResponseStates.ValidationFailure -> _loginResponse.value = ApiResponseStates.ValidationFailure(result.message)
+                    is ApiResponseStates.Failure -> _loginResponse.value = ApiResponseStates.Failure(result.throwable)
+                else -> {}
             }
         }
     }
@@ -59,10 +61,13 @@ class AuthViewModel @Inject constructor(
                  password:String,
                  birthdate: String,
                  gender:String) {
+        _registerResponse.value=ApiResponseStates.Loading
         viewModelScope.launch {
-            registerUseCase(fname, lname, email, phone, password,birthdate, gender).collectLatest {
-                _registerResponse.value =
-                    it as ApiResponseStates<BaseResponse<String>>
+            when (val result =  registerUseCase(fname, lname, email, phone, password,birthdate, gender)) {
+                is ApiResponseStates.Success -> _registerResponse.value = ApiResponseStates.Success(result.value)
+                is ApiResponseStates.ValidationFailure -> _registerResponse.value = ApiResponseStates.ValidationFailure(result.message)
+                is ApiResponseStates.Failure -> _registerResponse.value = ApiResponseStates.Failure(result.throwable)
+                else -> {}
             }
         }
     }
@@ -73,10 +78,13 @@ class AuthViewModel @Inject constructor(
         get() = _getOTPResponse
 
     fun getOTP(email:String) {
+        _getOTPResponse.value = ApiResponseStates.Loading
         viewModelScope.launch {
-            getOTPUseCase(email).collectLatest {
-                _getOTPResponse.value =
-                    it
+            when (val result =  getOTPUseCase(email)) {
+                is ApiResponseStates.Success -> _getOTPResponse.value = ApiResponseStates.Success(result.value)
+                is ApiResponseStates.ValidationFailure -> _getOTPResponse.value = ApiResponseStates.ValidationFailure(result.message)
+                is ApiResponseStates.Failure -> _getOTPResponse.value = ApiResponseStates.Failure(result.throwable)
+                else -> {}
             }
         }
     }

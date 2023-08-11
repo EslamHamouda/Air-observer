@@ -7,11 +7,10 @@ import com.example.airobserver.domain.model.response.AqiGraphHistoryResponse
 import com.example.airobserver.domain.model.response.AqiGraphLastHoursResponse
 import com.example.airobserver.domain.model.response.AqiHistoryResponse
 import com.example.airobserver.domain.model.response.AqiOfDayResponse
-import com.example.airobserver.domain.repo.HomeRepository
-import com.example.airobserver.useCase.GetAqiGraphHistoryUseCase
-import com.example.airobserver.useCase.GetAqiGraphLastHoursUseCase
-import com.example.airobserver.useCase.GetAqiHistoryUseCase
-import com.example.airobserver.useCase.GetAqiOfDayUseCase
+import com.example.airobserver.domain.useCase.home.GetAqiGraphHistoryUseCase
+import com.example.airobserver.domain.useCase.home.GetAqiGraphLastHoursUseCase
+import com.example.airobserver.domain.useCase.home.GetAqiHistoryUseCase
+import com.example.airobserver.domain.useCase.home.GetAqiOfDayUseCase
 import com.example.airobserver.utils.ApiResponseStates
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

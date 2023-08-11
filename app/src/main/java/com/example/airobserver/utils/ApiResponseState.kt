@@ -2,6 +2,7 @@ package com.example.airobserver.utils
 
 import android.app.Activity
 import android.os.Build
+import android.os.Message
 import androidx.annotation.RequiresApi
 import com.airbnb.lottie.LottieAnimationView
 import com.example.airobserver.domain.model.BaseResponse
@@ -10,7 +11,8 @@ import kotlinx.coroutines.flow.flow
 
 sealed class ApiResponseStates<out T> {
     data class Success<out R>(val value: R?) : ApiResponseStates<R>()
-    data class NetworkError(val throwable: Throwable) : ApiResponseStates<Nothing>()
+    data class Failure(val throwable: Throwable) : ApiResponseStates<Nothing>()
+    data class ValidationFailure(val message: String) : ApiResponseStates<Nothing>()
     object Loading : ApiResponseStates<Nothing>()
 }
 
@@ -23,7 +25,7 @@ fun <T> startApiCall(
             val response = apiCall.invoke()
             emit(ApiResponseStates.Success(response))
         } catch (throwable: Throwable) {
-            emit(ApiResponseStates.NetworkError(throwable))
+            emit(ApiResponseStates.Failure(throwable))
         }
     }
 
@@ -46,10 +48,12 @@ fun <B : BaseResponse<T>, T> dataResponseHandling(
         is ApiResponseStates.Loading -> {
             progressBar?.let { it1 -> showProgress(it1) }
         }
-        is ApiResponseStates.NetworkError -> {
+        is ApiResponseStates.Failure -> {
             progressBar?.let { it1 -> hideProgress(it1) }
             showSnackbar(it.throwable.handling(activity), activity) { tryAgain() }
 
         }
+
+        else -> {}
     }
 }

@@ -3,9 +3,7 @@ package com.example.airobserver.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.airobserver.domain.model.response.NewsResponse
-import com.example.airobserver.domain.repo.NewsRepository
-import com.example.airobserver.useCase.GetAqiOfDayUseCase
-import com.example.airobserver.useCase.GetNewsUseCase
+import com.example.airobserver.domain.useCase.home.GetNewsUseCase
 import com.example.airobserver.utils.ApiResponseStates
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

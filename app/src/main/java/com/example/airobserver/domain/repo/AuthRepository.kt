@@ -7,7 +7,7 @@ import com.example.airobserver.utils.ApiResponseStates
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository{
-    suspend fun login(email:String,password:String): Flow<ApiResponseStates<BaseResponse<LoginResponse>>>
+    suspend fun login(email:String,password:String): BaseResponse<LoginResponse>
 
     suspend fun register(fname:String,
                          lname:String,
@@ -15,9 +15,9 @@ interface AuthRepository{
                          phone:String,
                          password:String,
                          birthdate: String,
-                         gender:String):  Flow<ApiResponseStates<BaseResponse<String>>>
+                         gender:String):  BaseResponse<String>
 
-    suspend fun getOTP(email:String): Flow<ApiResponseStates<BaseResponse<String>>>
+    suspend fun getOTP(email:String): BaseResponse<String>
 
     suspend fun checkOTP(email:String,otp:Int): Flow<ApiResponseStates<BaseResponse<String>>>
 

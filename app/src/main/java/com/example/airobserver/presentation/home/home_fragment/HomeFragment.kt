@@ -1,6 +1,5 @@
 package com.example.airobserver.presentation.home.home_fragment
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.graphics.Color
 import android.os.Build
@@ -51,7 +50,6 @@ class HomeFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    @SuppressLint("SetJavaScriptEnabled", "ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -281,11 +279,13 @@ class HomeFragment : Fragment() {
             is ApiResponseStates.Loading -> {
                 progressBar?.let { it1 -> showProgress(it1) }
             }
-            is ApiResponseStates.NetworkError -> {
+            is ApiResponseStates.Failure -> {
                 progressBar?.let { it1 -> hideProgress(it1) }
                 showSnackbar(it.throwable.handling(activity), activity) { tryAgain() }
 
             }
+
+            else -> {}
         }
     }
 }
