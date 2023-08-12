@@ -131,4 +131,5 @@
     <string name="not_matched">Not matched</string>
     <string name="pollutions">Pollutions</string>
     <string name="share_article_with">Share article with...</string>
+    <string name="enter_a_valid_otp">Enter a Valid OTP</string>
 </resources>

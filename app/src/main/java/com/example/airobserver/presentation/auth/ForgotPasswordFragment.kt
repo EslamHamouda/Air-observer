@@ -59,15 +59,19 @@ class ForgotPasswordFragment : Fragment() {
                     when (it) {
                         is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
                         is ApiResponseStates.Success -> {
+                            setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.value?.message.toString(),requireActivity())
                             findNavController().navigate(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToVerificationResetPasswordFragment(binding.edtEmail.text.toString()))
                         }
                         is ApiResponseStates.ValidationFailure -> {
+                            setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
-                            showSnackbar(getString(it.message.toInt()), requireActivity())
+                            setValidationErrors(it.message.toMutableMap())
+                            //showSnackbar(getString(it.message.toInt()), requireActivity())
                         }
                         is ApiResponseStates.Failure -> {
+                            setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.throwable.message.toString(), requireActivity())
                         }
@@ -90,6 +94,15 @@ class ForgotPasswordFragment : Fragment() {
                 }
 
         }
+    }
+
+    private fun setValidationErrors(map:MutableMap<String,String>) {
+        map["isValidEmail"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilEmail.setValidationError(it) }
+    }
+
+    private fun setValidationErrorsToEmpty() {
+        binding.tilEmail.error=null
     }
 
     private fun checkValidation(): Boolean {

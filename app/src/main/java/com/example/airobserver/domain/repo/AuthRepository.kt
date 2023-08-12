@@ -19,16 +19,16 @@ interface AuthRepository{
 
     suspend fun getOTP(email:String): BaseResponse<String>
 
-    suspend fun checkOTP(email:String,otp:Int): Flow<ApiResponseStates<BaseResponse<String>>>
+    suspend fun checkOTP(email:String,otp:Int): BaseResponse<String>
 
-    suspend fun newPassword(email:String,password:String): Flow<ApiResponseStates<BaseResponse<String>>>
+    suspend fun newPassword(email:String,password:String): BaseResponse<String>
 
-    suspend fun getProfile(email:String): Flow<ApiResponseStates<BaseResponse<GetProfileResponse>>>
+    suspend fun getProfile(email:String): BaseResponse<GetProfileResponse>
 
     suspend fun updateProfile(fname:String,
                               lname:String,
                               email:String,
                               phone:String,
                               gender:String,
-                              birthdate:String): Flow<ApiResponseStates<BaseResponse<String>>>
+                              birthdate:String): BaseResponse<String>
 }

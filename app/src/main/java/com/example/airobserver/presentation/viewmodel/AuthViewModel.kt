@@ -95,10 +95,13 @@ class AuthViewModel @Inject constructor(
         get() = _checkOTPResponse
 
     fun checkOTP(email:String,otp:Int) {
+        _checkOTPResponse.value = ApiResponseStates.Loading
         viewModelScope.launch {
-            checkOTPUseCase(email, otp).collectLatest {
-                _checkOTPResponse.value =
-                    it as ApiResponseStates<BaseResponse<String>>
+            when (val result =  checkOTPUseCase(email, otp)) {
+                is ApiResponseStates.Success -> _checkOTPResponse.value = ApiResponseStates.Success(result.value)
+                is ApiResponseStates.ValidationFailure -> _checkOTPResponse.value = ApiResponseStates.ValidationFailure(result.message)
+                is ApiResponseStates.Failure -> _checkOTPResponse.value = ApiResponseStates.Failure(result.throwable)
+                else -> {}
             }
         }
     }
@@ -108,11 +111,14 @@ class AuthViewModel @Inject constructor(
     val newPasswordResponse: StateFlow<ApiResponseStates<BaseResponse<String>>>
         get() = _newPasswordResponse
 
-    fun newPassword(email:String,password:String) {
+    fun newPassword(email:String,password:String, confirm:String) {
+        _newPasswordResponse.value = ApiResponseStates.Loading
         viewModelScope.launch {
-            newPasswordUseCase(email, password).collectLatest {
-                _newPasswordResponse.value =
-                    it as ApiResponseStates<BaseResponse<String>>
+            when (val result =  newPasswordUseCase(email, password, confirm)) {
+                is ApiResponseStates.Success -> _newPasswordResponse.value = ApiResponseStates.Success(result.value)
+                is ApiResponseStates.ValidationFailure -> _newPasswordResponse.value = ApiResponseStates.ValidationFailure(result.message)
+                is ApiResponseStates.Failure -> _newPasswordResponse.value = ApiResponseStates.Failure(result.throwable)
+                else -> {}
             }
         }
     }
@@ -123,10 +129,13 @@ class AuthViewModel @Inject constructor(
         get() = _getProfileResponse
 
     fun getProfile(email:String) {
+        _getProfileResponse.value = ApiResponseStates.Loading
         viewModelScope.launch {
-            getProfileUseCase(email).collectLatest {
-                _getProfileResponse.value =
-                    it as ApiResponseStates<BaseResponse<GetProfileResponse>>
+            when (val result =  getProfileUseCase(email)) {
+                is ApiResponseStates.Success -> _getProfileResponse.value = ApiResponseStates.Success(result.value)
+                is ApiResponseStates.ValidationFailure -> _getProfileResponse.value = ApiResponseStates.ValidationFailure(result.message)
+                is ApiResponseStates.Failure -> _getProfileResponse.value = ApiResponseStates.Failure(result.throwable)
+                else -> {}
             }
         }
     }
@@ -142,10 +151,13 @@ class AuthViewModel @Inject constructor(
                  phone:String,
                  gender:String,
                  birthdate:String) {
+        _updateProfileResponse.value=ApiResponseStates.Loading
         viewModelScope.launch {
-            updateProfileUseCase(fname, lname, email, phone, gender, birthdate).collectLatest {
-                _updateProfileResponse.value =
-                    it as ApiResponseStates<BaseResponse<String>>
+            when (val result =  updateProfileUseCase(fname, lname, email, phone, gender, birthdate)) {
+                is ApiResponseStates.Success -> _updateProfileResponse.value = ApiResponseStates.Success(result.value)
+                is ApiResponseStates.ValidationFailure -> _updateProfileResponse.value = ApiResponseStates.ValidationFailure(result.message)
+                is ApiResponseStates.Failure -> _updateProfileResponse.value = ApiResponseStates.Failure(result.throwable)
+                else -> {}
             }
         }
     }

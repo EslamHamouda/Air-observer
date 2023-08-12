@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flow
 sealed class ApiResponseStates<out T> {
     data class Success<out R>(val value: R?) : ApiResponseStates<R>()
     data class Failure(val throwable: Throwable) : ApiResponseStates<Nothing>()
-    data class ValidationFailure(val message: String) : ApiResponseStates<Nothing>()
+    data class ValidationFailure(val message: Map<String,String>) : ApiResponseStates<Nothing>()
     object Loading : ApiResponseStates<Nothing>()
 }
 

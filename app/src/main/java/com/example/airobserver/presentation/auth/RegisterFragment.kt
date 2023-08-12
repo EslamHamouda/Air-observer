@@ -34,7 +34,6 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding=FragmentRegisterBinding.inflate(inflater)
         return binding.root
     }
@@ -76,15 +75,19 @@ class RegisterFragment : Fragment() {
                     when (it) {
                         is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
                         is ApiResponseStates.Success -> {
+                            setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.value?.message.toString(),requireActivity())
                             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment(binding.edtEmail.text.toString()))
                         }
                         is ApiResponseStates.ValidationFailure -> {
+                            setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
-                            showSnackbar(getString(it.message.toInt()), requireActivity())
+                            setValidationErrors(it.message.toMutableMap())
+                            //showSnackbar(getString(it.message.toInt()), requireActivity())
                         }
                         is ApiResponseStates.Failure -> {
+                            setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.throwable.message.toString(), requireActivity())
                         }
@@ -114,6 +117,33 @@ class RegisterFragment : Fragment() {
                 }
 
         }
+    }
+
+    private fun setValidationErrors(map:MutableMap<String,String>) {
+        map["isValidFname"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilFirstname.setValidationError(it) }
+        map["isValidLname"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilLastname.setValidationError(it) }
+        map["isValidEmail"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilEmail.setValidationError(it) }
+        map["isValidPhone"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilPhone.setValidationError(it) }
+        map["isValidBirthdate"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilDate.setValidationError(it) }
+        map["isValidGender"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilGender.setValidationError(it) }
+        map["isValidPassword"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilPassword.setValidationError(it) }
+    }
+
+    private fun setValidationErrorsToEmpty() {
+        binding.tilFirstname.error = null
+        binding.tilLastname.error = null
+        binding.tilEmail.error = null
+        binding.tilPhone.error = null
+        binding.tilDate.error = null
+        binding.tilGender.error = null
+        binding.tilPassword.error = null
     }
 
     private fun checkValidation(): Boolean {

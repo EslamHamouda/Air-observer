@@ -18,12 +18,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.example.airobserver.R
 import com.example.airobserver.databinding.ActivityProfileBinding
 import com.example.airobserver.di.SharedPref
 import com.example.airobserver.domain.model.BaseResponse
 import com.example.airobserver.presentation.auth.AuthActivity
+import com.example.airobserver.presentation.auth.RegisterFragmentDirections
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.*
 import com.google.android.material.textfield.TextInputLayout
@@ -67,7 +69,7 @@ class ProfileActivity : AppCompatActivity() {
         getProfileResponse()
 
         binding.btnEdit.setOnClickListener {
-                if (checkValidation()) {
+                //if (checkValidation()) {
                     viewModel.updateProfile(
                         binding.edtFirstname.text.toString(),
                         binding.edtLastname.text.toString(),
@@ -77,7 +79,7 @@ class ProfileActivity : AppCompatActivity() {
                         binding.edtDate.text.toString(),
                     )
                     getUpdateProfileResponse()
-                }
+                //}
         }
     }
 
@@ -103,17 +105,6 @@ class ProfileActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-    private fun enableEditText(editText: TextInputLayout) {
-        editText.isEnabled = true
-    }
-    private fun disableEditText(editText: TextInputLayout) {
-        editText.isEnabled = false
-    }
-    private fun removeFirstAndLastChar(str: String?): String {
-        return if (str?.length!! <= 2) {"" } else {
-            str.substring(1, str.length - 1)
-        }
-    }
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun getProfileResponse() {
@@ -124,7 +115,36 @@ class ProfileActivity : AppCompatActivity() {
             )
                 .collectLatest {
 
-                    dataResponseHandling(this@ProfileActivity,
+                    when (it) {
+                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Success -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            binding.edtFirstname.setText(it.value?.data?.firstname.toString())
+                            binding.edtLastname.setText(it.value?.data?.lastname.toString())
+                            binding.edtEmail.setText(it.value?.data?.email.toString())
+                            if(it.value?.data?.phone.toString().length!=11){
+                                binding.edtPhone.setText("0".plus(it.value?.data?.phone.toString()))
+                            }else{
+                                binding.edtPhone.setText(it.value?.data?.phone.toString())
+                            }
+                            binding.edtDate.setText(it.value?.data?.Birthday)
+                            binding.autoCompleteGender.setText(it.value?.data?.gender.toString())
+                        }
+                        is ApiResponseStates.ValidationFailure -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            setValidationErrors(it.message.toMutableMap())
+                            //showSnackbar(getString(it.message.toInt()), requireActivity())
+                        }
+                        is ApiResponseStates.Failure -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.throwable.message.toString(), this@ProfileActivity)
+                        }
+                    }
+
+                    /*dataResponseHandling(this@ProfileActivity,
                         it,
                         binding.progressBar.progressBar,
                         {
@@ -154,7 +174,7 @@ class ProfileActivity : AppCompatActivity() {
                             }
                             binding.edtDate.setText(it1.Birthday)
                             binding.autoCompleteGender.setText(it1.gender.toString())
-                        })
+                        })*/
                 }
 
         }
@@ -169,7 +189,32 @@ class ProfileActivity : AppCompatActivity() {
             )
                 .collectLatest {
 
-                    dataResponseHandling(this@ProfileActivity,
+                    when (it) {
+                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Success -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.value?.message.toString(),this@ProfileActivity)
+                            binding.btnEdit.visibility = View.INVISIBLE
+                            disableEditText(binding.tilFirstname)
+                            disableEditText(binding.tilLastname)
+                            disableEditText(binding.tilPhone)
+                            getProfile()
+                        }
+                        is ApiResponseStates.ValidationFailure -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            setValidationErrors(it.message.toMutableMap())
+                            //showSnackbar(getString(it.message.toInt()), requireActivity())
+                        }
+                        is ApiResponseStates.Failure -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.throwable.message.toString(), this@ProfileActivity)
+                        }
+                    }
+
+                    /*dataResponseHandling(this@ProfileActivity,
                         it,
                         binding.progressBar.progressBar,
                         {
@@ -204,9 +249,45 @@ class ProfileActivity : AppCompatActivity() {
                             disableEditText(binding.tilLastname)
                             disableEditText(binding.tilPhone)
                             getProfile()
-                        })
+                        })*/
                 }
 
+        }
+    }
+
+    private fun setValidationErrors(map:MutableMap<String,String>) {
+        map["isValidFname"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilFirstname.setValidationError(it) }
+        map["isValidLname"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilLastname.setValidationError(it) }
+        map["isValidEmail"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilEmail.setValidationError(it) }
+        map["isValidPhone"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilPhone.setValidationError(it) }
+        map["isValidGender"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilGender.setValidationError(it) }
+        map["isValidBirthdate"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilDate.setValidationError(it) }
+    }
+
+    private fun setValidationErrorsToEmpty() {
+        binding.tilFirstname.error = null
+        binding.tilLastname.error = null
+        binding.tilEmail.error = null
+        binding.tilPhone.error = null
+        binding.tilGender.error = null
+        binding.tilDate.error = null
+    }
+
+    private fun enableEditText(editText: TextInputLayout) {
+        editText.isEnabled = true
+    }
+    private fun disableEditText(editText: TextInputLayout) {
+        editText.isEnabled = false
+    }
+    private fun removeFirstAndLastChar(str: String?): String {
+        return if (str?.length!! <= 2) {"" } else {
+            str.substring(1, str.length - 1)
         }
     }
 
@@ -245,31 +326,6 @@ class ProfileActivity : AppCompatActivity() {
         return true
     }
 
-    private fun isValidPhoneNumber(phoneNumber: String): Boolean {
-        val pattern = Regex("^(01)[0-9]{9}$")
-        return pattern.matches(phoneNumber)
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    private fun isValidDate(date: String): Boolean {
-        val regex = "^\\d{4}-\\d{2}-\\d{2}$"
-        if (!date.matches(regex.toRegex())) {
-            return false
-        }
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
-        sdf.isLenient = false
-        try {
-            sdf.parse(date)
-        } catch (e: ParseException) {
-            return false
-        }
-        return true
-    }
-
-    private fun isValidEmail(email: String): Boolean {
-        val regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\$"
-        return email.matches(regex.toRegex())
-    }
 
     private fun getProfile(){
         pref.getString("EMAIL","")?.let { viewModel.getProfile(removeFirstAndLastChar(pref.getString("EMAIL",""))) }

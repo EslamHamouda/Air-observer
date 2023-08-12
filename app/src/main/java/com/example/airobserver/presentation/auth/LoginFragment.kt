@@ -21,6 +21,7 @@ import com.example.airobserver.utils.ApiResponseStates
 import com.example.airobserver.utils.hideProgressBar
 import com.example.airobserver.utils.isValidEmail
 import com.example.airobserver.utils.putData
+import com.example.airobserver.utils.setValidationError
 import com.example.airobserver.utils.showProgressBar
 import com.example.airobserver.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -84,6 +85,7 @@ class LoginFragment : Fragment() {
                     when (it) {
                         is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
                         is ApiResponseStates.Success -> {
+                            setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.value?.message.toString(),requireActivity())
                             pref.putData(SharedPref.IS_LOGIN,true)
@@ -92,10 +94,13 @@ class LoginFragment : Fragment() {
                             requireActivity().finish()
                         }
                         is ApiResponseStates.ValidationFailure -> {
+                            setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
-                            showSnackbar(getString(it.message.toInt()), requireActivity())
+                            setValidationErrors(it.message.toMutableMap())
+                            //showSnackbar(getString(it.message.toInt()), requireActivity())
                         }
                         is ApiResponseStates.Failure -> {
+                            setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.throwable.message.toString(), requireActivity())
                         }
@@ -123,13 +128,25 @@ class LoginFragment : Fragment() {
         }
     }
 
+    private fun setValidationErrors(map:MutableMap<String,String>) {
+        map["isValidEmail"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilEmail.setValidationError(it) }
+        map["isValidPassword"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilPassword.setValidationError(it) }
+    }
+
+    private fun setValidationErrorsToEmpty() {
+        binding.tilEmail.error=null
+        binding.tilPassword.error=null
+    }
+
     private fun checkValidation(): Boolean {
         binding.tilEmail.error = null
         binding.tilPassword.error = null
         val email = binding.edtEmail.text.toString()
         val password = binding.edtPassword.text.toString()
 
-       if (!isValidEmail(email)) {
+        if (!isValidEmail(email)) {
             binding.tilEmail.error = getString(R.string.enter_a_valid_email)
             return false
         }

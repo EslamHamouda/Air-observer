@@ -18,6 +18,9 @@ import com.example.airobserver.databinding.FragmentVerificationBinding
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.ApiResponseStates
 import com.example.airobserver.utils.dataResponseHandling
+import com.example.airobserver.utils.hideProgressBar
+import com.example.airobserver.utils.setValidationError
+import com.example.airobserver.utils.showProgressBar
 import com.example.airobserver.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -28,7 +31,7 @@ import javax.inject.Inject
 class VerificationFragment : Fragment() {
     lateinit var binding: FragmentVerificationBinding
     private val viewModel: AuthViewModel by viewModels()
-    private val args:VerificationFragmentArgs by navArgs()
+    //private val args:VerificationFragmentArgs by navArgs()
     @Inject
     lateinit var pref: SharedPreferences
     override fun onCreateView(
@@ -45,10 +48,8 @@ class VerificationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnContinue.setOnClickListener {
-            if(binding.edtCode.text?.length==6){
-                viewModel.checkOTP(args.email,binding.edtCode.text.toString().toInt())
-                getVerificationResponse()
-            }
+            viewModel.checkOTP("args.email",binding.edtCode.text.toString().toInt())
+            getVerificationResponse()
         }
     }
 
@@ -60,7 +61,28 @@ class VerificationFragment : Fragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    dataResponseHandling(this@VerificationFragment.requireActivity(),
+                    when (it) {
+                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Success -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.value?.message.toString(),requireActivity())
+                            findNavController().navigate(VerificationFragmentDirections.actionVerificationFragmentToLoginFragment())
+                        }
+                        is ApiResponseStates.ValidationFailure -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            setValidationErrors(it.message.toMutableMap())
+                            //showSnackbar(getString(it.message.toInt()), requireActivity())
+                        }
+                        is ApiResponseStates.Failure -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.throwable.message.toString(), requireActivity())
+                        }
+                    }
+
+                    /*dataResponseHandling(this@VerificationFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
                         {
@@ -74,10 +96,19 @@ class VerificationFragment : Fragment() {
                             }catch (e:Exception){
                                 e.message
                             }
-                        })
+                        })*/
                 }
 
         }
+    }
+
+    private fun setValidationErrors(map:MutableMap<String,String>) {
+        map["isValidOTP"]?.let { getString(it.toInt()) }
+            ?.let { binding.edtCode.error=it }
+    }
+
+    private fun setValidationErrorsToEmpty() {
+        binding.edtCode.error = null
     }
 
 }

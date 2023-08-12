@@ -35,23 +35,18 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun checkOTP(email:String, otp:Int) =
         withContext(Dispatchers.IO) {
-            startApiCall {
-                services.checkOTP(email, otp)
-            }
+            services.checkOTP(email, otp)
         }
 
     override suspend fun newPassword(email:String, password:String) =
         withContext(Dispatchers.IO) {
-            startApiCall {
-                services.newPassword(email, password)
-            }
+            services.newPassword(email, password)
+
         }
 
     override suspend fun getProfile(email:String) =
         withContext(Dispatchers.IO) {
-            startApiCall {
-                services.getProfile(email)
-            }
+            services.getProfile(email)
         }
 
     override suspend fun updateProfile(fname:String,
@@ -61,8 +56,6 @@ class AuthRepositoryImpl @Inject constructor(
                                        gender:String,
                                        birthdate:String) =
         withContext(Dispatchers.IO) {
-            startApiCall {
-                services.updateProfile(fname,lname,email,phone,gender,birthdate)
-            }
+            services.updateProfile(fname,lname,email,phone,gender,birthdate)
         }
 }

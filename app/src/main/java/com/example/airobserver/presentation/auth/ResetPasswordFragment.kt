@@ -18,6 +18,9 @@ import com.example.airobserver.databinding.FragmentResetPasswordBinding
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.ApiResponseStates
 import com.example.airobserver.utils.dataResponseHandling
+import com.example.airobserver.utils.hideProgressBar
+import com.example.airobserver.utils.setValidationError
+import com.example.airobserver.utils.showProgressBar
 import com.example.airobserver.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -43,7 +46,7 @@ class ResetPasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.btnConfirm.setOnClickListener {
             if (checkValidation()){
-                viewModel.newPassword(args.email,binding.edtConfirmPassword.text.toString())
+                viewModel.newPassword(args.email, binding.edtPassword.text.toString(), binding.edtConfirmPassword.text.toString())
                 getResetPasswordResponse()
             }
         }
@@ -57,7 +60,27 @@ class ResetPasswordFragment : Fragment() {
                 Lifecycle.State.STARTED
             )
                 .collectLatest {
-                    dataResponseHandling(this@ResetPasswordFragment.requireActivity(),
+                    when (it) {
+                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Success -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.value?.message.toString(),requireActivity())
+                            findNavController().navigate(ResetPasswordFragmentDirections.actionResetPasswordFragmentToLoginFragment())
+                        }
+                        is ApiResponseStates.ValidationFailure -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            setValidationErrors(it.message.toMutableMap())
+                            //showSnackbar(getString(it.message.toInt()), requireActivity())
+                        }
+                        is ApiResponseStates.Failure -> {
+                            setValidationErrorsToEmpty()
+                            binding.progressBar.progressBar.hideProgressBar()
+                            showSnackbar(it.throwable.message.toString(), requireActivity())
+                        }
+                    }
+                    /*dataResponseHandling(this@ResetPasswordFragment.requireActivity(),
                         it,
                         binding.progressBar.progressBar,
                         {
@@ -71,10 +94,24 @@ class ResetPasswordFragment : Fragment() {
                             }catch (e:Exception){
                                 e.message
                             }
-                        })
+                        })*/
                 }
 
         }
+    }
+
+    private fun setValidationErrors(map:MutableMap<String,String>) {
+        map["isValidPassword"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilPassword.setValidationError(it) }
+        map["isConfirmValidPassword"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilConfirmPassword.setValidationError(it) }
+        map["isMatch"]?.let { getString(it.toInt()) }
+            ?.let { binding.tilConfirmPassword.setValidationError(it) }
+    }
+
+    private fun setValidationErrorsToEmpty() {
+        binding.tilPassword.error = null
+        binding.tilConfirmPassword.error = null
     }
 
     private fun checkValidation(): Boolean {

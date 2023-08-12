@@ -9,6 +9,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.airbnb.lottie.LottieAnimationView
+import com.google.android.material.textfield.TextInputLayout
 
 
 fun showProgress(progressBar: LottieAnimationView) {
@@ -25,6 +26,11 @@ fun LottieAnimationView.hideProgressBar() {
 
 fun LottieAnimationView.showProgressBar() {
     this.visibility = View.VISIBLE
+}
+
+fun TextInputLayout.setValidationError(error:String) {
+    this.error=null
+    this.error=error
 }
 
 fun Activity.view(): View? =
