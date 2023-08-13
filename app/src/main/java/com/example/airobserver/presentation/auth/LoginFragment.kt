@@ -83,25 +83,27 @@ class LoginFragment : Fragment() {
             )
                 .collectLatest {
                     when (it) {
-                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Loading -> {
+                            if(it.isLoading)
+                                binding.progressBar.progressBar.showProgressBar()
+                            else
+                                binding.progressBar.progressBar.hideProgressBar()
+                        }
                         is ApiResponseStates.Success -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.value?.message.toString(),requireActivity())
                             pref.putData(SharedPref.IS_LOGIN,true)
                             pref.putData(SharedPref.EMAIL,it.value?.data?.email)
                             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeActivity())
                             requireActivity().finish()
                         }
-                        is ApiResponseStates.ValidationFailure -> {
+                        is ApiResponseStates.Failure.Validation -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             setValidationErrors(it.message.toMutableMap())
                             //showSnackbar(getString(it.message.toInt()), requireActivity())
                         }
-                        is ApiResponseStates.Failure -> {
+                        is ApiResponseStates.Failure.Network -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.throwable.message.toString(), requireActivity())
                         }
                     }
@@ -128,11 +130,13 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun setValidationErrors(map:MutableMap<String,String>) {
-        map["isValidEmail"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilEmail.setValidationError(it) }
-        map["isValidPassword"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilPassword.setValidationError(it) }
+    private fun setValidationErrors(map:MutableMap<String,Boolean>) {
+        if(map["isValidEmail"] == false){
+            binding.tilEmail.setValidationError(getString(R.string.enter_a_valid_email))
+        }
+        else if(map["isValidPassword"]==false){
+            binding.tilEmail.setValidationError(getString(R.string.password_should_be_8_or_more))
+        }
     }
 
     private fun setValidationErrorsToEmpty() {

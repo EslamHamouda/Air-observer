@@ -19,40 +19,40 @@ class UpdateProfileUseCase @Inject constructor(private val repository: AuthRepos
                                 phone:String,
                                 gender:String,
                                 birthdate:String): ApiResponseStates<BaseResponse<String>> {
-        val validationFailure = mutableMapOf<String, String>()
+        val validationFailure = mutableMapOf<String, Boolean>()
         return try {
             if (!isValidName(fname)) {
-                validationFailure["isValidFname"]= R.string.invalid_first_name.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isValidFname"]= false
+                ApiResponseStates.Failure.Validation(validationFailure)
                 //ApiResponseStates.ValidationFailure(R.string.invalid_first_name.toString())
             }
 
             else if (!isValidName(lname)) {
-                validationFailure["isValidLname"]= R.string.invalid_last_name.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isValidLname"]= false
+                ApiResponseStates.Failure.Validation(validationFailure)
                 //ApiResponseStates.ValidationFailure(R.string.invalid_last_name.toString())
             }
 
             else if (!isValidEmail(email)) {
-                validationFailure["isValidEmail"]= R.string.enter_a_valid_email.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isValidEmail"]= false
+                ApiResponseStates.Failure.Validation(validationFailure)
                 //ApiResponseStates.ValidationFailure(R.string.enter_a_valid_email.toString())
             }
             else if (!isValidPhoneNumber(phone)) {
-                validationFailure["isValidPhone"]= R.string.phone_not_correct.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isValidPhone"]= false
+                ApiResponseStates.Failure.Validation(validationFailure)
                 //ApiResponseStates.ValidationFailure(R.string.phone_not_correct.toString())
             }
 
             else if (gender == "Gender") {
-                validationFailure["isValidGender"]= R.string.please_choose_your_gender.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isValidGender"]= false
+                ApiResponseStates.Failure.Validation(validationFailure)
                 //ApiResponseStates.ValidationFailure(R.string.please_choose_your_gender.toString())
             }
 
             else if (!isValidDate(birthdate)) {
-                validationFailure["isValidBirthdate"]= R.string.not_a_valid_date_2000_05_01.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isValidBirthdate"]= false
+                ApiResponseStates.Failure.Validation(validationFailure)
                 //ApiResponseStates.ValidationFailure(R.string.not_a_valid_date_2000_05_01.toString())
             }
 
@@ -60,7 +60,7 @@ class UpdateProfileUseCase @Inject constructor(private val repository: AuthRepos
                 ApiResponseStates.Success(repository.updateProfile(fname, lname, email, phone, gender, birthdate))
             }
         }catch (throwable:Throwable){
-            ApiResponseStates.Failure(throwable)
+            ApiResponseStates.Failure.Network(throwable)
         }
     }
 }

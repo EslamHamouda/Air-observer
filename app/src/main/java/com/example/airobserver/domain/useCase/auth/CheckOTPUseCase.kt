@@ -11,17 +11,17 @@ import javax.inject.Inject
 
 class CheckOTPUseCase @Inject constructor(private val repository: AuthRepository) {
     suspend operator fun invoke(email:String,otp:Int): ApiResponseStates<BaseResponse<String>> {
-        val validationFailure = mutableMapOf<String, String>()
+        val validationFailure = mutableMapOf<String, Boolean>()
         return try {
             if(otp.toString().length<6){
-                validationFailure["isValidOTP"]= R.string.enter_a_valid_otp.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isValidOTP"]= false
+                ApiResponseStates.Failure.Validation(validationFailure)
             }
             else {
                 ApiResponseStates.Success(repository.checkOTP(email, otp))
             }
         } catch (throwable: Throwable) {
-            ApiResponseStates.Failure(throwable)
+            ApiResponseStates.Failure.Network(throwable)
         }
     }
 }

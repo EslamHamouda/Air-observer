@@ -73,20 +73,24 @@ class RegisterFragment : Fragment() {
             )
                 .collectLatest {
                     when (it) {
-                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Loading ->{
+                            if(it.isLoading)
+                                binding.progressBar.progressBar.showProgressBar()
+                            else
+                                binding.progressBar.progressBar.hideProgressBar()
+                        }
                         is ApiResponseStates.Success -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.value?.message.toString(),requireActivity())
                             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment(binding.edtEmail.text.toString()))
                         }
-                        is ApiResponseStates.ValidationFailure -> {
+                        is ApiResponseStates.Failure.Validation -> {
                             setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             setValidationErrors(it.message.toMutableMap())
                             //showSnackbar(getString(it.message.toInt()), requireActivity())
                         }
-                        is ApiResponseStates.Failure -> {
+                        is ApiResponseStates.Failure.Network -> {
                             setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.throwable.message.toString(), requireActivity())
@@ -119,21 +123,28 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun setValidationErrors(map:MutableMap<String,String>) {
-        map["isValidFname"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilFirstname.setValidationError(it) }
-        map["isValidLname"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilLastname.setValidationError(it) }
-        map["isValidEmail"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilEmail.setValidationError(it) }
-        map["isValidPhone"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilPhone.setValidationError(it) }
-        map["isValidBirthdate"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilDate.setValidationError(it) }
-        map["isValidGender"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilGender.setValidationError(it) }
-        map["isValidPassword"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilPassword.setValidationError(it) }
+    private fun setValidationErrors(map:MutableMap<String,Boolean>) {
+        if(map["isValidFname"]==false){
+            binding.tilFirstname.setValidationError(getString(R.string.invalid_first_name))
+        }
+        else if(map["isValidLname"]==false){
+            binding.tilLastname.setValidationError(getString(R.string.invalid_last_name))
+        }
+        else if(map["isValidEmail"]==false){
+            binding.tilEmail.setValidationError(getString(R.string.enter_a_valid_email))
+        }
+        else if(map["isValidPhone"]==false){
+            binding.tilPhone.setValidationError(getString(R.string.phone_not_correct))
+        }
+        else if(map["isValidBirthdate"]==false){
+            binding.tilDate.setValidationError(getString(R.string.not_a_valid_date_2000_05_01))
+        }
+        else if(map["isValidGender"]==false){
+            binding.tilGender.setValidationError(getString(R.string.please_choose_your_gender))
+        }
+        else if(map["isValidPassword"]==false){
+            binding.tilPassword.setValidationError(getString(R.string.password_should_be_8_or_more))
+        }
     }
 
     private fun setValidationErrorsToEmpty() {

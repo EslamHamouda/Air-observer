@@ -57,22 +57,24 @@ class ForgotPasswordFragment : Fragment() {
             )
                 .collectLatest {
                     when (it) {
-                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Loading -> {
+                            if(it.isLoading)
+                                binding.progressBar.progressBar.showProgressBar()
+                            else
+                                binding.progressBar.progressBar.hideProgressBar()
+                        }
                         is ApiResponseStates.Success -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.value?.message.toString(),requireActivity())
                             findNavController().navigate(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToVerificationResetPasswordFragment(binding.edtEmail.text.toString()))
                         }
-                        is ApiResponseStates.ValidationFailure -> {
+                        is ApiResponseStates.Failure.Validation -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             setValidationErrors(it.message.toMutableMap())
                             //showSnackbar(getString(it.message.toInt()), requireActivity())
                         }
-                        is ApiResponseStates.Failure -> {
+                        is ApiResponseStates.Failure.Network -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.throwable.message.toString(), requireActivity())
                         }
                     }
@@ -96,9 +98,10 @@ class ForgotPasswordFragment : Fragment() {
         }
     }
 
-    private fun setValidationErrors(map:MutableMap<String,String>) {
-        map["isValidEmail"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilEmail.setValidationError(it) }
+    private fun setValidationErrors(map:MutableMap<String,Boolean>) {
+        if(map["isValidEmail"]==false){
+            binding.tilEmail.setValidationError(getString(R.string.enter_a_valid_email))
+        }
     }
 
     private fun setValidationErrorsToEmpty() {

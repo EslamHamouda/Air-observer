@@ -13,24 +13,24 @@ import javax.inject.Inject
 class NewPasswordUseCase @Inject constructor(private val repository: AuthRepository) {
     suspend operator fun invoke(email:String,password:String, confirm:String): ApiResponseStates<BaseResponse<String>> {
         return try {
-            val validationFailure = mutableMapOf<String, String>()
+            val validationFailure = mutableMapOf<String, Boolean>()
             if (!isValidPassword(password)){
-                validationFailure["isValidPassword"]= R.string.password_should_be_8_or_more.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isValidPassword"]= false
+                ApiResponseStates.Failure.Validation(validationFailure)
             }
             else if (!isValidPassword(confirm)){
-                validationFailure["isConfirmValidPassword"]= R.string.password_should_be_8_or_more.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isConfirmValidPassword"]= false
+                ApiResponseStates.Failure.Validation(validationFailure)
             }
             else if (password != confirm){
-                validationFailure["isMatch"]= R.string.not_matched.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isMatch"]= false
+                ApiResponseStates.Failure.Validation(validationFailure)
             }
             else{
                 ApiResponseStates.Success(repository.newPassword(email, password))
             }
         }catch (throwable:Throwable){
-            ApiResponseStates.Failure(throwable)
+            ApiResponseStates.Failure.Network(throwable)
         }
     }
 }

@@ -71,7 +71,6 @@ object NetworkModule {
         retrofit.create(APIServices::class.java)
 
 
-
     private const val BASE_URL_NEWS = "https://newsapi.org/v2/"
     @Provides
     @Singleton

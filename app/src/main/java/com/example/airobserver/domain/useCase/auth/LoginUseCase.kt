@@ -15,20 +15,20 @@ import javax.inject.Inject
 class LoginUseCase @Inject constructor(private val repository: AuthRepository) {
     suspend operator fun invoke(email:String,password:String): ApiResponseStates<BaseResponse<LoginResponse>> {
         return try {
-            val validationFailure = mutableMapOf<String, String>()
+            val validationFailure = mutableMapOf<String, Boolean>()
             if (!isValidEmail(email)){
-                validationFailure["isValidEmail"]=R.string.enter_a_valid_email.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isValidEmail"]=false
+                ApiResponseStates.Failure.Validation(validationFailure)
             }
             else if(!isValidPassword(password)){
-                validationFailure["isValidPassword"]=R.string.password_should_be_8_or_more.toString()
-                ApiResponseStates.ValidationFailure(validationFailure)
+                validationFailure["isValidPassword"]=false
+                ApiResponseStates.Failure.Validation(validationFailure)
             }
             else{
                 ApiResponseStates.Success(repository.login(email, password))
             }
         }catch (throwable:Throwable){
-            ApiResponseStates.Failure(throwable)
+            ApiResponseStates.Failure.Network(throwable)
         }
     }
 }

@@ -61,22 +61,24 @@ class ResetPasswordFragment : Fragment() {
             )
                 .collectLatest {
                     when (it) {
-                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Loading -> {
+                            if(it.isLoading)
+                                binding.progressBar.progressBar.showProgressBar()
+                            else
+                                binding.progressBar.progressBar.hideProgressBar()
+                        }
                         is ApiResponseStates.Success -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.value?.message.toString(),requireActivity())
                             findNavController().navigate(ResetPasswordFragmentDirections.actionResetPasswordFragmentToLoginFragment())
                         }
-                        is ApiResponseStates.ValidationFailure -> {
+                        is ApiResponseStates.Failure.Validation -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             setValidationErrors(it.message.toMutableMap())
                             //showSnackbar(getString(it.message.toInt()), requireActivity())
                         }
-                        is ApiResponseStates.Failure -> {
+                        is ApiResponseStates.Failure.Network -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.throwable.message.toString(), requireActivity())
                         }
                     }
@@ -100,13 +102,16 @@ class ResetPasswordFragment : Fragment() {
         }
     }
 
-    private fun setValidationErrors(map:MutableMap<String,String>) {
-        map["isValidPassword"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilPassword.setValidationError(it) }
-        map["isConfirmValidPassword"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilConfirmPassword.setValidationError(it) }
-        map["isMatch"]?.let { getString(it.toInt()) }
-            ?.let { binding.tilConfirmPassword.setValidationError(it) }
+    private fun setValidationErrors(map:MutableMap<String,Boolean>) {
+        if(map["isValidPassword"]==false){
+            binding.tilPassword.setValidationError(getString(R.string.password_should_be_8_or_more))
+        }
+        else if(map["isConfirmValidPassword"]==false){
+            binding.tilConfirmPassword.setValidationError(getString(R.string.password_should_be_8_or_more))
+        }
+        else if(map["isMatch"]==false){
+            binding.tilConfirmPassword.setValidationError(getString(R.string.not_matched))
+        }
     }
 
     private fun setValidationErrorsToEmpty() {

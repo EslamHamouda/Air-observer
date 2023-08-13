@@ -11,21 +11,25 @@ import kotlinx.coroutines.flow.flow
 
 sealed class ApiResponseStates<out T> {
     data class Success<out R>(val value: R?) : ApiResponseStates<R>()
-    data class Failure(val throwable: Throwable) : ApiResponseStates<Nothing>()
-    data class ValidationFailure(val message: Map<String,String>) : ApiResponseStates<Nothing>()
-    object Loading : ApiResponseStates<Nothing>()
+    sealed class Failure : ApiResponseStates<Nothing>() {
+        data class Network(val throwable: Throwable) : Failure()
+        data class Validation(val message: Map<String,Boolean>) : Failure()
+    }
+    data class Loading(val isLoading : Boolean) : ApiResponseStates<Nothing>()
 }
 
 fun <T> startApiCall(
     apiCall: suspend () -> T
 ): Flow<ApiResponseStates<T>> =
     flow {
-        emit(ApiResponseStates.Loading)
+        emit(ApiResponseStates.Loading(true))
         try {
             val response = apiCall.invoke()
             emit(ApiResponseStates.Success(response))
+            emit(ApiResponseStates.Loading(false))
         } catch (throwable: Throwable) {
-            emit(ApiResponseStates.Failure(throwable))
+            emit(ApiResponseStates.Failure.Network(throwable))
+            emit(ApiResponseStates.Loading(false))
         }
     }
 
@@ -48,7 +52,7 @@ fun <B : BaseResponse<T>, T> dataResponseHandling(
         is ApiResponseStates.Loading -> {
             progressBar?.let { it1 -> showProgress(it1) }
         }
-        is ApiResponseStates.Failure -> {
+        is ApiResponseStates.Failure.Network -> {
             progressBar?.let { it1 -> hideProgress(it1) }
             showSnackbar(it.throwable.handling(activity), activity) { tryAgain() }
 

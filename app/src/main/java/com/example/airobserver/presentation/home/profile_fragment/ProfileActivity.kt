@@ -131,13 +131,13 @@ class ProfileActivity : AppCompatActivity() {
                             binding.edtDate.setText(it.value?.data?.Birthday)
                             binding.autoCompleteGender.setText(it.value?.data?.gender.toString())
                         }
-                        is ApiResponseStates.ValidationFailure -> {
+                        is ApiResponseStates.Failure.Validation -> {
                             setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             setValidationErrors(it.message.toMutableMap())
                             //showSnackbar(getString(it.message.toInt()), requireActivity())
                         }
-                        is ApiResponseStates.Failure -> {
+                        is ApiResponseStates.Failure.Network -> {
                             setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.throwable.message.toString(), this@ProfileActivity)
@@ -201,13 +201,13 @@ class ProfileActivity : AppCompatActivity() {
                             disableEditText(binding.tilPhone)
                             getProfile()
                         }
-                        is ApiResponseStates.ValidationFailure -> {
+                        is ApiResponseStates.Failure.Validation -> {
                             setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             setValidationErrors(it.message.toMutableMap())
                             //showSnackbar(getString(it.message.toInt()), requireActivity())
                         }
-                        is ApiResponseStates.Failure -> {
+                        is ApiResponseStates.Failure.Network -> {
                             setValidationErrorsToEmpty()
                             binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.throwable.message.toString(), this@ProfileActivity)
@@ -368,7 +368,7 @@ class ProfileActivity : AppCompatActivity() {
             is ApiResponseStates.Loading -> {
                 progressBar?.let { it1 -> showProgress(it1) }
             }
-            is ApiResponseStates.Failure -> {
+            is ApiResponseStates.Failure.Network -> {
                 progressBar?.let { it1 -> hideProgress(it1) }
                 showSnackbar(it.throwable.handling(activity), activity) { tryAgain() }
 

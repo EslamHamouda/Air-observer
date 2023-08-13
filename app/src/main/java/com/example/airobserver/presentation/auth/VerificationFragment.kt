@@ -14,6 +14,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.airobserver.R
 import com.example.airobserver.databinding.FragmentVerificationBinding
 import com.example.airobserver.presentation.viewmodel.AuthViewModel
 import com.example.airobserver.utils.ApiResponseStates
@@ -62,22 +63,24 @@ class VerificationFragment : Fragment() {
             )
                 .collectLatest {
                     when (it) {
-                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Loading -> {
+                            if(it.isLoading)
+                                binding.progressBar.progressBar.showProgressBar()
+                            else
+                                binding.progressBar.progressBar.hideProgressBar()
+                        }
                         is ApiResponseStates.Success -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.value?.message.toString(),requireActivity())
                             findNavController().navigate(VerificationFragmentDirections.actionVerificationFragmentToLoginFragment())
                         }
-                        is ApiResponseStates.ValidationFailure -> {
+                        is ApiResponseStates.Failure.Validation -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             setValidationErrors(it.message.toMutableMap())
                             //showSnackbar(getString(it.message.toInt()), requireActivity())
                         }
-                        is ApiResponseStates.Failure -> {
+                        is ApiResponseStates.Failure.Network -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.throwable.message.toString(), requireActivity())
                         }
                     }
@@ -102,9 +105,10 @@ class VerificationFragment : Fragment() {
         }
     }
 
-    private fun setValidationErrors(map:MutableMap<String,String>) {
-        map["isValidOTP"]?.let { getString(it.toInt()) }
-            ?.let { binding.edtCode.error=it }
+    private fun setValidationErrors(map:MutableMap<String,Boolean>) {
+        if(map["isValidOTP"]==false){
+            binding.edtCode.error=getString(R.string.enter_a_valid_otp)
+        }
     }
 
     private fun setValidationErrorsToEmpty() {

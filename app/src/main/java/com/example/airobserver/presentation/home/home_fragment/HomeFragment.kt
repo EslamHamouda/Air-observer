@@ -279,7 +279,7 @@ class HomeFragment : Fragment() {
             is ApiResponseStates.Loading -> {
                 progressBar?.let { it1 -> showProgress(it1) }
             }
-            is ApiResponseStates.Failure -> {
+            is ApiResponseStates.Failure.Network -> {
                 progressBar?.let { it1 -> hideProgress(it1) }
                 showSnackbar(it.throwable.handling(activity), activity) { tryAgain() }
 

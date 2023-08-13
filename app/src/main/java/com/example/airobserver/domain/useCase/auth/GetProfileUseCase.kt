@@ -15,7 +15,7 @@ class GetProfileUseCase @Inject constructor(private val repository: AuthReposito
         return try {
             ApiResponseStates.Success(repository.getProfile(email))
         } catch (throwable: Throwable) {
-            ApiResponseStates.Failure(throwable)
+            ApiResponseStates.Failure.Network(throwable)
         }
     }
 }
