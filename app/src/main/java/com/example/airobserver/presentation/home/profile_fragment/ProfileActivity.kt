@@ -116,10 +116,14 @@ class ProfileActivity : AppCompatActivity() {
                 .collectLatest {
 
                     when (it) {
-                        is ApiResponseStates.Loading -> binding.progressBar.progressBar.showProgressBar()
+                        is ApiResponseStates.Loading -> {
+                            if(it.isLoading)
+                                binding.progressBar.progressBar.showProgressBar()
+                            else
+                                binding.progressBar.progressBar.hideProgressBar()
+                        }
                         is ApiResponseStates.Success -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             binding.edtFirstname.setText(it.value?.data?.firstname.toString())
                             binding.edtLastname.setText(it.value?.data?.lastname.toString())
                             binding.edtEmail.setText(it.value?.data?.email.toString())
@@ -133,13 +137,11 @@ class ProfileActivity : AppCompatActivity() {
                         }
                         is ApiResponseStates.Failure.Validation -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             setValidationErrors(it.message.toMutableMap())
                             //showSnackbar(getString(it.message.toInt()), requireActivity())
                         }
                         is ApiResponseStates.Failure.Network -> {
                             setValidationErrorsToEmpty()
-                            binding.progressBar.progressBar.hideProgressBar()
                             showSnackbar(it.throwable.message.toString(), this@ProfileActivity)
                         }
                     }
